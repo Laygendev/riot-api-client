@@ -1,0 +1,17 @@
+<div class="container">
+
+	<div class="starter-template">
+		<h1>API</h1>
+
+		<form class="form-inline">
+		  <label class="sr-only" for="inlineFormInputGroup">Summoner name</label>
+		  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+		    <div class="input-group-addon">@</div>
+		    <input type="text" class="form-control" #summonerName placeholder="Username">
+		  </div>
+
+		  <button type="submit" (click)="search(summonerName);" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+</div><!-- /.container -->
