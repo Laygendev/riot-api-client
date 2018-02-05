@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpSummonerService } from './services/httpSummoner/http-summoner.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +9,7 @@ import { HttpSummonerService } from './services/httpSummoner/http-summoner.servi
 export class AppComponent implements OnInit {
   title = 'app';
 
-	constructor(private httpSummonerService: HttpSummonerService) {}
+	constructor() {}
 
 	ngOnInit(): void {}
-
-	search(summonerName: string): void {
-		this.httpSummonerService.get(summonerName).subscribe((data) => {
-			console.log(data);
-		});
-	}
 }

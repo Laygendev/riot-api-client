@@ -9,12 +9,13 @@ import { HttpSummonerService } from './services/httpSummoner/http-summoner.servi
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
 import { AppRoutingModule } from './/app-routing.module';
-
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SummonerDetailsComponent
+    SummonerDetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

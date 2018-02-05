@@ -11,7 +11,7 @@ export class HttpSummonerService {
 	constructor(private httpClient: HttpClient) {}
 
 	public get(summonerName: string): Observable<any> {
-		let url: string = "https://164.132.69.238:3002/summoner/" + summonerName;
+		let url: string = "http://164.132.69.238:3002/summoner/" + summonerName;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }
