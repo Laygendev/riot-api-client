@@ -5,8 +5,7 @@ import { SearchComponent }    from './components/search/search.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/search', pathMatch: 'full' },
-  { path: 'search', component: SearchComponent },
+  { path: '', component: SearchComponent },
   { path: 'summoner/:id', component: SummonerDetailsComponent },
 ];
 
