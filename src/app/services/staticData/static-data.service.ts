@@ -11,7 +11,7 @@ export class StaticData {
 	constructor(private httpClient: HttpClient) {}
 
 	public get(endpoint: string, args: any): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/spectator/" + summonerId;
-		return this.httpClient.get( url, {responseType: 'json'} );
+		//let url: string = "http://164.132.69.238:3002/spectator/" + summonerId;
+		return this.httpClient.get( 'url', {responseType: 'json'} );
 	}
 }
