@@ -1,3 +1,5 @@
+#{{dataService.summonerData.id}}
+
 <ul>
-	<li *ngFor="let participant of dataService.spetactorData.participants">{{participant.summonerName}}</li>
+	<li *ngFor="let participant of dataService.spetactorData.participants">#{{participant.championId}} {{participant.summonerName}}</li>
 </ul>
