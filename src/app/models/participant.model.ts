@@ -1,3 +1,5 @@
+import { ChampionModel } from './champion.model';
+
 export class ParticipantModel {
 	public profileIconId: number;
 	public championId: number;
@@ -8,6 +10,7 @@ export class ParticipantModel {
 	public spell1Id: number;
 	public teamId: number;
 	public summonerId: number;
+	public champion: ChampionModel;
 
 	constructor(fields: any) {
 		for (var f in fields) {

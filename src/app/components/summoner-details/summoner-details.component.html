@@ -1,5 +1,9 @@
 #{{dataService.summonerData.id}}
 
 <ul>
-	<li *ngFor="let participant of dataService.spetactorData.participants">#{{participant.championId}} {{participant.summonerName}}</li>
+	<li *ngFor="let participant of dataService.spetactorData.participants">
+		<strong>#{{participant.championId}} {{participant.summonerName}}</strong>
+		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+		{{participant.champion.name}}
+	</li>
 </ul>

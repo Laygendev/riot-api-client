@@ -7,6 +7,7 @@ import { HttpService } from './services/http/http.service';
 import { DataService } from './services/data/data.service';
 import { HttpSummonerService } from './services/httpSummoner/http-summoner.service';
 import { HttpSpectatorService } from './services/httpSpectator/http-spectator.service';
+import { StaticDataService } from './services/staticData/static-data.service';
 
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
@@ -29,7 +30,8 @@ import { SearchComponent } from './components/search/search.component';
 		HttpService,
 		HttpSummonerService,
 		HttpSpectatorService,
-		DataService
+		DataService,
+		StaticDataService
 	],
   bootstrap: [AppComponent]
 })
