@@ -1,9 +1,12 @@
-#{{dataService.summonerData.id}}
+<strong *ngIf="dataService.summonerData">#{{dataService.summonerData.id}}</strong>
 
-<ul>
+<ul *ngIf="dataService.spetactorData">
 	<li *ngFor="let participant of dataService.spetactorData.participants">
 		<strong>#{{participant.championId}} {{participant.summonerName}}</strong>
-		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
-		{{participant.champion.name}}
+
+		<div *ngIf="participant.championId">
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champions.image.full}}" />
+			{{participant.champion.name}}
+		</div>
 	</li>
 </ul>

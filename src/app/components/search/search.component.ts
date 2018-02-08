@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { HttpSummonerService } from '../../services/httpSummoner/http-summoner.service';
 import { DataService } from '../../services/data/data.service';
@@ -15,18 +15,18 @@ export class SearchComponent implements OnInit {
 
 	constructor(
 		private router: Router,
+		private route: ActivatedRoute,
 		private httpSummonerService: HttpSummonerService,
 		private dataService: DataService) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {}
 
 	search(summonerName: string): void {
 		this.httpSummonerService.get(summonerName).subscribe((data) => {
 			let summonerData = new SummonerModel(data);
 			this.dataService.summonerData = summonerData;
 
-			this.router.navigate(['/summoner/' + summonerData.id]);
+			this.router.navigate(['/summoner/' + summonerName]);
 		});
 	}
 

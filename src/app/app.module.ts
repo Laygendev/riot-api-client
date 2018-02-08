@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AppRoutingModule } from './/app-routing.module';
+
 import { HttpService } from './services/http/http.service';
 import { DataService } from './services/data/data.service';
 import { HttpSummonerService } from './services/httpSummoner/http-summoner.service';
@@ -11,14 +13,15 @@ import { StaticDataService } from './services/staticData/static-data.service';
 
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
-import { AppRoutingModule } from './/app-routing.module';
 import { SearchComponent } from './components/search/search.component';
+import { BuildComponent } from './components/build/build.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SummonerDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    BuildComponent
   ],
   imports: [
     BrowserModule,
