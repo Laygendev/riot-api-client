@@ -1,9 +1,29 @@
-<ul>
-	<li *ngFor="let champion of champions">
+<ul class="champions" *ngIf="!this.onEdit">
+	<li *ngFor="let champion of dataService.champions">
 		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
 
 		<div>
-			<span>{{champion.name}}</span>
+			<span (click)="edit(champion)">{{champion.name}}</span>
 		</div>
 	</li>
 </ul>
+
+<div class="items" *ngIf="this.onEdit">
+	<ul>
+		<li class="case"></li>
+		<li class="case"></li>
+		<li class="case"></li>
+		<li class="case"></li>
+		<li class="case"></li>
+		<li class="case"></li>
+	</ul>
+	<ul>
+		<li *ngFor="let item of dataService.items">
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+
+			<div>
+				<span>{{item.name}}</span>
+			</div>
+		</li>
+	</ul>
+</div>

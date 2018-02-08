@@ -5,7 +5,7 @@
 		<strong>#{{participant.championId}} {{participant.summonerName}}</strong>
 
 		<div *ngIf="participant.championId">
-			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champions.image.full}}" />
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
 			{{participant.champion.name}}
 		</div>
 	</li>

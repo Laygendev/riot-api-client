@@ -33,40 +33,22 @@ export class SummonerDetailsComponent  {
 					let summonerData = new SummonerModel(data);
 					this.dataService.summonerData = summonerData;
 
-					this.httpClient.get("./assets/json/champions.json").subscribe((data) => {
-						for (let key in data) {
-							this.champions.push(new ChampionModel(data[key]));
-						}
+					this.getSpectator();
 
-						this.getSpectator();
-
-					});
 				});
 			});
 		} else {
-			this.httpClient.get("./assets/json/champions.json").subscribe((data) => {
-				for (let key in data) {
-					this.champions.push(new ChampionModel(data[key]));
-				}
-
-				this.getSpectator();
-			});
+			this.getSpectator();
 		}
 	}
 
 	getSpectator() {
-		console.log(this.champions);
 		this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
 			let tmpPartipants: Array<ParticipantModel> = new Array<ParticipantModel>();
 			for (let key in data.participants) {
 				let tmpParticipant = new ParticipantModel(data.participants[key]);
-
-				this.staticDataService.get('', {
-					championId: tmpParticipant.championId
-				}).subscribe((championData) => {
-					tmpParticipant.champion = championData;
-					tmpPartipants.push(tmpParticipant);
-				});
+				tmpParticipant.champion = this.dataService.getChampionById(tmpParticipant.championId);
+				tmpPartipants.push(tmpParticipant);
 			}
 
 			this.dataService.spetactorData = new SpectatorModel(data);

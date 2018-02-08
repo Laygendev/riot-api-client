@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/map';
 
-import { HttpClient } from '@angular/common/http';
+import { DataService } from '../../services/data/data.service';
 
 import { ChampionModel } from '../../models/champion.model';
+import { ItemModel } from '../../models/item.model';
 
 
 @Component({
@@ -14,15 +12,14 @@ import { ChampionModel } from '../../models/champion.model';
   styleUrls: ['./build.component.css']
 })
 export class BuildComponent implements OnInit {
-	public champions: Array<ChampionModel> = new Array<ChampionModel>();
-  constructor(private httpClient: HttpClient) { }
+	onEdit: boolean = false;
+	constructor(private dataService: DataService) { }
 
-	ngOnInit() {
-		this.httpClient.get("./assets/json/champions.json").subscribe((data) => {
-			for (let key in data) {
-				this.champions.push(new ChampionModel(data[key]));
-			}
-		});
+	ngOnInit() {}
+
+	edit(champion: ChampionModel): void {
+		this.onEdit = true;
+		console.log(champion);
 	}
 
 }
