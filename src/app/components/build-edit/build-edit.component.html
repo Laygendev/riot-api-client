@@ -1,0 +1,30 @@
+<a routerLink="/build">Retour</a>
+
+<span *ngIf="champion">
+	<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+	#{{champion.id}} - {{champion.name}}
+</span>
+
+<div>
+	<ul [appDraganddrop]="build" class="cases">
+		<li *ngFor="let itemSlot of build.items" class="case">
+			<div *ngIf="! itemSlot.empty" data-id="{{itemSlot.item.id}}">
+				<img (click)="clearCase(itemSlot)"src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+			</div>
+		</li>
+	</ul>
+
+		<span (click)="set()">Modifier</span>
+
+	<ul class="items">
+		<li *ngFor="let item of dataService.items">
+			<div (click)="addToCase(item)">
+				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+
+				<div>
+					<span>{{item.name}}</span>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

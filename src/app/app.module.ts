@@ -11,17 +11,22 @@ import { HttpSummonerService } from './services/httpSummoner/http-summoner.servi
 import { HttpSpectatorService } from './services/httpSpectator/http-spectator.service';
 import { StaticDataService } from './services/staticData/static-data.service';
 
+import { DragAndDropDirective } from './directives/draganddrop/draganddrop.directive';
+
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
 import { SearchComponent } from './components/search/search.component';
 import { BuildComponent } from './components/build/build.component';
+import { BuildEditComponent } from './components/build-edit/build-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SummonerDetailsComponent,
     SearchComponent,
-    BuildComponent
+    BuildComponent,
+    BuildEditComponent,
+    DragAndDropDirective
   ],
   imports: [
     BrowserModule,

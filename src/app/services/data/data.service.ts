@@ -37,7 +37,7 @@ export class DataService {
 	getChampionById(id: number): ChampionModel {
 
 		for(let key in this.champions) {
-			if (this.champions[key].id === id) {
+			if (this.champions[key].id == id) {
 				return this.champions[key]
 			}
 		}
@@ -48,7 +48,7 @@ export class DataService {
 	getItemById(id: number): ItemModel {
 
 		for(let key in this.items) {
-			if (this.items[key].id === id) {
+			if (this.items[key].id == id) {
 				return this.items[key]
 			}
 		}

@@ -1,29 +1,11 @@
-<ul class="champions" *ngIf="!this.onEdit">
+<ul class="champions">
 	<li *ngFor="let champion of dataService.champions">
-		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-
-		<div>
-			<span (click)="edit(champion)">{{champion.name}}</span>
-		</div>
-	</li>
-</ul>
-
-<div class="items" *ngIf="this.onEdit">
-	<ul>
-		<li class="case"></li>
-		<li class="case"></li>
-		<li class="case"></li>
-		<li class="case"></li>
-		<li class="case"></li>
-		<li class="case"></li>
-	</ul>
-	<ul>
-		<li *ngFor="let item of dataService.items">
-			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+		<a routerLink="/build/{{champion.id}}">
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
 
 			<div>
-				<span>{{item.name}}</span>
+				<span>{{champion.name}}</span>
 			</div>
-		</li>
-	</ul>
-</div>
+		</a>
+	</li>
+</ul>

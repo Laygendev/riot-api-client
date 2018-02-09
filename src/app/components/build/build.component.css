@@ -28,34 +28,3 @@ ul.champions li div span {
 	font-weight: bold;
 	line-height: 120px;
 }
-
-.items ul {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-}
-
-.items ul li {
-	list-style-type: none;
-	position: relative;
-	width: 64px;
-	height: 64px;
-}
-
-.items ul li img {
-	position: absolute;
-}
-
-.items ul li div {
-	width: 64px;
-	height: 64px;
-	text-align: center;
-	position: absolute;
-}
-
-.items ul li div span {
-	color: white;
-	font-size: 0.8em;
-	font-weight: bold;
-	line-height: 120px;
-}

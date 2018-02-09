@@ -12,14 +12,7 @@ import { ItemModel } from '../../models/item.model';
   styleUrls: ['./build.component.css']
 })
 export class BuildComponent implements OnInit {
-	onEdit: boolean = false;
 	constructor(private dataService: DataService) { }
 
 	ngOnInit() {}
-
-	edit(champion: ChampionModel): void {
-		this.onEdit = true;
-		console.log(champion);
-	}
-
 }
