@@ -34,7 +34,7 @@ export class DataService {
 		});
 	}
 
-	getChampionById(id: number): ChampionModel {
+	getChampionById(id: any): ChampionModel {
 
 		for(let key in this.champions) {
 			if (this.champions[key].id == id) {
@@ -45,7 +45,7 @@ export class DataService {
 		return null;
 	}
 
-	getItemById(id: number): ItemModel {
+	getItemById(id: any): ItemModel {
 
 		for(let key in this.items) {
 			if (this.items[key].id == id) {

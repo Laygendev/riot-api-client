@@ -10,8 +10,11 @@ import { DataService } from './services/data/data.service';
 import { HttpSummonerService } from './services/httpSummoner/http-summoner.service';
 import { HttpSpectatorService } from './services/httpSpectator/http-spectator.service';
 import { StaticDataService } from './services/staticData/static-data.service';
+import { HttpBuildService } from './services/httpBuild/http-build.service';
 
 import { DragAndDropDirective } from './directives/draganddrop/draganddrop.directive';
+import { SearchDirective } from './directives/search/search.directive';
+
 
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
@@ -26,7 +29,8 @@ import { BuildEditComponent } from './components/build-edit/build-edit.component
     SearchComponent,
     BuildComponent,
     BuildEditComponent,
-    DragAndDropDirective
+    DragAndDropDirective,
+    SearchDirective
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import { BuildEditComponent } from './components/build-edit/build-edit.component
 		HttpSummonerService,
 		HttpSpectatorService,
 		DataService,
-		StaticDataService
+		StaticDataService,
+		HttpBuildService
 	],
   bootstrap: [AppComponent]
 })

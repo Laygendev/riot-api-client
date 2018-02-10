@@ -1,5 +1,13 @@
 <strong *ngIf="dataService.summonerData">#{{dataService.summonerData.id}}</strong>
 
+<div *ngIf="myParticipant">
+	<p *ngIf="!build"><a routerLink="/build/{{myParticipant.championId}}">make build</a></p>
+
+	<ul class="items" *ngIf="build">
+		<li class="item" *ngFor="let item of build.nitems"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" /></li>
+	</ul>
+</div>
+
 <ul *ngIf="dataService.spetactorData">
 	<li *ngFor="let participant of dataService.spetactorData.participants">
 		<strong>#{{participant.championId}} {{participant.summonerName}}</strong>

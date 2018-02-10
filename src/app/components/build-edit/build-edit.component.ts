@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../../services/data/data.service';
+import { HttpBuildService } from '../../services/httpBuild/http-build.service';
 
 import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
@@ -20,11 +21,37 @@ export class BuildEditComponent implements OnInit {
 	constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
+		public httpBuildService: HttpBuildService
 	) {
 		this.route.params.subscribe(param => {
 			this.champion = this.dataService.getChampionById(param.id);
-			this.build = new BuildModel(undefined);
-			this.build.items = new Array<ItemSlotModel>(new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined));
+
+			this.httpBuildService.get(param.id).subscribe((data) => {
+				if ( data ) {
+					this.build = data;
+
+					this.build.items = new Array<ItemSlotModel>();
+
+					for(let key in this.build.itemsId) {
+						let itemSlot: ItemSlotModel = new ItemSlotModel(undefined);
+
+						if ( this.build.itemsId ) {
+							let item: ItemModel = this.dataService.getItemById(this.build.itemsId[key]);
+							itemSlot.empty = false;
+							itemSlot.item = item;
+						} else {
+							itemSlot.empty = true;
+						}
+
+						this.build.items.push(itemSlot);
+						
+					}
+				} else {
+					this.build = new BuildModel(undefined);
+					this.build.items = new Array<ItemSlotModel>(new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined));
+				}
+			});
+
 		});
 	}
 
@@ -45,7 +72,15 @@ export class BuildEditComponent implements OnInit {
 	}
 
 	set(): void {
-		console.log(this.build.items);
+		this.build.itemsId = new Array<Number>();
+		for (let key in this.build.items) {
+			this.build.itemsId.push(this.build.items[key].item.id);
+		}
+
+		this.build.championId = this.champion.id;
+		this.httpBuildService.post(this.build).subscribe((data) => {
+			console.log(data);
+		})
 	}
 
 	nextSlot(): any {

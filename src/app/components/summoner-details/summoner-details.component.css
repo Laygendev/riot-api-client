@@ -1,0 +1,31 @@
+ul.items  {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+	height: 600px;
+	overflow-y: scroll;
+}
+
+ul.items  li {
+	list-style-type: none;
+	position: relative;
+	width: 64px;
+	height: 64px;
+}
+
+ul.items  li img {
+	position: absolute;
+}
+
+ul.items  li div {
+	width: 64px;
+	height: 64px;
+	position: absolute;
+}
+
+ul.items  li div span {
+	color: white;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 120px;
+}
