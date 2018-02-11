@@ -5,6 +5,10 @@
 	#{{champion.id}} - {{champion.name}}
 </span>
 
+<ul>
+	<li (click)="setEditMode('ARAM')">ARAM</li>
+</ul>
+
 <div *ngIf="build">
 	<ul [appDraganddrop]="build" class="cases">
 		<li *ngFor="let itemSlot of build.items" class="case">

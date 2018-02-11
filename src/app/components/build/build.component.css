@@ -2,6 +2,7 @@ ul.champions {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
+	justify-content: space-between;
 }
 
 ul.champions li {
@@ -9,6 +10,8 @@ ul.champions li {
 	position: relative;
 	width: 120px;
 	height: 120px;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 ul.champions li img {

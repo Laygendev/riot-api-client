@@ -1,17 +1,18 @@
 <div class="container">
+	<h1>LolBuilds</h1>
 
-	<div class="starter-template">
-		<h1>API</h1>
-
-		<div class="form-inline">
-		  <label class="sr-only" for="inlineFormInputGroup">Summoner name</label>
-		  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-		    <div class="input-group-addon">@</div>
-		    <input type="text" class="form-control" #summonerName value="bearbehindpc" placeholder="Username">
-		  </div>
-
-		  <button (click)="search(summonerName.value);" class="btn btn-primary">Submit</button>
-		</div>
+	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
 	</div>
 
-</div><!-- /.container -->
+	<form>
+		<div class="input-group mb-3">
+			<input #summonerName type="text" class="form-control" placeholder="Search summoner in a match">
+			<div class="input-group-append">
+				<button (click)="search(summonerName.value)" class="btn btn-primary" type="button">Search</button>
+			</div>
+		</div>
+	</form>
+
+	<a routerLink="/build">Make a guide</a>
+</div>

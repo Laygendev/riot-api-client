@@ -1,11 +1,33 @@
-<ul class="champions">
-	<li *ngFor="let champion of dataService.champions">
-		<a routerLink="/build/{{champion.id}}">
-			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+<div class="container">
+	<h1>LolBuilds -> Make a guide</h1>
 
-			<div>
-				<span>{{champion.name}}</span>
-			</div>
-		</a>
-	</li>
-</ul>
+	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
+	</div>
+
+	<div *ngIf="!championId">
+		<p>Select a champion</p>
+
+		<ul *ngIf="!championId" class="champions">
+			<li *ngFor="let champion of dataService.champions">
+				<a (click)="clickChampion(champion.id)">
+					<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+
+					<div>
+						<span>{{champion.name}}</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<div *ngIf="championId">
+		<p>Select a game mode</p>
+
+		<ul>
+			<a routerLink="/build/ARAM/{{championId}}">ARAM</a>
+			<a routerLink="/build/NORMAL/{{championId}}">NORMAL</a>
+		</ul>
+	</div>
+</div>

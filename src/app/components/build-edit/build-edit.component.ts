@@ -18,6 +18,8 @@ export class BuildEditComponent implements OnInit {
 	public champion: ChampionModel;
 	public build: BuildModel;
 
+	public editMode: string = "ARAM";
+
 	constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
@@ -26,36 +28,44 @@ export class BuildEditComponent implements OnInit {
 		this.route.params.subscribe(param => {
 			this.champion = this.dataService.getChampionById(param.id);
 
-			this.httpBuildService.get(param.id).subscribe((data) => {
-				if ( data ) {
-					this.build = data;
-
-					this.build.items = new Array<ItemSlotModel>();
-
-					for(let key in this.build.itemsId) {
-						let itemSlot: ItemSlotModel = new ItemSlotModel(undefined);
-
-						if ( this.build.itemsId ) {
-							let item: ItemModel = this.dataService.getItemById(this.build.itemsId[key]);
-							itemSlot.empty = false;
-							itemSlot.item = item;
-						} else {
-							itemSlot.empty = true;
-						}
-
-						this.build.items.push(itemSlot);
-						
-					}
-				} else {
-					this.build = new BuildModel(undefined);
-					this.build.items = new Array<ItemSlotModel>(new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined));
-				}
-			});
-
+			this.getBuild();
 		});
 	}
 
 	ngOnInit() {}
+
+	getBuild(): void {
+		this.httpBuildService.get(this.champion.id, this.editMode).subscribe((data) => {
+			if ( data ) {
+				this.build = data;
+
+				this.build.items = new Array<ItemSlotModel>();
+
+				for(let key in this.build.itemsId) {
+					let itemSlot: ItemSlotModel = new ItemSlotModel(undefined);
+
+					if ( this.build.itemsId ) {
+						let item: ItemModel = this.dataService.getItemById(this.build.itemsId[key]);
+						itemSlot.empty = false;
+						itemSlot.item = item;
+					} else {
+						itemSlot.empty = true;
+					}
+
+					this.build.items.push(itemSlot);
+
+				}
+			} else {
+				this.build = new BuildModel(undefined);
+				this.build.items = new Array<ItemSlotModel>(new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined));
+			}
+		});
+	}
+
+	setEditMode(name: string): void {
+		this.editMode = name;
+		this.build.gameMode = this.editMode;
+	}
 
 	addToCase(item: ItemModel): void {
 		let nextIndex: any  = this.nextSlot();
@@ -78,6 +88,7 @@ export class BuildEditComponent implements OnInit {
 		}
 
 		this.build.championId = this.champion.id;
+		this.build.gameMode = this.editMode;
 		this.httpBuildService.post(this.build).subscribe((data) => {
 			console.log(data);
 		})

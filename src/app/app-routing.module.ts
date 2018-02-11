@@ -7,14 +7,14 @@ import { BuildComponent } from './components/build/build.component';
 import { BuildEditComponent } from './components/build-edit/build-edit.component';
 
 const routes: Routes = [
-  { path: '', component: SearchComponent },
-  { path: 'summoner/:id', component: SummonerDetailsComponent },
-  { path: 'build', component: BuildComponent },
-  { path: 'build/:id', component: BuildEditComponent },
+	{ path: '', component: SearchComponent },
+	{ path: 'summoner/:id', component: SummonerDetailsComponent },
+	{ path: 'build', component: BuildComponent },
+	{ path: 'build/:gameMode/:championId', component: BuildEditComponent },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+	imports: [ RouterModule.forRoot(routes) ],
+	exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

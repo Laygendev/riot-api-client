@@ -69,7 +69,7 @@ export class SummonerDetailsComponent  {
 	}
 
 	getBuild() {
-		this.httpBuildService.get(this.myParticipant.championId).subscribe((data) => {
+		this.httpBuildService.get(this.myParticipant.championId, 'ARAM').subscribe((data) => {
 			this.build = data;
 
 			if ( this.build && this.build.itemsId ) {

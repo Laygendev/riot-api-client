@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class HttpBuildService {
 	constructor(private httpClient: HttpClient) {}
 
-	public get(championId: number): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/build/" + championId;
+	public get(championId: number, editMode: string): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/build/" + editMode + "/" + championId;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 
