@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../../services/data/data.service';
@@ -14,7 +14,8 @@ import { BuildModel } from '../../models/build.model';
   templateUrl: './build-edit.component.html',
   styleUrls: ['./build-edit.component.css']
 })
-export class BuildEditComponent implements OnInit {
+export class BuildEditComponent {
+	public params: any;
 	public champion: ChampionModel;
 	public build: BuildModel;
 
@@ -25,17 +26,16 @@ export class BuildEditComponent implements OnInit {
 		public dataService: DataService,
 		public httpBuildService: HttpBuildService
 	) {
-		this.route.params.subscribe(param => {
-			this.champion = this.dataService.getChampionById(param.id);
+		this.route.params.subscribe(params => {
+			this.params = params;
+			this.champion = this.dataService.getChampionById(params.championId);
 
 			this.getBuild();
 		});
 	}
 
-	ngOnInit() {}
-
 	getBuild(): void {
-		this.httpBuildService.get(this.champion.id, this.editMode).subscribe((data) => {
+		this.httpBuildService.get(this.champion.id, this.params.gameMode).subscribe((data) => {
 			if ( data ) {
 				this.build = data;
 

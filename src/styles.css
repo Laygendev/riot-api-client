@@ -22,3 +22,11 @@ time, mark, audio, video {
 	border: 0;
 	vertical-align: baseline;
 }
+
+.green {
+	color: #2ecc71;
+}
+
+.red {
+	color: #c0392b;
+}

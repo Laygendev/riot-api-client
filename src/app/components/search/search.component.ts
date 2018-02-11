@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { HttpSummonerService } from '../../services/httpSummoner/http-summoner.service';
+import { HttpStatusService } from '../../services/httpStatus/http-status.service';
 import { DataService } from '../../services/data/data.service';
 
 import { SummonerModel } from '../../models/summoner.model';
@@ -12,14 +13,29 @@ import { SummonerModel } from '../../models/summoner.model';
 	styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+	public serverStatus: any;
 	public errorMessage: string;
 
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
+		private httpStatusService: HttpStatusService,
 		private httpSummonerService: HttpSummonerService,
-		private dataService: DataService) {}
+		private dataService: DataService) {
+			this.checkServerStatus();
+		}
 
+	/**
+	 * Check the status of the serverStatus
+	 *
+	 * @since 0.2.0
+	 * @version 0.2.0
+	 */
+	checkServerStatus(): void {
+		this.httpStatusService.get().subscribe((data) => {
+			this.serverStatus = data;
+		});
+	}
 
 	/**
 	 * Use httpSummonerService to find data by summonerName.

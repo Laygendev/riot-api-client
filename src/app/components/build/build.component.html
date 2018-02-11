@@ -5,29 +5,30 @@
 		{{errorMessage}}
 	</div>
 
-	<div *ngIf="!championId">
-		<p>Select a champion</p>
+	<div *ngIf="!champion">
+		<h2>Select a champion</h2>
 
-		<ul *ngIf="!championId" class="champions">
+		<ul *ngIf="!champion" class="champions">
 			<li *ngFor="let champion of dataService.champions">
-				<a (click)="clickChampion(champion.id)">
+				<a (click)="clickChampion(champion)">
 					<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-
-					<div>
-						<span>{{champion.name}}</span>
-					</div>
 				</a>
 			</li>
 		</ul>
 	</div>
 
 
-	<div *ngIf="championId">
-		<p>Select a game mode</p>
+	<div *ngIf="champion">
+		<h2>Select a game mode</h2>
+
+		<div>
+			<p>You have selected the champion: <strong>{{champion.name}}</strong></p>
+			<a (click)="clickChampion(undefined)">Back</a>
+		</div>
 
 		<ul>
-			<a routerLink="/build/ARAM/{{championId}}">ARAM</a>
-			<a routerLink="/build/NORMAL/{{championId}}">NORMAL</a>
+			<a routerLink="/build/ARAM/{{champion.id}}">ARAM</a>
+			<a routerLink="/build/NORMAL/{{champion.id}}">NORMAL</a>
 		</ul>
 	</div>
 </div>

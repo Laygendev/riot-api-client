@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { DataService } from '../../services/data/data.service';
+import { ChampionModel } from '../../models/champion.model';
 
 @Component({
   selector: 'app-build',
@@ -8,11 +9,11 @@ import { DataService } from '../../services/data/data.service';
   styleUrls: ['./build.component.css']
 })
 export class BuildComponent {
-	public championId: number;
+	public champion: ChampionModel;
 
 	constructor(public dataService: DataService) {}
 
-	clickChampion(championId: number): void {
-		this.championId = championId;
+	clickChampion(champion: ChampionModel): void {
+		this.champion = champion;
 	}
 }
