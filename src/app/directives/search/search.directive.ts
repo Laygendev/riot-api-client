@@ -1,29 +1,29 @@
-import { Directive, ElementRef, OnInit, Input, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 declare var $:any;
 
 @Directive({
   selector: '[appSearch]'
 })
-export class SearchDirective implements OnInit {
+export class SearchDirective {
 	constructor(public el: ElementRef) {}
 
-	ngOnInit() {
-
+	@HostListener('keyup') onKeyDown() {
+		this.filterByValue();
 	}
 
-	@HostListener('keyup') onKeyDown() {
-		if ( $('input[type="text"]').val().length > 0 ) {
-
-			$('.items li').each(function() {
-				if ($(this).find('span').text().indexOf($('input[type="text"]').val()) >= 0) {
-					$(this).show();
+	filterByValue() {
+		var parent = $(this.el.nativeElement).closest('.dropdown-menu');
+		if (this.el.nativeElement.value.length > 0) {
+			parent.find('.item').each((key, item) => {
+				if ($(item).find('span').text().toLowerCase().indexOf(this.el.nativeElement.value.toLowerCase()) >= 0) {
+					$(item).show();
 				} else {
-					$(this).hide();
+					$(item).hide();
 				}
 			});
 
 		} else {
-			$('.items li').show();
+			parent.find('.item').show();
 		}
 	}
 }
