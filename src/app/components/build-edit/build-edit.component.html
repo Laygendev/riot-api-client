@@ -1,13 +1,20 @@
-<a routerLink="/build">Retour</a>
+<p>Make sure you have read how to make a guide before created one</p>
 
-<span *ngIf="champion">
-	<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-	#{{champion.id}} - {{champion.name}}
-</span>
 
-<ul>
-	<li (click)="setEditMode('ARAM')">ARAM</li>
-</ul>
+	<div class="row">
+		<div class="col-sm">
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+			{{champion.name}}
+		</div>
+		<div class="col-sm">
+			<ul>
+				<li>Strength: 100</li>
+				<li>Armor: 100</li>
+				<li>Vitality: 100</li>
+			</ul>
+		</div>
+	</div>
+<!--
 
 <div *ngIf="build">
 	<ul [appDraganddrop]="build" class="cases">
@@ -32,4 +39,4 @@
 			</div>
 		</li>
 	</ul>
-</div>
+</div> -->

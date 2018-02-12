@@ -1,23 +1,19 @@
-<div class="container">
-	<h1>LolBuilds</h1>
-
-	<p class="status green" *ngIf="serverStatus && serverStatus.status == 200"><i class="fas fa-check-circle"></i><span>Server is up.</span></p>
-	<p class="status red" *ngIf="serverStatus && serverStatus.status != 200 || !serverStatus"><i class="fas fa-exclamation-circle"></i><span>Server is down.</span></p>
+<p class="status green" *ngIf="serverStatus && serverStatus.status == 200"><i class="fas fa-check-circle"></i><span>Server is up.</span></p>
+<p class="status red" *ngIf="serverStatus && serverStatus.status != 200 || !serverStatus"><i class="fas fa-exclamation-circle"></i><span>Server is down.</span></p>
 
 
 
-	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-		{{errorMessage}}
-	</div>
-
-	<form>
-		<div class="input-group mb-3">
-			<input #summonerName type="text" class="form-control" placeholder="Search summoner in a match">
-			<div class="input-group-append">
-				<button (click)="search(summonerName.value)" class="btn btn-primary" type="button">Search</button>
-			</div>
-		</div>
-	</form>
-
-	<a routerLink="/build">Make a guide</a>
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+	{{errorMessage}}
 </div>
+
+<form>
+	<div class="input-group mb-3">
+		<input #summonerName type="text" class="form-control" placeholder="Search summoner in a match">
+		<div class="input-group-append">
+			<button (click)="search(summonerName.value)" class="btn btn-primary" type="button">Search</button>
+		</div>
+	</div>
+</form>
+
+<a routerLink="/build">Make a guide</a>
