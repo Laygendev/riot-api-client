@@ -12,11 +12,11 @@ import { HttpClient } from '@angular/common/http';
 export class HttpBuildService {
 	constructor(private httpClient: HttpClient) {}
 
-	public get(championId: number, editMode: string, buildId?: Number): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/build/" + editMode + "/" + championId;
+	public get(args: any): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/build/" + args.gameMode + "/" + args.championId;
 
-		if ( buildId ) {
-			url = "http://164.132.69.238:3002/build/" + buildId;
+		if ( args.buildId ) {
+			url = "http://164.132.69.238:3002/build/" + args.buildId;
 		}
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
@@ -26,8 +26,6 @@ export class HttpBuildService {
 
 		delete data.starterItemsSlot;
 		delete data.buildItemsSlot;
-
-		console.log(data);
 
 		return this.httpClient.post( url, data, {responseType: 'json'} );
 	}

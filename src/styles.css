@@ -35,3 +35,8 @@ body {
 	background-color: #ecf0f1;
 	color: #34495e;
 }
+
+h2 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

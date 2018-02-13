@@ -10,6 +10,7 @@ export class BuildModel {
 	public buildItemsSlotId: Array<Number>;
 	public author: string;
 	public gameMode: string;
+	public favorite: boolean;
 
 	constructor(fields?: any) {
 		this.starterItemsSlot = new Array<ItemSlotModel>();

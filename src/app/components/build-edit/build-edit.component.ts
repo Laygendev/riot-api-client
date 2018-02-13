@@ -39,7 +39,9 @@ export class BuildEditComponent {
 	getBuild(): void {
 		let buildId: Number = this.params.buildId ? this.params.buildId : 0;
 
-		this.httpBuildService.get(this.champion.id, this.params.gameMode, buildId).subscribe((data) => {
+		this.httpBuildService.get({
+			buildId: buildId
+		}).subscribe((data) => {
 			if ( data ) {}
 		});
 	}

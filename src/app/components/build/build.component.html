@@ -49,6 +49,35 @@
 	</div>
 </div>
 
+<h2>Favorite champion</h2>
+
+<div class="favorite-build" *ngIf="favoriteBuild">
+	<div class="favoriteChampion">
+		<p>
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{favoriteChampion.image.full}}" />
+		</p>
+			<ul>
+				<li class="title">{{favoriteChampion.name}}</li>
+			</ul>
+	</div>
+
+	<div class="cases-container">
+		<ul class="cases">
+			<li *ngFor=""></li>
+			<li></li>
+		</ul>
+
+		<ul class="cases">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div>
+
 <div *ngIf="champion && gameMode">
 	<h2>Availables guides for {{champion.name}} in {{gameMode}}</h2>
 
