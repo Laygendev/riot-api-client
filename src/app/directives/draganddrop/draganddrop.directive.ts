@@ -16,22 +16,22 @@ export class DragAndDropDirective implements OnInit {
 	constructor(public el: ElementRef, public dataService: DataService) {}
 
 	ngOnInit() {
-		$( ".cases" ).sortable( {
-			update: (event, ui) => {
-				$(".cases li").each( ( key, element ) => {
-					let itemId: number = $(element).find('div').attr('id');
-
-					if ( itemId ) {
-						this.build.items[key].empty = false;
-						console.log(itemId);
-						this.build.items[key].item = this.dataService.getItemById(itemId);
-					} else {
-						this.build.items[key].empty = true;
-						this.build.items[key].item = undefined;
-					}
-				})
-			}
-		} );
+		// $( ".cases" ).sortable( {
+		// 	update: (event, ui) => {
+		// 		$(".cases li").each( ( key, element ) => {
+		// 			let itemId: number = $(element).find('div').attr('id');
+    //
+		// 			if ( itemId ) {
+		// 				this.build.items[key].empty = false;
+		// 				console.log(itemId);
+		// 				this.build.items[key].item = this.dataService.getItemById(itemId);
+		// 			} else {
+		// 				this.build.items[key].empty = true;
+		// 				this.build.items[key].item = undefined;
+		// 			}
+		// 		})
+		// 	}
+		// } );
 	}
 
 }

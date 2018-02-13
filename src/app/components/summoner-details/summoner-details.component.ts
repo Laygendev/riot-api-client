@@ -70,14 +70,6 @@ export class SummonerDetailsComponent  {
 
 	getBuild() {
 		this.httpBuildService.get(this.myParticipant.championId, 'ARAM').subscribe((data) => {
-			this.build = data;
-
-			if ( this.build && this.build.itemsId ) {
-				this.build.nitems = new Array<ItemModel>();
-				for (let key in this.build.itemsId) {
-					this.build.nitems.push(this.dataService.getItemById(this.build.itemsId[key]));
-				}
-			}
-		})
+		});
 	}
 }

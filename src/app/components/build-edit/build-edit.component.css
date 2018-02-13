@@ -1,43 +1,70 @@
-
-.cases {
+.itemsSlot {
 	display: flex;
 }
 
-.cases .case {
+.itemsSlot .dropdown {
+	margin-left: 10px;
 	width: 64px;
 	height: 64px;
-	border: solid black 1px;
-	list-style-type: none;
+	list-style: none;
+	border: dashed #646464 1px;
+	padding: 0;
 }
 
-ul.items  {
+.itemsSlot button {
+	border: none;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+
+.itemsSlot button:hover {
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.dropdown-menu {
+	width: 900px;
+}
+
+.dropdown-menu .search {
+	padding: 20px;
+}
+
+.dropdown-menu ul {
 	display: flex;
+	list-style: none;
 	flex-wrap: wrap;
-	width: 60%;
-	height: 600px;
+	height: 400px;
 	overflow-y: scroll;
+	padding: 20px;
 }
 
-ul.items  li {
-	list-style-type: none;
-	position: relative;
-	width: 64px;
-	height: 64px;
+.dropdown-menu ul li {
+	width: 30%;
+	height: 50px;
+	margin-bottom: 10px;
 }
 
-ul.items  li img {
-	position: absolute;
+.dropdown-menu ul li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
 }
 
-ul.items  li div {
-	width: 64px;
-	height: 64px;
-	position: absolute;
+.dropdown-menu ul li img {
+	width: 50px;
+	float: left;
+	height: 50px;
 }
 
-ul.items  li div span {
-	color: white;
-	font-size: 0.8em;
+.dropdown-menu ul li img, .dropdown-menu ul li span {
+	display: inline;
+}
+
+.dropdown-menu ul li span {
+	line-height: 50px;
+	margin-left: 5px;
 	font-weight: bold;
-	line-height: 120px;
 }

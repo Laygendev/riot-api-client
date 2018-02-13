@@ -19,15 +19,17 @@ export class BuildEditComponent {
 	public champion: ChampionModel;
 	public build: BuildModel;
 
-	public editMode: string = "ARAM";
-
 	constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
 		public httpBuildService: HttpBuildService
 	) {
+		this.build = new BuildModel();
+
 		this.route.params.subscribe(params => {
 			this.params = params;
+			this.build.championId = params.championId;
+
 			this.champion = this.dataService.getChampionById(params.championId);
 
 			this.getBuild();
@@ -35,73 +37,23 @@ export class BuildEditComponent {
 	}
 
 	getBuild(): void {
-		this.httpBuildService.get(this.champion.id, this.params.gameMode).subscribe((data) => {
-			if ( data ) {
-				this.build = data;
+		let buildId: Number = this.params.buildId ? this.params.buildId : 0;
 
-				this.build.items = new Array<ItemSlotModel>();
-
-				for(let key in this.build.itemsId) {
-					let itemSlot: ItemSlotModel = new ItemSlotModel(undefined);
-
-					if ( this.build.itemsId ) {
-						let item: ItemModel = this.dataService.getItemById(this.build.itemsId[key]);
-						itemSlot.empty = false;
-						itemSlot.item = item;
-					} else {
-						itemSlot.empty = true;
-					}
-
-					this.build.items.push(itemSlot);
-
-				}
-			} else {
-				this.build = new BuildModel(undefined);
-				this.build.items = new Array<ItemSlotModel>(new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined),new ItemSlotModel(undefined));
-			}
+		this.httpBuildService.get(this.champion.id, this.params.gameMode, buildId).subscribe((data) => {
+			if ( data ) {}
 		});
 	}
 
-	setEditMode(name: string): void {
-		this.editMode = name;
-		this.build.gameMode = this.editMode;
-	}
-
-	addToCase(item: ItemModel): void {
-		let nextIndex: any  = this.nextSlot();
-
-		if ( nextIndex != -1 ) {
-			this.build.items[nextIndex].empty = false;
-			this.build.items[nextIndex].item = item;
-		}
-	}
-
-	clearCase(item: ItemSlotModel): void {
-		item.item = undefined;
-		item.empty = true;
-	}
-
-	set(): void {
-		this.build.itemsId = new Array<Number>();
-		for (let key in this.build.items) {
-			this.build.itemsId.push(this.build.items[key].item.id);
+	selectItem(section: string, index: number, item: ItemModel): void {
+		if (! this.build[section]) {
+			return;
 		}
 
-		this.build.championId = this.champion.id;
-		this.build.gameMode = this.editMode;
-		this.httpBuildService.post(this.build).subscribe((data) => {
-			console.log(data);
-		})
+		this.build[section][index].item   = item;
+		this.build[section + 'Id'][index] = item.id;
 	}
 
-	nextSlot(): any {
-		for (let key in this.build.items) {
-			if ( this.build.items[key].empty ) {
-				return key;
-			}
-		}
-
-		return -1;
+	update(): void {
+		this.httpBuildService.post(this.build).subscribe((data) => {});
 	}
-
 }

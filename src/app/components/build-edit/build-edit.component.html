@@ -1,42 +1,75 @@
 <p>Make sure you have read how to make a guide before created one</p>
 
 
-	<div class="row">
-		<div class="col-sm">
-			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-			{{champion.name}}
-		</div>
-		<div class="col-sm">
+<div class="row">
+	<div class="col-sm">
+		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+		{{champion.name}}
+	</div>
+	<div class="col-sm">
+		<ul>
+			<li>Strength: 100</li>
+			<li>Armor: 100</li>
+			<li>Vitality: 100</li>
+		</ul>
+	</div>
+</div>
+
+<h2>Best starter</h2>
+
+<p>Clic on slot for open dropdown with all items of current map.</p>
+<p>Clic on item for assign him to the current slot.</p>
+
+<div class="itemsSlot">
+	<div class="dropdown" *ngFor="let itemSlot of build.starterItemsSlot; let i = index">
+		<button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+		</button>
+
+		<div class="dropdown-menu">
+			<div class="search">
+				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
+			</div>
 			<ul>
-				<li>Strength: 100</li>
-				<li>Armor: 100</li>
-				<li>Vitality: 100</li>
+				<li class="item" *ngFor="let item of dataService.items">
+					<div (click)="selectItem('starterItemsSlot', i, item)">
+						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+						<span>{{item.name}}</span>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>
-<!--
+</div>
 
-<div *ngIf="build">
-	<ul [appDraganddrop]="build" class="cases">
-		<li *ngFor="let itemSlot of build.items" class="case">
-			<div *ngIf="! itemSlot.empty" data-id="{{itemSlot.item.id}}">
-				<img (click)="clearCase(itemSlot)"src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+<h2>Best build</h2>
+
+<p>Clic on slot for open dropdown with all items of current map.</p>
+<p>Clic on item for assign him to the current slot.</p>
+
+<div class="itemsSlot">
+	<div class="dropdown" *ngFor="let itemSlot of build.buildItemsSlot; let i = index">
+		<button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+		</button>
+
+		<div class="dropdown-menu">
+			<div class="search">
+				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
 			</div>
-		</li>
-	</ul>
+			<ul>
+				<li class="item" *ngFor="let item of dataService.items">
+					<div (click)="selectItem('buildItemsSlot', i, item)">
+						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+						<span>{{item.name}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-		<span (click)="set()">Modifier</span>
+<h2>Best summoner spells</h2>
+<h2>Best skills</h2>
 
-	<input appSearch type="text" />
-	<ul class="items">
-		<li *ngFor="let item of dataService.items">
-			<div (click)="addToCase(item)">
-				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
-
-				<div>
-					<span>{{item.name}}</span>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div> -->
+<button (click)="update()" type="button" class="btn btn-primary">Update Guide</button>
