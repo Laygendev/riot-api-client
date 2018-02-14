@@ -23,8 +23,8 @@ export class BuildComponent {
 	public favoriteBuild: BuildModel;
 	public favoriteChampion: ChampionModel;
 
-	public starterItems: Array<ItemModel>;
-	public buildItems: Array<ItemModel>;
+	public starterItems: Array<ItemModel> = new Array<ItemModel>(undefined, undefined);
+	public buildItems: Array<ItemModel> = new Array<ItemModel>(undefined,undefined,undefined,undefined,undefined,undefined);
 
 	constructor(
 		public dataService: DataService,
@@ -59,6 +59,8 @@ export class BuildComponent {
 					if (true === tmpBuild.favorite) {
 						this.favoriteBuild = tmpBuild;
 						this.getChampionInBuild(this.favoriteBuild);
+						this.getItemsInBuild(this.favoriteBuild, 'starterItems');
+						this.getItemsInBuild(this.favoriteBuild, 'buildItems');
 					}
 				}
 			}
@@ -67,5 +69,11 @@ export class BuildComponent {
 
 	getChampionInBuild(build: BuildModel): void {
 		this.favoriteChampion = this.dataService.getChampionById(build.championId);
+	}
+
+	getItemsInBuild(build: BuildModel, category: string): void {
+		for (let key in build[category + 'SlotId']) {
+			this[category][key] = this.dataService.getItemById(build[category + 'SlotId'][key]);
+		}
 	}
 }
