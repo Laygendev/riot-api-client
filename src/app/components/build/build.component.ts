@@ -55,7 +55,6 @@ export class BuildComponent {
 				for (let key in data) {
 					let tmpBuild: BuildModel = new BuildModel(data[key]);
 					this.builds.push(tmpBuild);
-
 					if (true === tmpBuild.favorite) {
 						this.favoriteBuild = tmpBuild;
 						this.getChampionInBuild(this.favoriteBuild);

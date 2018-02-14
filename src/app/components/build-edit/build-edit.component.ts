@@ -19,6 +19,8 @@ export class BuildEditComponent {
 	public champion: ChampionModel;
 	public build: BuildModel;
 
+	public updatedBuild: boolean = false;
+
 	constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
@@ -29,6 +31,7 @@ export class BuildEditComponent {
 		this.route.params.subscribe(params => {
 			this.params = params;
 			this.build.championId = params.championId;
+			this.build.gameMode = params.gameMode;
 
 			this.champion = this.dataService.getChampionById(params.championId);
 
@@ -56,6 +59,8 @@ export class BuildEditComponent {
 	}
 
 	update(): void {
-		this.httpBuildService.post(this.build).subscribe((data) => {});
+		this.httpBuildService.post(this.build).subscribe((data) => {
+			this.updatedBuild = true;
+		});
 	}
 }
