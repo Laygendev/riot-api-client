@@ -52,7 +52,7 @@ export class SearchComponent {
 	 */
 	search(summonerName: string): void {
 		this.httpSummonerService.get(summonerName).subscribe((data) => {
-			if (200 !== data.status.status_code) {
+			if ( data.status && 200 !== data.status.status_code) {
 				this.errorMessage = data.status.status_code + ' ' + data.status.message;
 			} else {
 				let summonerData = new SummonerModel(data);

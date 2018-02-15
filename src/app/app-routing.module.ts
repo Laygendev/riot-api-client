@@ -10,7 +10,7 @@ const routes: Routes = [
 	{ path: '', component: SearchComponent },
 	{ path: 'summoner/:id', component: SummonerDetailsComponent },
 	{ path: 'build', component: BuildComponent },
-	{ path: 'build/:id', component: BuildComponent },
+	{ path: 'build/:buildId', component: BuildEditComponent },
 	{ path: 'build/:gameMode/:championId', component: BuildEditComponent },
 ];
 

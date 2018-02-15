@@ -15,9 +15,14 @@ export class HttpBuildService {
 	public get(args: any): Observable<any> {
 		let url: string = "http://164.132.69.238:3002/build/" + args.gameMode + "/" + args.championId;
 
-		if ( args.buildId ) {
-			url = "http://164.132.69.238:3002/build/" + args.buildId;
+		if ( args._id ) {
+			url = "http://164.132.69.238:3002/build/" + args._id;
 		}
+
+		if ( args.favorite ) {
+			url += '/true';
+		}
+
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 

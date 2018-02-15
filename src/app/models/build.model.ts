@@ -2,6 +2,7 @@ import { ItemSlotModel } from './itemSlot.model';
 import { ItemModel } from './item.model';
 
 export class BuildModel {
+	public _id: string;
 	public championId: Number;
 	public state: string;
 	public starterItemsSlot: Array<ItemSlotModel>;

@@ -50,29 +50,27 @@ export class SummonerDetailsComponent  {
 
 	getSpectator() {
 		this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
-			let tmpPartipants: Array<ParticipantModel> = new Array<ParticipantModel>();
+			let tmpPartipantsTeam100: Array<ParticipantModel> = new Array<ParticipantModel>();
+			let tmpPartipantsTeam200: Array<ParticipantModel> = new Array<ParticipantModel>();
 			for (let key in data.participants) {
 				let tmpParticipant = new ParticipantModel(data.participants[key]);
 				tmpParticipant.champion = this.dataService.getChampionById(tmpParticipant.championId);
-				tmpPartipants.push(tmpParticipant);
+
+				if ( tmpParticipant.teamId == 100 ) {
+					tmpPartipantsTeam100.push(tmpParticipant);
+				} else {
+					tmpPartipantsTeam200.push(tmpParticipant);
+				}
 
 				if ( tmpParticipant.summonerId == this.dataService.summonerData.id) {
 					this.myParticipant = tmpParticipant;
-
-					this.getBuild();
 				}
 			}
 
 			this.dataService.spetactorData = new SpectatorModel(data);
-			this.dataService.spetactorData.participants = tmpPartipants;
+			this.dataService.spetactorData.participantsTeam100 = tmpPartipantsTeam100;
+			this.dataService.spetactorData.participantsTeam200 = tmpPartipantsTeam200;
 		});
 	}
 
-	getBuild() {
-		this.httpBuildService.get({
-			championId: this.myParticipant.championId,
-			gameMode: 'ARAM'
-		}).subscribe((data) => {
-		});
-	}
 }

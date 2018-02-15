@@ -1,21 +1,31 @@
-<strong *ngIf="dataService.summonerData">#{{dataService.summonerData.id}}</strong>
-
 <div *ngIf="myParticipant">
-	<p *ngIf="!build"><a routerLink="/build/{{myParticipant.championId}}">No guile for this champion in ARAM</a></p>
+	<p *ngIf="!build"><a routerLink="/build/{{myParticipant.championId}}">No guide for this champion in ARAM</a></p>
 
-	<ul class="items" *ngIf="build">
-		<li class="item" *ngFor="let item of build.nitems"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" /></li>
-	</ul>
+	<app-guide-display *ngIf="myParticipant" [championId]="myParticipant.championId" gameMode="ARAM"></app-guide-display>
 </div>
 
 <h2>Current Game</h2>
-<ul class="participants" *ngIf="dataService.spetactorData">
-	<li *ngFor="let participant of dataService.spetactorData.participants">
-		<strong>#{{participant.championId}} {{participant.summonerName}}</strong>
 
-		<div *ngIf="participant.championId">
-			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
-			{{participant.champion.name}}
-		</div>
-	</li>
-</ul>
+<div class="participants-container">
+	<ul class="participants team100" *ngIf="dataService.spetactorData">
+		<li *ngFor="let participant of dataService.spetactorData.participantsTeam100">
+
+			<div class="avatar" *ngIf="participant.championId">
+				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+				<strong>{{participant.summonerName}}</strong>
+			</div>
+		</li>
+	</ul>
+
+	<h3>VS</h3>
+
+	<ul class="participants team200" *ngIf="dataService.spetactorData">
+		<li *ngFor="let participant of dataService.spetactorData.participantsTeam200">
+
+			<div class="avatar" *ngIf="participant.championId">
+				<strong>{{participant.summonerName}}</strong>
+				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+			</div>
+		</li>
+	</ul>
+</div>

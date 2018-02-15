@@ -1,0 +1,24 @@
+<div class="favorite-build" *ngIf="favoriteBuild && buildId">
+	<div class="favoriteChampion">
+		<p>
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{favoriteChampion.image.full}}" />
+		</p>
+			<ul>
+				<li class="title">{{favoriteChampion.name}}</li>
+			</ul>
+	</div>
+
+	<div class="cases-container">
+		<ul class="cases">
+			<li *ngFor="let starterItem of starterItems">
+				<img *ngIf="starterItem" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{starterItem.image.full}}" />
+			</li>
+		</ul>
+
+		<ul class="cases">
+			<li *ngFor="let buildItem of buildItems">
+				<img *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{buildItem.image.full}}" />
+			</li>
+		</ul>
+	</div>
+</div>

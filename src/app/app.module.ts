@@ -21,6 +21,7 @@ import { SummonerDetailsComponent } from './components/summoner-details/summoner
 import { SearchComponent } from './components/search/search.component';
 import { BuildComponent } from './components/build/build.component';
 import { BuildEditComponent } from './components/build-edit/build-edit.component';
+import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BuildEditComponent } from './components/build-edit/build-edit.component
     BuildComponent,
     BuildEditComponent,
     DragAndDropDirective,
-    SearchDirective
+    SearchDirective,
+    GuideDisplayComponent
   ],
   imports: [
     BrowserModule,

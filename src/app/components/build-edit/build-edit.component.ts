@@ -30,10 +30,13 @@ export class BuildEditComponent {
 
 		this.route.params.subscribe(params => {
 			this.params = params;
-			this.build.championId = params.championId;
-			this.build.gameMode = params.gameMode;
 
-			this.champion = this.dataService.getChampionById(params.championId);
+			if ( params.championId && params.gameMode ) {
+				this.build.championId = params.championId;
+				this.build.gameMode = params.gameMode;
+
+				this.champion = this.dataService.getChampionById(params.championId);
+			}
 
 			this.getBuild();
 		});
@@ -43,9 +46,25 @@ export class BuildEditComponent {
 		let buildId: Number = this.params.buildId ? this.params.buildId : 0;
 
 		this.httpBuildService.get({
-			buildId: buildId
+			_id: buildId
 		}).subscribe((data) => {
-			if ( data ) {}
+			if (data) {
+				this.build = new BuildModel(data);
+
+				this.champion = this.dataService.getChampionById(this.build.championId);
+
+				for (let key in this.build.starterItemsSlotId) {
+					let tmpItemSlot: ItemSlotModel = new ItemSlotModel({ item: this.dataService.getItemById(this.build.starterItemsSlotId[key]) });
+
+					this.build.starterItemsSlot[key] = tmpItemSlot;
+				}
+
+				for (let key in this.build.buildItemsSlotId) {
+					let tmpItemSlot: ItemSlotModel = new ItemSlotModel({ item: this.dataService.getItemById(this.build.buildItemsSlotId[key]) });
+
+					this.build.buildItemsSlot[key] = tmpItemSlot;
+				}
+			}
 		});
 	}
 

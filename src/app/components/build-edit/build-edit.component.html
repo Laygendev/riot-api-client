@@ -1,10 +1,10 @@
 <p>Make sure you have read how to make a guide before created one</p>
 
 <div *ngIf="editedBuild" class="alert alert-success" role="alert">
-	This a success ! 
+	This a success !
 </div>
 
-<div class="row">
+<div class="row" *ngIf="champion">
 	<div class="col-sm">
 		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
 		{{champion.name}}

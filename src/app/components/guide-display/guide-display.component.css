@@ -1,0 +1,35 @@
+.favoriteChampion {
+	display: flex;
+}
+
+.favoriteChampion ul {
+	padding-left: 30px;
+}
+
+.favoriteChampion ul li {
+	list-style: none;
+}
+
+.favoriteChampion ul .title {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.cases-container {
+	margin-top: 15px;
+	display: flex;
+}
+
+.favorite-build .cases {
+	margin-right: 2%;
+	display: flex;
+}
+
+.favorite-build .cases li {
+	margin-left: 10px;
+	width: 64px;
+	height: 64px;
+	list-style: none;
+	border: dashed #646464 1px;
+	padding: 0;
+}

@@ -7,7 +7,6 @@ import { ItemModel } from '../../models/item.model';
 
 import { HttpBuildService } from '../../services/httpBuild/http-build.service';
 
-
 @Component({
   selector: 'app-build',
   templateUrl: './build.component.html',
@@ -20,18 +19,13 @@ export class BuildComponent {
 	public gameMode: String;
 
 	public builds: Array<BuildModel> = new Array<BuildModel>();
-	public favoriteBuild: BuildModel;
-	public favoriteChampion: ChampionModel;
 
-	public starterItems: Array<ItemModel> = new Array<ItemModel>(undefined, undefined);
-	public buildItems: Array<ItemModel> = new Array<ItemModel>(undefined,undefined,undefined,undefined,undefined,undefined);
+	public favoriteBuildId: string;
 
 	constructor(
 		public dataService: DataService,
 		public httpBuildService: HttpBuildService
-	) {
-
-	}
+	) {}
 
 	selectChampion(champion: ChampionModel): void {
 		this.champion = champion;
@@ -56,23 +50,10 @@ export class BuildComponent {
 					let tmpBuild: BuildModel = new BuildModel(data[key]);
 					this.builds.push(tmpBuild);
 					if (true === tmpBuild.favorite) {
-						this.favoriteBuild = tmpBuild;
-						this.getChampionInBuild(this.favoriteBuild);
-						this.getItemsInBuild(this.favoriteBuild, 'starterItems');
-						this.getItemsInBuild(this.favoriteBuild, 'buildItems');
+						this.favoriteBuildId = tmpBuild._id;
 					}
 				}
 			}
 		});
-	}
-
-	getChampionInBuild(build: BuildModel): void {
-		this.favoriteChampion = this.dataService.getChampionById(build.championId);
-	}
-
-	getItemsInBuild(build: BuildModel, category: string): void {
-		for (let key in build[category + 'SlotId']) {
-			this[category][key] = this.dataService.getItemById(build[category + 'SlotId'][key]);
-		}
 	}
 }
