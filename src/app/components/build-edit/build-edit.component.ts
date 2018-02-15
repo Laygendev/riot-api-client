@@ -46,12 +46,20 @@ export class BuildEditComponent {
 		let buildId: Number = this.params.buildId ? this.params.buildId : 0;
 
 		this.httpBuildService.get({
-			_id: buildId
+			_id: buildId,
+			gameMode: this.build.gameMode,
+			championId: this.build.championId,
+			number: 1
 		}).subscribe((data) => {
 			if (data) {
-				this.build = new BuildModel(data);
 
-				this.champion = this.dataService.getChampionById(this.build.championId);
+				if (data.championId) {
+					this.build = new BuildModel(data);
+				}
+
+				if ( this.build.championId > 0 ) {
+					this.champion = this.dataService.getChampionById(this.build.championId);
+				}
 
 				for (let key in this.build.starterItemsSlotId) {
 					let tmpItemSlot: ItemSlotModel = new ItemSlotModel({ item: this.dataService.getItemById(this.build.starterItemsSlotId[key]) });

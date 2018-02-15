@@ -19,6 +19,8 @@ export class GuideDisplayComponent implements OnInit {
 	public starterItems: Array<ItemModel> = new Array<ItemModel>(undefined, undefined);
 	public buildItems: Array<ItemModel> = new Array<ItemModel>(undefined,undefined,undefined,undefined,undefined,undefined);
 
+	public loaded: boolean = false;
+
 	@Input() buildId: string;
 	@Input() championId: number;
 	@Input() gameMode: string;
@@ -36,6 +38,7 @@ export class GuideDisplayComponent implements OnInit {
 		if ( this.buildId ) {
 			this.httpBuildService.get({ _id: this.buildId }).subscribe((data) => {
 				if ( data ) {
+
 					let tmpBuild: BuildModel = new BuildModel(data);
 					this.favoriteBuild = tmpBuild;
 					this.getChampionInBuild(this.favoriteBuild);
@@ -53,6 +56,7 @@ export class GuideDisplayComponent implements OnInit {
 					this.getChampionInBuild(this.favoriteBuild);
 					this.getItemsInBuild(this.favoriteBuild, 'starterItems');
 					this.getItemsInBuild(this.favoriteBuild, 'buildItems');
+					console.log(this);
 				}
 			});
 		}

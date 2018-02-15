@@ -1,6 +1,4 @@
 <div *ngIf="myParticipant">
-	<p *ngIf="!build"><a routerLink="/build/{{myParticipant.championId}}">No guide for this champion in ARAM</a></p>
-
 	<app-guide-display *ngIf="myParticipant" [championId]="myParticipant.championId" gameMode="ARAM"></app-guide-display>
 </div>
 
