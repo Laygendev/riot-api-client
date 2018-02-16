@@ -24,6 +24,8 @@ export class SummonerDetailsComponent  {
 	public champions: Array<ChampionModel> = new Array<ChampionModel>();
 	public build: BuildModel;
 	public myParticipant: ParticipantModel;
+	public summonerName: string;
+	public errorMessage: string = '';
 
 	constructor(
 		public route: ActivatedRoute,
@@ -35,6 +37,7 @@ export class SummonerDetailsComponent  {
 		private staticDataService: StaticDataService) {
 		if ( ! this.dataService.summonerData ) {
 			this.route.params.subscribe(param => {
+				this.summonerName = param.id;
 				this.httpSummonerService.get(param.id).subscribe((data) => {
 					let summonerData = new SummonerModel(data);
 					this.dataService.summonerData = summonerData;
@@ -50,26 +53,29 @@ export class SummonerDetailsComponent  {
 
 	getSpectator() {
 		this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
-			let tmpPartipantsTeam100: Array<ParticipantModel> = new Array<ParticipantModel>();
-			let tmpPartipantsTeam200: Array<ParticipantModel> = new Array<ParticipantModel>();
-			for (let key in data.participants) {
-				let tmpParticipant = new ParticipantModel(data.participants[key]);
-				tmpParticipant.champion = this.dataService.getChampionById(tmpParticipant.championId);
+			if ( data && data.status && data.status.status_code == 400 ) {
+				this.errorMessage = data.status.status_code + ' ' + 'This summoner is not in a match for now.';
+			} else {
+				let tmpPartipantsTeam100: Array<ParticipantModel> = new Array<ParticipantModel>();
+				let tmpPartipantsTeam200: Array<ParticipantModel> = new Array<ParticipantModel>();
+				for (let key in data.participants) {
+					let tmpParticipant = new ParticipantModel(data.participants[key]);
+					tmpParticipant.champion = this.dataService.getChampionById(tmpParticipant.championId);
 
-				if ( tmpParticipant.teamId == 100 ) {
-					tmpPartipantsTeam100.push(tmpParticipant);
-				} else {
-					tmpPartipantsTeam200.push(tmpParticipant);
-				}
+					if ( tmpParticipant.teamId == 100 ) {
+						tmpPartipantsTeam100.push(tmpParticipant);
+					} else {
+						tmpPartipantsTeam200.push(tmpParticipant);
+					}
 
-				if ( tmpParticipant.summonerId == this.dataService.summonerData.id) {
-					this.myParticipant = tmpParticipant;
+					if ( tmpParticipant.summonerId == this.dataService.summonerData.id) {
+						this.myParticipant = tmpParticipant;
+					}
 				}
+				this.dataService.spetactorData = new SpectatorModel(data);
+				this.dataService.spetactorData.participantsTeam100 = tmpPartipantsTeam100;
+				this.dataService.spetactorData.participantsTeam200 = tmpPartipantsTeam200;
 			}
-
-			this.dataService.spetactorData = new SpectatorModel(data);
-			this.dataService.spetactorData.participantsTeam100 = tmpPartipantsTeam100;
-			this.dataService.spetactorData.participantsTeam200 = tmpPartipantsTeam200;
 		});
 	}
 

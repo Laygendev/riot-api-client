@@ -7,7 +7,7 @@
 
 <div class="dropdown-parent">
 	<div class="dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<button appDropdown class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<span *ngIf="!champion">Champions</span>
 			<div *ngIf="champion">
 				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
@@ -30,7 +30,7 @@
 	</div>
 
 	<div class="dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGameMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<button appDropdown class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGameMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<span *ngIf="!gameMode">Game Mode</span>
 			<span *ngIf="gameMode">{{gameMode}}</span>
 		</button>

@@ -1,8 +1,16 @@
-<div *ngIf="myParticipant">
-	<app-guide-display *ngIf="myParticipant" [championId]="myParticipant.championId" gameMode="ARAM"></app-guide-display>
+<h2>You are looking the page of the summoner {{summonerName}}</h2>
+
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+	{{errorMessage}}
 </div>
 
-<h2>Current Game</h2>
+<h3>Best build</h3>
+
+<div *ngIf="myParticipant">
+	<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
+</div>
+
+<h3>Current Game</h3>
 
 <div class="participants-container">
 	<ul class="participants team100" *ngIf="dataService.spetactorData">

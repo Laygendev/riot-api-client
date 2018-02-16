@@ -15,7 +15,7 @@ import { HttpBuildService } from '../../services/httpBuild/http-build.service';
 export class BuildComponent {
 	public champion: ChampionModel;
 
-	public gamesMode: String[] = ['ARAM', 'NORMAL']
+	public gamesMode: String[] = ['ARAM', 'CLASSIC']
 	public gameMode: String;
 
 	public builds: Array<BuildModel> = new Array<BuildModel>();

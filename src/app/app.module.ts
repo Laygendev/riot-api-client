@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,7 +14,7 @@ import { StaticDataService } from './services/staticData/static-data.service';
 import { HttpBuildService } from './services/httpBuild/http-build.service';
 import { HttpStatusService } from './services/httpStatus/http-status.service';
 
-import { DragAndDropDirective } from './directives/draganddrop/draganddrop.directive';
+import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 import { SearchDirective } from './directives/search/search.directive';
 
 import { AppComponent } from './app.component';
@@ -30,12 +31,13 @@ import { GuideDisplayComponent } from './components/guide-display/guide-display.
     SearchComponent,
     BuildComponent,
     BuildEditComponent,
-    DragAndDropDirective,
+    DropdownDirective,
     SearchDirective,
     GuideDisplayComponent
   ],
   imports: [
     BrowserModule,
+		ReactiveFormsModule,
 		HttpModule,
 		HttpClientModule,
 		AppRoutingModule

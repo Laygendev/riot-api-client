@@ -29,9 +29,11 @@ export class HttpBuildService {
 	public post(data: BuildModel): Observable<any> {
 		let url: string = "http://164.132.69.238:3002/build/";
 
-		delete data.starterItemsSlot;
-		delete data.buildItemsSlot;
+		let build: BuildModel = new BuildModel(data);
 
-		return this.httpClient.post( url, data, {responseType: 'json'} );
+		delete build.starterItemsSlot;
+		delete build.buildItemsSlot;
+
+		return this.httpClient.post( url, build, {responseType: 'json'} );
 	}
 }

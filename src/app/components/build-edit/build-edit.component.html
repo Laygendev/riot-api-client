@@ -25,7 +25,7 @@
 
 <div class="itemsSlot">
 	<div class="dropdown" *ngFor="let itemSlot of build.starterItemsSlot; let i = index">
-		<button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<button appDropdown class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
 		</button>
 

@@ -1,4 +1,4 @@
-<p *ngIf="!favoriteChampion"><a routerLink="/build/ARAM/{{favoriteChampion.championId}}">No guide for this champion in ARAM</a></p>
+<p *ngIf="!favoriteChampion"><a routerLink="/build/{{gameMode}}/{{championId}}">No guide for this champion in {{gameMode}}, clic here to create one</a></p>
 
 <div class="favorite-build" *ngIf="favoriteBuild">
 
@@ -9,6 +9,8 @@
 			<ul>
 				<li class="title">{{favoriteChampion.name}}</li>
 			</ul>
+
+			<a routerLink="/build/{{favoriteBuild._id}}">Edit</a>
 	</div>
 
 	<div class="cases-container">

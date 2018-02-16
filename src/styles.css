@@ -36,7 +36,11 @@ body {
 	color: #34495e;
 }
 
-h2 {
+h2, h3 {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 1.6em;
 }
