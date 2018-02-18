@@ -1,9 +1,43 @@
 <div class="container">
-	<a routerLink="/"><img src="assets/lol-guides-com.png" /></a>
 
-	<router-outlet *ngIf="dataService.inited"></router-outlet>
+	<header>
+
+		<div class="content">
+
+			<div class="title">
+				<h1>LoL Hype</h1>
+				<p>Version <strong>8.3</strong></p>
+			</div>
+
+			<ul class="menu">
+				<li><a routerLink="/who-we-are">Who we are ?</a></li>
+				<li><a routerLink="/about-this-website">About this website</a></li>
+				<li><a routerLink="/help-us">Help us</a></li>
+			</ul>
+
+		</div>
+	</header>
+
+	<section class="page-content">
+		<router-outlet *ngIf="dataService.inited"></router-outlet>
+	</section>
 
 	<section class="footer">
-		<p>Not made with <i class="fas fa-heart"></i>!</p>
+
+		<div class="content">
+			<ul class="messages">
+				<li>Made with <i class="fas fa-heart"></i>!</li>
+				<li>Data powered by <a href="https://developer.riotgames.com">Riot API</a> and <a href="http://ddragon.leagueoflegends.com/">ddragon</a>. Data version 8.3</li>
+			</ul>
+
+			<h3>Be the first summoner with Lol Hype!</h3>
+
+			<ul class="menu">
+				<li><a routerLink="/who-we-are">Who we are ?</a></li>
+				<li><a routerLink="/about-this-website">About this website</a></li>
+				<li><a routerLink="/help-us">Help us</a></li>
+			</ul>
+		</div>
+
 	</section>
 </div>

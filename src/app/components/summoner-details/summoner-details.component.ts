@@ -53,7 +53,7 @@ export class SummonerDetailsComponent  {
 
 	getSpectator() {
 		this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
-			if ( data && data.status && data.status.status_code == 400 ) {
+			if ( data && data.status && data.status.status_code != 200 ) {
 				this.errorMessage = data.status.status_code + ' ' + 'This summoner is not in a match for now.';
 			} else {
 				let tmpPartipantsTeam100: Array<ParticipantModel> = new Array<ParticipantModel>();

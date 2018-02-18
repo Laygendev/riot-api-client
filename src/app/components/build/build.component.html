@@ -6,15 +6,15 @@
 <p>Use the dropdown below for select, then you will can create or update a guide</p>
 
 <div class="dropdown-parent">
-	<div class="dropdown">
-		<button appDropdown class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<div ngbDropdown class="dropdown">
+		<button appDropdown ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<span *ngIf="!champion">Champions</span>
 			<div *ngIf="champion">
 				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
 				<span>{{champion.name}}</span>
 			</div>
 		</button>
-		<div class="dropdown-menu dropdown-champion" aria-labelledby="dropdownChampion">
+		<div ngbDropdownMenu class="dropdown-menu dropdown-champion" aria-labelledby="dropdownChampion">
 			<div class="search">
 				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by champion name">
 			</div>
@@ -29,12 +29,12 @@
 		</div>
 	</div>
 
-	<div class="dropdown">
-		<button appDropdown class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGameMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<div ngbDropdown class="dropdown">
+		<button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGameMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<span *ngIf="!gameMode">Game Mode</span>
 			<span *ngIf="gameMode">{{gameMode}}</span>
 		</button>
-		<div class="dropdown-menu dropdown-game-mode" aria-labelledby="dropdownGameMode">
+		<div ngbDropdownMenu  class="dropdown-menu dropdown-game-mode" aria-labelledby="dropdownGameMode">
 			<div class="search">
 				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by game mode name">
 			</div>

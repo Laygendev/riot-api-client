@@ -79,7 +79,7 @@ export class SearchComponent {
 
 				this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
 					if ( data.status && 200 !== data.status.status_code) {
-						this.errorMessage = data.status.status_code + ' ' + 'This summoner is not in a match for now.';
+						this.errorMessage = data.status.status_code + ' ' + 'This summoner ' + this.searchForm.value.summonerName + ' is not in a match for now.';
 					} else {
 						this.router.navigate(['/summoner/' + this.searchForm.value.summonerName]);
 					}

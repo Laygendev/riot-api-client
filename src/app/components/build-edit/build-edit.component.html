@@ -1,78 +1,152 @@
 <p>Make sure you have read how to make a guide before created one</p>
 
-<div *ngIf="editedBuild" class="alert alert-success" role="alert">
-	This a success !
-</div>
+<div *ngIf="updatedBuild" class="alert alert-success" role="alert">
+	<h3>Guide created with success !</h3>
 
-<div class="row" *ngIf="champion">
-	<div class="col-sm">
-		<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-		{{champion.name}}
-	</div>
-	<div class="col-sm">
-		<ul>
-			<li>Strength: 100</li>
-			<li>Armor: 100</li>
-			<li>Vitality: 100</li>
-		</ul>
-	</div>
-</div>
+	<p>This form able you to be notified when your guide need to be updated to the next League of legends version</p>
+	<p>We don't use or sell your personal data. We make this application for passion and it's only what we need!</p>
 
-<h2>Best starter</h2>
+	<form [formGroup]="userForm" (ngSubmit)="registerUser()">
+		<div class="input-group mb-3">
+			<input type="email"
+						 class="form-control"
+						 placeholder="Your email"
+						 formControlName="email"
+						 required>
 
-<p>Clic on slot for open dropdown with all items of current map.</p>
-<p>Clic on item for assign him to the current slot.</p>
-
-<div class="itemsSlot">
-	<div class="dropdown" *ngFor="let itemSlot of build.starterItemsSlot; let i = index">
-		<button appDropdown class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
-		</button>
-
-		<div class="dropdown-menu">
-			<div class="search">
-				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
+			<input type="text"
+						 class="form-control"
+						 placeholder="Your name"
+						 formControlName="name"
+						 required>
+			<div class="input-group-append">
+				<button type="submit" class="btn btn-primary" (click)="registerUser()" type="button">Confirm</button>
 			</div>
+		</div>
+	</form>
+
+	<a routerLink="/">Back to the home</a>
+</div>
+
+<div *ngIf="!updatedBuild">
+	<div class="row" *ngIf="champion">
+		<div class="col-sm">
+			<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+			{{champion.name}}
+		</div>
+		<div class="col-sm">
 			<ul>
-				<li class="item" *ngFor="let item of dataService.items">
-					<div (click)="selectItem('starterItemsSlot', i, item)">
-						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
-						<span>{{item.name}}</span>
-					</div>
-				</li>
+				<li>Strength: 100</li>
+				<li>Armor: 100</li>
+				<li>Vitality: 100</li>
 			</ul>
 		</div>
 	</div>
-</div>
 
-<h2>Best build</h2>
+	<h2>You make a build for {{champion.name}} in {{this.build.gameMode}}</h2>
 
-<p>Clic on slot for open dropdown with all items of current map.</p>
-<p>Clic on item for assign him to the current slot.</p>
+	<h3>Best starter</h3>
 
-<div class="itemsSlot">
-	<div class="dropdown" *ngFor="let itemSlot of build.buildItemsSlot; let i = index">
-		<button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
-		</button>
+	<p>Clic on slot for open dropdown with all items of current map.</p>
+	<p>Clic on item for assign him to the current slot.</p>
 
-		<div class="dropdown-menu">
-			<div class="search">
-				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
-			</div>
-			<ul>
-				<li class="item" *ngFor="let item of dataService.items">
-					<div (click)="selectItem('buildItemsSlot', i, item)">
-						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
-						<span>{{item.name}}</span>
+	<div class="itemsSlot">
+		<div ngbDropdown class="dropdown" *ngFor="let itemSlot of build.starterItemsSlot; let i = index">
+
+			<ng-template #itemTemplate>
+				<div *ngIf="itemSlot.item" class="container">
+					<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" /></div>
+					<div>
+						<strong>{{itemSlot.item.name}}</strong>
+						<p [innerHTML]="itemSlot.item.description"></p>
 					</div>
-				</li>
-			</ul>
+				</div>
+
+				<p *ngIf="! itemSlot.item">Click for select item</p>
+			</ng-template>
+
+			<button placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" appDropdown ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+			</button>
+
+			<div class="dropdown-menu" ngbDropdownMenu>
+				<div class="search">
+					<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
+				</div>
+				<ul>
+					<li class="item" *ngFor="let item of dataService.items">
+
+						<ng-template #itemTemplate>
+							<div class="container">
+								<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" /></div>
+								<div>
+									<strong>{{item.name}}</strong>
+									<p [innerHTML]="item.description"></p>
+								</div>
+							</div>
+						</ng-template>
+						<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('starterItemsSlot', i, item)">
+							<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+							<span style="visibility: hidden">{{item.name}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
+
+	<h3>Best build</h3>
+
+	<p>Clic on slot for open dropdown with all items of current map.</p>
+	<p>Clic on item for assign him to the current slot.</p>
+
+	<div class="itemsSlot">
+		<div ngbDropdown class="dropdown" *ngFor="let itemSlot of build.buildItemsSlot; let i = index">
+
+			<ng-template #itemTemplate>
+				<div *ngIf="itemSlot.item" class="container">
+					<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" /></div>
+					<div>
+						<strong>{{itemSlot.item.name}}</strong>
+						<p [innerHTML]="itemSlot.item.description"></p>
+					</div>
+				</div>
+
+				<p *ngIf="! itemSlot.item">Click for select item</p>
+			</ng-template>
+
+			<button placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" appDropdown ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+			</button>
+
+			<div class="dropdown-menu" ngbDropdownMenu>
+				<div class="search">
+					<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
+				</div>
+				<ul>
+					<li class="item" *ngFor="let item of dataService.items">
+
+						<ng-template #itemTemplate>
+							<div class="container">
+								<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" /></div>
+								<div>
+									<strong>{{item.name}}</strong>
+									<p [innerHTML]="item.description"></p>
+								</div>
+							</div>
+						</ng-template>
+						<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('buildItemsSlot', i, item)">
+							<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+							<span style="visibility: hidden">{{item.name}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<h3>Best summoner spells</h3>
+	<h3>Best skills</h3>
+
+	<button (click)="update()" type="button" class="btn btn-primary">Update Guide</button>
 </div>
-
-<h2>Best summoner spells</h2>
-<h2>Best skills</h2>
-
-<button (click)="update()" type="button" class="btn btn-primary">Update Guide</button>

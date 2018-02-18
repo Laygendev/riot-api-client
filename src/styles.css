@@ -36,6 +36,10 @@ body {
 	color: #34495e;
 }
 
+p, li {
+	color: #34495e;
+}
+
 h2, h3 {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -43,4 +47,50 @@ h2, h3 {
 
 h3 {
 	font-size: 1.6em;
+}
+
+.tooltip {
+	text-align: left!important;
+	font-size: 1em;
+}
+
+.tooltip .tooltip-inner {
+	text-align: left!important;
+	font-size: 1em;
+	max-width: 500px;
+}
+
+.tooltip .tooltip-inner div.container {
+	display: flex;
+}
+
+.tooltip .tooltip-inner font {
+	font-size: 1em!important;
+}
+
+header {
+	padding-top: 50px;
+	height: 150px;
+}
+
+header .content {
+	display: flex;
+}
+
+header .content .title {
+	width: 80%;
+}
+
+header .content ul {
+	display: flex;
+}
+
+header .content ul li {
+	list-style: none;
+	font-size: 0.8em;
+}
+
+.page-content {
+	background-color: #d5dfe8;
+	padding: 50px;
 }

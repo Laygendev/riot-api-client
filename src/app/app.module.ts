@@ -16,6 +16,7 @@ import { HttpStatusService } from './services/httpStatus/http-status.service';
 
 import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 import { SearchDirective } from './directives/search/search.directive';
+import { TooltipDirective } from './directives/tooltip/tooltip.directive';
 
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
@@ -24,6 +25,8 @@ import { BuildComponent } from './components/build/build.component';
 import { BuildEditComponent } from './components/build-edit/build-edit.component';
 import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,16 +34,18 @@ import { GuideDisplayComponent } from './components/guide-display/guide-display.
     SearchComponent,
     BuildComponent,
     BuildEditComponent,
+		GuideDisplayComponent,
     DropdownDirective,
     SearchDirective,
-    GuideDisplayComponent
+    TooltipDirective
   ],
   imports: [
     BrowserModule,
 		ReactiveFormsModule,
 		HttpModule,
 		HttpClientModule,
-		AppRoutingModule
+		AppRoutingModule,
+		NgbModule.forRoot()
   ],
   providers: [
 		HttpService,

@@ -34,18 +34,16 @@
 }
 
 .dropdown-menu ul {
-	display: flex;
 	list-style: none;
-	flex-wrap: wrap;
 	height: 400px;
-	overflow-y: scroll;
+	width: 100%;
 	padding: 20px;
 }
 
 .dropdown-menu ul li {
-	width: 30%;
-	height: 50px;
-	margin-bottom: 10px;
+	float: left;
+	width: 64px;
+	height: 64px;
 }
 
 .dropdown-menu ul li:hover {
@@ -54,9 +52,8 @@
 }
 
 .dropdown-menu ul li img {
-	width: 50px;
-	float: left;
-	height: 50px;
+	width: 64px;
+	height: 64px;
 }
 
 .dropdown-menu ul li img, .dropdown-menu ul li span {

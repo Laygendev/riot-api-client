@@ -18,8 +18,12 @@
 	font-weight: bold;
 }
 
-.dropdown-champion, .dropdown-game-mode {
+.dropdown-champion {
 	width: 900px;
+}
+
+.dropdown-game-mode {
+	width: 400px;
 }
 
 .dropdown-champion .search, .dropdown-game-mode .search {

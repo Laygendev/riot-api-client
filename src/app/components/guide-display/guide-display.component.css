@@ -1,3 +1,7 @@
+.bloc-no-guide {
+	text-align: center;
+}
+
 .favoriteChampion {
 	display: flex;
 }

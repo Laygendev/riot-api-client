@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../../services/data/data.service';
@@ -20,12 +21,18 @@ export class BuildEditComponent {
 	public build: BuildModel;
 
 	public updatedBuild: boolean = false;
+	public userForm: FormGroup;
+	public email: FormControl;
+	public name: FormControl;
 
 	constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
 		public httpBuildService: HttpBuildService
 	) {
+		this.createFormControls();
+		this.createForm();
+
 		this.build = new BuildModel();
 
 		this.route.params.subscribe(params => {
@@ -41,6 +48,19 @@ export class BuildEditComponent {
 			this.getBuild();
 		});
 	}
+
+	createFormControls(): void {
+		this.email = new FormControl('', Validators.required);
+		this.name  = new FormControl('', Validators.required);
+	}
+
+	createForm(): void {
+		this.userForm = new FormGroup({
+			email: this.email,
+			name: this.name
+		});
+	}
+
 
 	getBuild(): void {
 		let buildId: Number = this.params.buildId ? this.params.buildId : 0;
@@ -89,5 +109,9 @@ export class BuildEditComponent {
 		this.httpBuildService.post(this.build).subscribe((data) => {
 			this.updatedBuild = true;
 		});
+	}
+
+	registerUser(): void {
+		console.log(this.userForm);
 	}
 }

@@ -5,6 +5,8 @@ import { ItemModel } from '../../models/item.model';
 
 import { HttpClient } from '@angular/common/http';
 
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Injectable()
 export class DataService {
 	public summonerData;
@@ -13,7 +15,9 @@ export class DataService {
 	public items: Array<ItemModel> = new Array<ItemModel>();
 	public inited: boolean = false;
 
-	constructor(private httpClient: HttpClient) {
+	constructor(
+		private httpClient: HttpClient,
+		private sanitizer: DomSanitizer) {
 	}
 
 	init(): void {
@@ -24,7 +28,10 @@ export class DataService {
 
 			this.httpClient.get("./assets/json/items.json").subscribe((data) => {
 				for (let key in data) {
-					this.items.push(new ItemModel(data[key]));
+					let tmpItem: ItemModel = new ItemModel(data[key]);
+					tmpItem.safeDescription = this.sanitizer.bypassSecurityTrustHtml( tmpItem.description );
+					this.items.push(tmpItem);
+
 				}
 
 				this.inited = true;

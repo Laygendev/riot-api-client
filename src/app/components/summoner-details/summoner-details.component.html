@@ -4,8 +4,6 @@
 	{{errorMessage}}
 </div>
 
-<h3>Best build</h3>
-
 <div *ngIf="myParticipant">
 	<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
 </div>

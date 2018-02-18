@@ -3,6 +3,7 @@ export class ItemModel {
 	public name: string;
 	public id: number;
 	public description: string;
+	public safeDescription: any;
 	public plaintext: string;
 	public stats: object;
 
