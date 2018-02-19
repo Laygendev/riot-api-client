@@ -21,6 +21,8 @@ export class SearchComponent {
 	public searchForm: FormGroup;
 	public summonerName: FormControl;
 
+	public loaded: false;
+
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,

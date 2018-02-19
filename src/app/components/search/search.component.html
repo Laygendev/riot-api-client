@@ -1,3 +1,5 @@
+<div class="background-container"><div class="background"></div></div>
+
 <section class="page-content">
 
 	<div class="container">
@@ -19,24 +21,26 @@
 							 formControlName="summonerName"
 							 required>
 				<div class="input-group-append">
-					<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button">Search</button>
+					<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button"><i class="fas fa-search"></i></button>
 				</div>
 			</div>
 		</form>
 	</div>
 </section>
 
+<div class="background2"></div>
+
 <section class="page-secondary">
-	<div class="container">
-		<h2>Last created guides</h2>
+		<div class="content">
+			<h2>Last created guides</h2>
 
-		<ul>
-			<li>
-				Empty
-			</li>
-		</ul>
+			<ul>
+				<li>
+					Empty
+				</li>
+			</ul>
 
-		<a routerLink="/guide">Make a guide</a>
-		<a routerLink="/guides">See all created guides</a>
+			<a routerLink="/guide">Make a guide</a>
+			<a routerLink="/guides">See all created guides</a>
 	</div>
 </section>

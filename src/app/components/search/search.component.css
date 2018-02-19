@@ -10,3 +10,51 @@ h1 {
 form {
 	margin-top: 20px;
 }
+
+.background-container {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
+	width: 70%;
+	min-width: 1000px;
+	height: 600px;
+	margin: auto;
+	background-color: white;
+	-moz-box-shadow: inset 200px 10px 20px #000000;
+	-webkit-box-shadow: inset 200px 10px 20px #000000;
+	-o-box-shadow: inset 200px 10px 20px #000000;
+	box-shadow: inset 0px 0px 20px 14px #000000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=90, Strength=20);
+	background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Anivia_0.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+}
+
+.background2 {
+	background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_0.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+	height: 200px;
+	width: 70%;
+	min-width: 1000px;
+	margin: auto;
+}
+
+
+.container {
+	padding-left: 100px!important;
+	padding-right: 100px!important;
+}
+
+button .fa-search {
+	color: #f1c40f;
+	transition: all .2s ease-in-out;
+}
+button:hover .fa-search {
+	color: #f1c30e;
+	transform: scale(1.1);
+}
