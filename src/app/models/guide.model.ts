@@ -1,9 +1,10 @@
 import { ItemSlotModel } from './itemSlot.model';
 import { ItemModel } from './item.model';
 
-export class BuildModel {
+export class GuideModel {
 	public _id: string;
 	public championId: Number;
+	public authorId: string;
 	public state: string;
 	public starterItemsSlot: Array<ItemSlotModel>;
 	public starterItemsSlotId: Array<Number>;
@@ -12,6 +13,7 @@ export class BuildModel {
 	public author: string;
 	public gameMode: string;
 	public favorite: boolean;
+	public version: string;
 
 	constructor(fields?: any) {
 		this.starterItemsSlot = new Array<ItemSlotModel>();

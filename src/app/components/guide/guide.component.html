@@ -51,12 +51,12 @@
 
 <h2>Favorite guide</h2>
 
-<app-guide-display *ngIf="favoriteBuildId" [buildId]="favoriteBuildId"></app-guide-display>
+<app-guide-display *ngIf="favoriteGuideId" [guideId]="favoriteGuideId"></app-guide-display>
 
 <div *ngIf="champion && gameMode">
 	<h2>Availables guides for {{champion.name}} in {{gameMode}}</h2>
 
-	<a routerLink="/build/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new build</a>
+	<a routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
 
 	<table>
 		<tr>
@@ -64,11 +64,11 @@
 			<th>Author name</th>
 			<th>Actions</th>
 		</tr>
-		<tr *ngFor="let build of builds">
+		<tr *ngFor="let guide of guides">
 			<td>12/02/2018</td>
-			<td>{{build.author}}</td>
+			<td>{{guide.author}}</td>
 			<td>
-				<a routerLink="/build/{{build._id}}"><i class="fas fa-edit"></i>a Edit</a>
+				<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
 			</td>
 		</tr>
 	</table>

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { HttpSpectatorService } from '../../services/httpSpectator/http-spectator.service';
-import { HttpSummonerService } from '../../services/httpSummoner/http-summoner.service';
-import { HttpStatusService } from '../../services/httpStatus/http-status.service';
-import { DataService } from '../../services/data/data.service';
+import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
+import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
+import { HttpStatusService } from './../../services/httpStatus/http-status.service';
+import { DataService } from './../../services/data/data.service';
 
-import { SummonerModel } from '../../models/summoner.model';
+import { SummonerModel } from './../../models/summoner.model';
 
 @Component({
 	selector: 'app-search',

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DataService } from '../../services/data/data.service';
-import { ChampionModel } from '../../models/champion.model';
-import { BuildModel } from '../../models/build.model';
-import { ItemModel } from '../../models/item.model';
+import { DataService } from './../../services/data/data.service';
+import { ChampionModel } from './../../models/champion.model';
+import { GuideModel } from './../../models/guide.model';
+import { ItemModel } from './../../models/item.model';
 
-import { HttpBuildService } from '../../services/httpBuild/http-build.service';
+import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
 
 @Component({
   selector: 'app-guide-display',
@@ -13,7 +13,7 @@ import { HttpBuildService } from '../../services/httpBuild/http-build.service';
   styleUrls: ['./guide-display.component.css']
 })
 export class GuideDisplayComponent implements OnInit {
-	public favoriteBuild: BuildModel;
+	public favoriteGuide: GuideModel;
 	public favoriteChampion: ChampionModel;
 
 	public starterItems: Array<ItemModel> = new Array<ItemModel>(undefined, undefined);
@@ -21,53 +21,52 @@ export class GuideDisplayComponent implements OnInit {
 
 	public loaded: boolean = false;
 
-	@Input() buildId: string;
+	@Input() guideId: string;
 	@Input() championId: number;
 	@Input() gameMode: string;
 
 	constructor(
 		public dataService: DataService,
-		public httpBuildService: HttpBuildService
+		public httpGuideService: HttpGuideService
 	) { }
 
 	ngOnInit() {
-		this.getBuild();
+		this.getGuide();
 	}
 
-	getBuild() {
-		if ( this.buildId ) {
-			this.httpBuildService.get({ _id: this.buildId }).subscribe((data) => {
+	getGuide() {
+		if ( this.guideId ) {
+			this.httpGuideService.get({ _id: this.guideId }).subscribe((data) => {
 				if ( data ) {
 
-					let tmpBuild: BuildModel = new BuildModel(data);
-					this.favoriteBuild = tmpBuild;
-					this.getChampionInBuild(this.favoriteBuild);
-					this.getItemsInBuild(this.favoriteBuild, 'starterItems');
-					this.getItemsInBuild(this.favoriteBuild, 'buildItems');
+					let tmpGuide: GuideModel = new GuideModel(data);
+					this.favoriteGuide = tmpGuide;
+					this.getChampionInGuide(this.favoriteGuide);
+					this.getItemsInGuide(this.favoriteGuide, 'starterItems');
+					this.getItemsInGuide(this.favoriteGuide, 'buildItems');
 				}
 			});
 		}
 
 		if ( this.championId && this.gameMode ) {
-			this.httpBuildService.get({ championId: this.championId, gameMode: this.gameMode, favorite: true }).subscribe((data) => {
+			this.httpGuideService.get({ championId: this.championId, gameMode: this.gameMode, favorite: true }).subscribe((data) => {
 				if ( data ) {
-					let tmpBuild: BuildModel = new BuildModel(data);
-					this.favoriteBuild = tmpBuild;
-					this.getChampionInBuild(this.favoriteBuild);
-					this.getItemsInBuild(this.favoriteBuild, 'starterItems');
-					this.getItemsInBuild(this.favoriteBuild, 'buildItems');
-					console.log(this);
+					let tmpGuide: GuideModel = new GuideModel(data);
+					this.favoriteGuide = tmpGuide;
+					this.getChampionInGuide(this.favoriteGuide);
+					this.getItemsInGuide(this.favoriteGuide, 'starterItems');
+					this.getItemsInGuide(this.favoriteGuide, 'buildItems');
 				}
 			});
 		}
 
 	}
 
-	getChampionInBuild(build: BuildModel): void {
+	getChampionInGuide(build: GuideModel): void {
 		this.favoriteChampion = this.dataService.getChampionById(build.championId);
 	}
 
-	getItemsInBuild(build: BuildModel, category: string): void {
+	getItemsInGuide(build: GuideModel, category: string): void {
 		for (let key in build[category + 'SlotId']) {
 			this[category][key] = this.dataService.getItemById(build[category + 'SlotId'][key]);
 		}

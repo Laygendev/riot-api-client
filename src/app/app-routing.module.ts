@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SearchComponent }    from './components/search/search.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
-import { BuildComponent } from './components/build/build.component';
-import { BuildEditComponent } from './components/build-edit/build-edit.component';
+import { GuideComponent } from './components/guide/guide.component';
+import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
 
 const routes: Routes = [
 	{ path: '', component: SearchComponent },
 	{ path: 'summoner/:id', component: SummonerDetailsComponent },
-	{ path: 'build', component: BuildComponent },
-	{ path: 'build/:buildId', component: BuildEditComponent },
-	{ path: 'build/:gameMode/:championId', component: BuildEditComponent },
+	{ path: 'guide', component: GuideComponent },
+	{ path: 'guide/:guideId', component: GuideEditComponent },
+	{ path: 'guide/:gameMode/:championId', component: GuideEditComponent },
 ];
 
 @NgModule({

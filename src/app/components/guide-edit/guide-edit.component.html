@@ -17,7 +17,7 @@
 			<input type="text"
 						 class="form-control"
 						 placeholder="Your name"
-						 formControlName="name"
+						 formControlName="pseudo"
 						 required>
 			<div class="input-group-append">
 				<button type="submit" class="btn btn-primary" (click)="registerUser()" type="button">Confirm</button>
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 
-	<h2>You make a build for {{champion.name}} in {{this.build.gameMode}}</h2>
+	<h2 *ngIf="champion">You make a guide for {{champion.name}} in {{this.guide.gameMode}}</h2>
 
 	<h3>Best starter</h3>
 
@@ -51,7 +51,7 @@
 	<p>Clic on item for assign him to the current slot.</p>
 
 	<div class="itemsSlot">
-		<div ngbDropdown class="dropdown" *ngFor="let itemSlot of build.starterItemsSlot; let i = index">
+		<div ngbDropdown class="dropdown" *ngFor="let itemSlot of guide.starterItemsSlot; let i = index">
 
 			<ng-template #itemTemplate>
 				<div *ngIf="itemSlot.item" class="container">
@@ -95,13 +95,13 @@
 		</div>
 	</div>
 
-	<h3>Best build</h3>
+	<h3>Best guide</h3>
 
 	<p>Clic on slot for open dropdown with all items of current map.</p>
 	<p>Clic on item for assign him to the current slot.</p>
 
 	<div class="itemsSlot">
-		<div ngbDropdown class="dropdown" *ngFor="let itemSlot of build.buildItemsSlot; let i = index">
+		<div ngbDropdown class="dropdown" *ngFor="let itemSlot of guide.buildItemsSlot; let i = index">
 
 			<ng-template #itemTemplate>
 				<div *ngIf="itemSlot.item" class="container">
@@ -135,7 +135,7 @@
 								</div>
 							</div>
 						</ng-template>
-						<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('buildItemsSlot', i, item)">
+						<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('guideItemsSlot', i, item)">
 							<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
 							<span style="visibility: hidden">{{item.name}}</span>
 						</div>

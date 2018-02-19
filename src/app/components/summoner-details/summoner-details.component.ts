@@ -2,18 +2,16 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { HttpSpectatorService } from '../../services/httpSpectator/http-spectator.service';
-import { HttpSummonerService } from '../../services/httpSummoner/http-summoner.service';
-import { HttpBuildService } from '../../services/httpBuild/http-build.service';
-import { StaticDataService } from '../../services/staticData/static-data.service';
-import { DataService } from '../../services/data/data.service';
+import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
+import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
+import { StaticDataService } from './../../services/staticData/static-data.service';
+import { DataService } from './../../services/data/data.service';
 
-import { ParticipantModel } from '../../models/participant.model';
-import { SpectatorModel } from '../../models/spectator.model';
-import { SummonerModel } from '../../models/summoner.model';
-import { ChampionModel } from '../../models/champion.model';
-import { BuildModel } from '../../models/build.model';
-import { ItemModel } from '../../models/item.model';
+import { ParticipantModel } from './../../models/participant.model';
+import { SpectatorModel } from './../../models/spectator.model';
+import { SummonerModel } from './../../models/summoner.model';
+import { ChampionModel } from './../../models/champion.model';
+import { ItemModel } from './../../models/item.model';
 
 @Component({
   selector: 'app-summoner-details',
@@ -22,7 +20,6 @@ import { ItemModel } from '../../models/item.model';
 })
 export class SummonerDetailsComponent  {
 	public champions: Array<ChampionModel> = new Array<ChampionModel>();
-	public build: BuildModel;
 	public myParticipant: ParticipantModel;
 	public summonerName: string;
 	public errorMessage: string = '';
@@ -33,7 +30,6 @@ export class SummonerDetailsComponent  {
 		public dataService: DataService,
 		private httpSpectatorService: HttpSpectatorService,
 		private httpSummonerService: HttpSummonerService,
-		private httpBuildService: HttpBuildService,
 		private staticDataService: StaticDataService) {
 		if ( ! this.dataService.summonerData ) {
 			this.route.params.subscribe(param => {
