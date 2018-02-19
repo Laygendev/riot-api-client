@@ -69,28 +69,41 @@ h3 {
 }
 
 header {
-	padding-top: 50px;
+	padding: 15px;
+	margin-left: 20px;
+	margin-right: 20px;
 	height: 150px;
 }
 
 header .content {
 	display: flex;
-}
-
-header .content .title {
-	width: 80%;
+	justify-content: space-between;
 }
 
 header .content ul {
+	padding: 25px;
 	display: flex;
 }
 
 header .content ul li {
 	list-style: none;
-	font-size: 0.8em;
+	font-size: 1em;
+	margin-left: 10px;
 }
 
 .page-content {
 	background-color: #d5dfe8;
 	padding: 50px;
+	height: 500px;
+}
+
+footer {
+	width: 100%;
+	height: 200px;
+	background-color: #d5dfe8;
+}
+
+footer .sub-content {
+	display: flex;
+	justify-content: space-between;
 }

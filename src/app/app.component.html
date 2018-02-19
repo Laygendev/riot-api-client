@@ -1,36 +1,33 @@
-<div class="container">
+<header>
+	<div class="content container">
 
-	<header>
-
-		<div class="content">
-
-			<div class="title">
-				<h1><a routerLink="/">LoL Hype</a></h1>
-				<p>Version <strong>8.3</strong></p>
-			</div>
-
-			<ul class="menu">
-				<li><a routerLink="/who-we-are">Who we are ?</a></li>
-				<li><a routerLink="/about-this-website">About this website</a></li>
-				<li><a routerLink="/help-us">Help us</a></li>
-			</ul>
-
+		<div class="title">
+			<h1><a routerLink="/">LoL Hype</a></h1>
+			<p>Version <strong>8.3</strong></p>
 		</div>
-	</header>
 
-	<section class="page-content">
-		<router-outlet *ngIf="dataService.inited"></router-outlet>
-	</section>
+		<ul class="menu">
+			<li><a routerLink="/who-we-are">Who we are ?</a></li>
+			<li><a routerLink="/about-this-website">About this website</a></li>
+			<li><a routerLink="/help-us">Help us</a></li>
+		</ul>
 
-	<section class="footer">
+	</div>
+</header>
 
-		<div class="content">
+<router-outlet *ngIf="dataService.inited"></router-outlet>
+
+<footer>
+
+	<div class="content container">
+		<h3>Be the first summoner with Lol Hype!</h3>
+
+		<div class="sub-content">
 			<ul class="messages">
 				<li>Made with <i class="fas fa-heart"></i>!</li>
 				<li>Data powered by <a href="https://developer.riotgames.com">Riot API</a> and <a href="http://ddragon.leagueoflegends.com/">ddragon</a>. Data version 8.3</li>
 			</ul>
 
-			<h3>Be the first summoner with Lol Hype!</h3>
 
 			<ul class="menu">
 				<li><a routerLink="/who-we-are">Who we are ?</a></li>
@@ -38,6 +35,6 @@
 				<li><a routerLink="/help-us">Help us</a></li>
 			</ul>
 		</div>
+	</div>
 
-	</section>
-</div>
+</footer>

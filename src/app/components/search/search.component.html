@@ -1,21 +1,42 @@
-<p class="status green" *ngIf="serverStatus && serverStatus.status == 200"><i class="fas fa-check-circle"></i><span>Server is up.</span></p>
-<p class="status red" *ngIf="serverStatus && serverStatus.status != 200 || !serverStatus"><i class="fas fa-exclamation-circle"></i><span>Server is down.</span></p>
+<section class="page-content">
 
-<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-	{{errorMessage}}
-</div>
+	<div class="container">
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-	<div class="input-group mb-3">
-		<input type="text"
-					 class="form-control"
-					 placeholder="Search summoner in a match"
-					 formControlName="summonerName"
-					 required>
-		<div class="input-group-append">
-			<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button">Search</button>
+		<h2>Search a summoner</h2>
+
+		<p>Get <strong>current</strong> game informations from <strong>summoner</strong> League of Legends.</p>
+		<p>This service make you better</p>
+
+		<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+			{{errorMessage}}
 		</div>
-	</div>
-</form>
 
-<a routerLink="/guide">Make a guide</a>
+		<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+			<div class="input-group mb-3">
+				<input type="text"
+							 class="form-control"
+							 placeholder="Search summoner in a match"
+							 formControlName="summonerName"
+							 required>
+				<div class="input-group-append">
+					<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button">Search</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+
+<section class="page-secondary">
+	<div class="container">
+		<h2>Last created guides</h2>
+
+		<ul>
+			<li>
+				Empty
+			</li>
+		</ul>
+
+		<a routerLink="/guide">Make a guide</a>
+		<a routerLink="/guides">See all created guides</a>
+	</div>
+</section>
