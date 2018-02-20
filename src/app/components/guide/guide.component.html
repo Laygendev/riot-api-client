@@ -1,75 +1,79 @@
-<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-	{{errorMessage}}
-</div>
+<section class="page-content">
+	<div class="container content">
+		<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+			{{errorMessage}}
+		</div>
 
-<p>Before make a guide, you have to select the champion and the game mode</p>
-<p>Use the dropdown below for select, then you will can create or update a guide</p>
+		<p>Before make a guide, you have to select the champion and the game mode</p>
+		<p>Use the dropdown below for select, then you will can create or update a guide</p>
 
-<div class="dropdown-parent">
-	<div ngbDropdown class="dropdown">
-		<button appDropdown ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span *ngIf="!champion">Champions</span>
-			<div *ngIf="champion">
-				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-				<span>{{champion.name}}</span>
-			</div>
-		</button>
-		<div ngbDropdownMenu class="dropdown-menu dropdown-champion" aria-labelledby="dropdownChampion">
-			<div class="search">
-				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by champion name">
-			</div>
-			<ul>
-				<li class="item" *ngFor="let champion of dataService.champions">
-					<div (click)="selectChampion(champion)">
+		<div class="dropdown-parent">
+			<div ngbDropdown class="dropdown">
+				<button appDropdown ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span *ngIf="!champion">Champions</span>
+					<div *ngIf="champion">
 						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
 						<span>{{champion.name}}</span>
 					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<div ngbDropdown class="dropdown">
-		<button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGameMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span *ngIf="!gameMode">Game Mode</span>
-			<span *ngIf="gameMode">{{gameMode}}</span>
-		</button>
-		<div ngbDropdownMenu  class="dropdown-menu dropdown-game-mode" aria-labelledby="dropdownGameMode">
-			<div class="search">
-				<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by game mode name">
-			</div>
-			<ul>
-				<li class="item" *ngFor="let gameMode of gamesMode">
-					<div (click)="selectGameMode(gameMode)">
-						<span>{{gameMode}}</span>
+				</button>
+				<div ngbDropdownMenu class="dropdown-menu dropdown-champion" aria-labelledby="dropdownChampion">
+					<div class="search">
+						<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by champion name">
 					</div>
-				</li>
-			</ul>
+					<ul>
+						<li class="item" *ngFor="let champion of dataService.champions">
+							<div (click)="selectChampion(champion)">
+								<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+								<span>{{champion.name}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div ngbDropdown class="dropdown">
+				<button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGameMode" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span *ngIf="!gameMode">Game Mode</span>
+					<span *ngIf="gameMode">{{gameMode}}</span>
+				</button>
+				<div ngbDropdownMenu  class="dropdown-menu dropdown-game-mode" aria-labelledby="dropdownGameMode">
+					<div class="search">
+						<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by game mode name">
+					</div>
+					<ul>
+						<li class="item" *ngFor="let gameMode of gamesMode">
+							<div (click)="selectGameMode(gameMode)">
+								<span>{{gameMode}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<h2>Favorite guide</h2>
+
+		<app-guide-display *ngIf="favoriteGuideId" [guideId]="favoriteGuideId"></app-guide-display>
+
+		<div *ngIf="champion && gameMode">
+			<h2>Availables guides for {{champion.name}} in {{gameMode}}</h2>
+
+			<a routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
+
+			<table>
+				<tr>
+					<th>Created date</th>
+					<th>Author name</th>
+					<th>Actions</th>
+				</tr>
+				<tr *ngFor="let guide of guides">
+					<td>12/02/2018</td>
+					<td>{{guide.author}}</td>
+					<td>
+						<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-</div>
-
-<h2>Favorite guide</h2>
-
-<app-guide-display *ngIf="favoriteGuideId" [guideId]="favoriteGuideId"></app-guide-display>
-
-<div *ngIf="champion && gameMode">
-	<h2>Availables guides for {{champion.name}} in {{gameMode}}</h2>
-
-	<a routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
-
-	<table>
-		<tr>
-			<th>Created date</th>
-			<th>Author name</th>
-			<th>Actions</th>
-		</tr>
-		<tr *ngFor="let guide of guides">
-			<td>12/02/2018</td>
-			<td>{{guide.author}}</td>
-			<td>
-				<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
-			</td>
-		</tr>
-	</table>
-</div>
+</section>

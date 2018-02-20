@@ -162,6 +162,11 @@ h3 {
 	font-size: 1.6em;
 }
 
+.content {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
 .tooltip {
 	text-align: left!important;
 	font-size: 1em;
@@ -183,12 +188,11 @@ h3 {
 
 header {
 	padding: 35px;
-	height: 400px;
+	height: 360px;
 }
 
 header .title {
 	color: #f1c40f;
-	margin-left: 100px;
 }
 
 header .content {
@@ -197,8 +201,7 @@ header .content {
 }
 
 header .content ul {
-	margin-right: 35px;
-	padding: 25px;
+	padding-top: 25px;
 	display: flex;
 }
 
@@ -209,34 +212,71 @@ header .content ul li {
 
 }
 
-header .content ul li a {
-	text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
+header .content ul li a, footer .content ul li a {
+	text-shadow: 2px 0px 2px rgba(0, 0, 0, 1);
+	position: relative;
+	text-decoration: none;
+}
+
+header .content ul li a:before, footer .content ul li a:before {
+	content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 20px;
+  left: 0;
+  background-color: #f1c40f;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+header .content ul li a:hover:before, footer .content ul li a:hover:before {
+	visibility: visible;
+	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
+}
+
+.background {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
+	width: 70%;
+	min-width: 1000px;
+	height: 600px;
+	margin: auto;
+	background-color: white;
+	-moz-box-shadow: inset 0px 0px 20px 14px #000000;
+	-webkit-box-shadow: inset 0px 0px 20px 14px #000000;
+	-o-box-shadow: inset 0px 0px 20px 14px #000000;
+	box-shadow: inset 0px 0px 20px 14px #000000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=90, Strength=20);
+	background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Anivia_0.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
 }
 
 .page-content {
-	background-color: rgba(1, 1, 1, 0.7);
-	padding: 50px;
-	height: 300px;
+	padding-top: 50px;
+	background-color: rgba(1, 1, 1, 0.5);
 }
 
 .page-secondary {
 	color: white;
 	width: 70%;
 	margin: auto;
+	margin-top: 50px;
 	min-width: 1000px;
 }
 
-.page-secondary .content {
-	margin-left: 40px;
-	margin-right: 40px;
-}
-
-.page-secondary h2 {
-	color: white;
-}
-
-.page-secondary a {
-	color: white;
+.page-secondary .flex {
+	display: flex;
+	justify-content: space-between;
 }
 
 footer {
