@@ -163,8 +163,8 @@ h3 {
 }
 
 .content {
-	padding-left: 50px;
-	padding-right: 50px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .tooltip {
@@ -187,8 +187,8 @@ h3 {
 }
 
 header {
-	padding: 35px;
-	height: 360px;
+	padding: 60px;
+	height: 300px;
 }
 
 header .title {
@@ -245,11 +245,9 @@ header .content ul li a:hover:before, footer .content ul li a:hover:before {
 	top: 0;
 	left: 50%;
 	transform: translate(-50%);
-	width: 70%;
+	width: 80%;
 	min-width: 1000px;
 	height: 600px;
-	margin: auto;
-	background-color: white;
 	-moz-box-shadow: inset 0px 0px 20px 14px #000000;
 	-webkit-box-shadow: inset 0px 0px 20px 14px #000000;
 	-o-box-shadow: inset 0px 0px 20px 14px #000000;
@@ -263,15 +261,27 @@ header .content ul li a:hover:before, footer .content ul li a:hover:before {
 
 .page-content {
 	padding-top: 50px;
-	background-color: rgba(1, 1, 1, 0.5);
+	padding-bottom: 50px;
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 .page-secondary {
-	color: white;
-	width: 70%;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	left: 50%;
+	color: black;
+	width: 80%;
 	margin: auto;
-	margin-top: 50px;
 	min-width: 1000px;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.page-secondary h2 {
+	color: #007bff;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .page-secondary .flex {

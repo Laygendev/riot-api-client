@@ -1,35 +1,46 @@
-<h2>You are looking the page of the summoner {{summonerName}}</h2>
 
-<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-	{{errorMessage}}
-</div>
+<section class="page-content">
 
-<div *ngIf="myParticipant">
-	<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
-</div>
+	<div class="content container">
+		<h2 class="big-title">{{summonerName}}</h2>
 
-<h3>Current Game</h3>
+		<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+			{{errorMessage}}
+		</div>
 
-<div class="participants-container">
-	<ul class="participants team100" *ngIf="dataService.spetactorData">
-		<li *ngFor="let participant of dataService.spetactorData.participantsTeam100">
+		<div *ngIf="myParticipant">
+			<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
+		</div>
+	</div>
+</section>
 
-			<div class="avatar" *ngIf="participant.championId">
-				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
-				<strong>{{participant.summonerName}}</strong>
-			</div>
-		</li>
-	</ul>
+<section class="page-secondary">
 
-	<h3>VS</h3>
+	<div class="content">
+		<h2>Current Game</h2>
 
-	<ul class="participants team200" *ngIf="dataService.spetactorData">
-		<li *ngFor="let participant of dataService.spetactorData.participantsTeam200">
+		<div class="participants-container">
+			<ul class="participants team100" *ngIf="dataService.spetactorData">
+				<li *ngFor="let participant of dataService.spetactorData.participantsTeam100">
 
-			<div class="avatar" *ngIf="participant.championId">
-				<strong>{{participant.summonerName}}</strong>
-				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
-			</div>
-		</li>
-	</ul>
-</div>
+					<div class="avatar" *ngIf="participant.championId">
+						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+						<strong>{{participant.summonerName}}</strong>
+					</div>
+				</li>
+			</ul>
+
+			<h3>VS</h3>
+
+			<ul class="participants team200" *ngIf="dataService.spetactorData">
+				<li *ngFor="let participant of dataService.spetactorData.participantsTeam200">
+
+					<div class="avatar" *ngIf="participant.championId">
+						<strong>{{participant.summonerName}}</strong>
+						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
