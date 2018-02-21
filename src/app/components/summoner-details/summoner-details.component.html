@@ -1,22 +1,23 @@
+<section class="sub-header background">
 
-<section class="page-content">
+	<div class="sub-header-content">
+		<div class="wrap-padder">
+			<h2 class="big-title">{{summonerName}}</h2>
 
-	<div class="content container">
-		<h2 class="big-title">{{summonerName}}</h2>
+			<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+				{{errorMessage}}
+			</div>
 
-		<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-			{{errorMessage}}
-		</div>
-
-		<div *ngIf="myParticipant">
-			<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
+			<div *ngIf="myParticipant">
+				<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
+			</div>
 		</div>
 	</div>
 </section>
 
 <section class="page-secondary">
 
-	<div class="content">
+	<div class="wrap-padder">
 		<h2>Current Game</h2>
 
 		<div class="participants-container">

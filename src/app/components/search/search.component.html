@@ -1,33 +1,34 @@
+<section class="sub-header background">
 
-<section class="page-content">
-
-	<div class="content container">
-
-		<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-			{{errorMessage}}
-		</div>
-
-		<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-			<div class="input-group">
-				<input type="text"
-							 class="form-control"
-							 placeholder="Search summoner in a match"
-							 formControlName="summonerName"
-							 required>
-				<div class="input-group-append">
-					<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button"><i class="fas fa-search"></i></button>
-				</div>
+	<div class="sub-header-content">
+		<div class="wrap-padder">
+			<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+				{{errorMessage}}
 			</div>
-		</form>
+
+
+			<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+				<div class="input-group">
+					<input type="text"
+								 class="form-control"
+								 placeholder="Search summoner in a match"
+								 formControlName="summonerName"
+								 required>
+					<div class="input-group-append">
+						<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button"><i class="fas fa-search"></i></button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 </section>
 
 <section class="page-secondary">
 
-	<div class="content">
+	<div class="wrap-padder">
 		<h2>We are community</h2>
 
-		<div class="container flex">
+		<div class="flex mb-40">
 			<div routerLink="/guide" class="bloc-button bloc-make-guide">
 				<div class="content">
 					<h3>Make a guide</h3>
@@ -50,16 +51,14 @@
 			</div>
 		</div>
 
-		<div class="container">
-			<div>
-				<h2>Last created guides</h2>
+		<div>
+			<h2>Last created guides</h2>
 
-				<ul>
-					<li>
-						Empty
-					</li>
-				</ul>
-			</div>
+			<ul>
+				<li>
+					Empty
+				</li>
+			</ul>
 		</div>
 	</div>
 </section>

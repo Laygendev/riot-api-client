@@ -1,58 +1,61 @@
-<section class="page-content">
-	<div class="container content">
-		<p>Make sure you have read how to make a guide before created one</p>
+<section class="sub-header background" *ngIf="champion" [ngStyle]="{'background-image': getUrl()}">
 
-		<div *ngIf="updatedBuild">
-			<h2>Guide created with success !</h2>
+	<div class="sub-header-content">
+		<div class="wrap-padder">
+			<p>Make sure you have read how to make a guide before created one</p>
 
-			<!-- <p>This form able you to be notified when your guide need to be updated to the next League of legends version</p>
-			<p>We don't use or sell your personal data. We make this application for passion and it's only what we need!</p>
+			<div *ngIf="updatedBuild">
+				<h2>Guide created with success !</h2>
 
-			<form [formGroup]="userForm" (ngSubmit)="registerUser()">
-				<div class="input-group mb-3">
-					<input type="email"
-								 class="form-control"
-								 placeholder="Your email"
-								 formControlName="email"
-								 required>
+				<!-- <p>This form able you to be notified when your guide need to be updated to the next League of legends version</p>
+				<p>We don't use or sell your personal data. We make this application for passion and it's only what we need!</p>
 
-					<input type="text"
-								 class="form-control"
-								 placeholder="Your name"
-								 formControlName="pseudo"
-								 required>
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-primary" (click)="registerUser()" type="button">Confirm</button>
+				<form [formGroup]="userForm" (ngSubmit)="registerUser()">
+					<div class="input-group mb-3">
+						<input type="email"
+									 class="form-control"
+									 placeholder="Your email"
+									 formControlName="email"
+									 required>
+
+						<input type="text"
+									 class="form-control"
+									 placeholder="Your name"
+									 formControlName="pseudo"
+									 required>
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-primary" (click)="registerUser()" type="button">Confirm</button>
+						</div>
 					</div>
-				</div>
-			</form> -->
+				</form> -->
 
-			<a routerLink="/">Back to the home</a>
-		</div>
-
-		<div *ngIf="!updatedBuild">
-			<div class="row" *ngIf="champion">
-				<div class="col-sm">
-					<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
-					{{champion.name}}
-				</div>
-				<div class="col-sm">
-					<ul>
-						<li>Strength: 100</li>
-						<li>Armor: 100</li>
-						<li>Vitality: 100</li>
-					</ul>
-				</div>
+				<a routerLink="/">Back to the home</a>
 			</div>
 
-			<h2 *ngIf="champion">You make a guide for {{champion.name}} in {{this.guide.gameMode}}</h2>
+			<div *ngIf="!updatedBuild">
+				<div class="row" *ngIf="champion">
+					<div class="col-sm">
+						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+						{{champion.name}}
+					</div>
+					<div class="col-sm">
+						<ul>
+							<li>Strength: 100</li>
+							<li>Armor: 100</li>
+							<li>Vitality: 100</li>
+						</ul>
+					</div>
+				</div>
+
+				<h2 *ngIf="champion">You make a guide for {{champion.name}} in {{this.guide.gameMode}}</h2>
+			</div>
 		</div>
 	</div>
 </section>
 
 <section *ngIf="!updatedBuild" class="page-secondary">
 
-	<div class="content">
+	<div class="wrap-padder">
 		<h2>Best starter</h2>
 
 		<p>Clic on slot for open dropdown with all items of current map.</p>
