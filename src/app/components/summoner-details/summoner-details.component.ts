@@ -20,6 +20,7 @@ import { ItemModel } from './../../models/item.model';
 })
 export class SummonerDetailsComponent  {
 	public champions: Array<ChampionModel> = new Array<ChampionModel>();
+	public championName: string;
 	public myParticipant: ParticipantModel;
 	public summonerName: string;
 	public errorMessage: string = '';
@@ -73,6 +74,10 @@ export class SummonerDetailsComponent  {
 				this.dataService.spetactorData.participantsTeam200 = tmpPartipantsTeam200;
 			}
 		});
+	}
+
+	getUrl(championName: string): string {
+		return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + championName + "_0.jpg')";
 	}
 
 }

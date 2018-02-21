@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { DataService } from './../../services/data/data.service';
 import { ChampionModel } from './../../models/champion.model';
@@ -24,6 +24,7 @@ export class GuideDisplayComponent implements OnInit {
 	@Input() guideId: string;
 	@Input() championId: number;
 	@Input() gameMode: string;
+	@Output() changeName: EventEmitter<string> = new EventEmitter<string>();
 
 	constructor(
 		public dataService: DataService,
@@ -35,6 +36,9 @@ export class GuideDisplayComponent implements OnInit {
 	}
 
 	getGuide() {
+		this.favoriteChampion = this.dataService.getChampionById(this.championId);
+		this.changeName.emit(this.favoriteChampion.name);
+
 		if ( this.guideId ) {
 			this.httpGuideService.get({ _id: this.guideId }).subscribe((data) => {
 				if ( data ) {

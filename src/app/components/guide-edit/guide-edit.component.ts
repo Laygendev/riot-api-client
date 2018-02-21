@@ -122,7 +122,7 @@ export class GuideEditComponent {
 		});
 	}
 
-	getUrl(): void {
+	getUrl(): string {
 		return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.champion.name + "_0.jpg')";
 	}
 }

@@ -1,4 +1,4 @@
-<section class="sub-header background" *ngIf="champion" [ngStyle]="{'background-image': getUrl()}">
+<section (changeName)="getUrl()" class="sub-header background" [ngStyle]="{'background-image': getUrl()}">
 
 	<div class="sub-header-content">
 		<div class="wrap-padder">
