@@ -9,7 +9,7 @@
 			</div>
 
 			<div *ngIf="myParticipant">
-				<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
+				<app-guide-display (changeName)="getChampionName($event)" *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
 			</div>
 		</div>
 	</div>

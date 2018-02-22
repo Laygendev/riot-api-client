@@ -24,7 +24,7 @@ export class GuideDisplayComponent implements OnInit {
 	@Input() guideId: string;
 	@Input() championId: number;
 	@Input() gameMode: string;
-	@Output() changeName: EventEmitter<string> = new EventEmitter<string>();
+	@Output() changeName: EventEmitter<any> = new EventEmitter();
 
 	constructor(
 		public dataService: DataService,
