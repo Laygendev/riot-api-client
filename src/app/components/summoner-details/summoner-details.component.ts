@@ -20,8 +20,7 @@ import { ItemModel } from './../../models/item.model';
 })
 export class SummonerDetailsComponent  {
 	public champions: Array<ChampionModel> = new Array<ChampionModel>();
-	public championName: string = null;
-	public url: string = null;
+	public myChampion: ChampionModel = null;
 	public myParticipant: ParticipantModel;
 	public summonerName: string;
 	public errorMessage: string = '';
@@ -68,6 +67,7 @@ export class SummonerDetailsComponent  {
 
 					if ( tmpParticipant.summonerId == this.dataService.summonerData.id) {
 						this.myParticipant = tmpParticipant;
+						this.myChampion = this.myParticipant.champion;
 					}
 				}
 				this.dataService.spetactorData = new SpectatorModel(data);
@@ -77,12 +77,7 @@ export class SummonerDetailsComponent  {
 		});
 	}
 
-	getChampionName(championName: any): void {
-		this.url = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + championName + "_0.jpg";
-	}
-
 	getUrl(): string {
-		return "url(" + this.url + ")";
+		return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.myChampion.name + "_0.jpg')";
 	}
-
 }
