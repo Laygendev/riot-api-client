@@ -68,7 +68,7 @@ export class GuideEditComponent implements OnInit {
 	createForm(): void {
 		this.userForm = new FormGroup({
 			email: this.email,
-			name: this.pseudo
+			pseudo: this.pseudo
 		});
 	}
 
@@ -128,11 +128,16 @@ export class GuideEditComponent implements OnInit {
 		let userModel: UserModel = new UserModel(this.userForm.value);
 
 		this.httpUserService.post(userModel).subscribe((data) => {
-			console.log('ok');
+			this.guide.authorId = data._id;
+			this.httpGuideService.put(this.guide).subscribe((data) => {
+
+			});
 		});
 	}
 
 	getUrl(): string {
-		return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.champion.name + "_0.jpg')";
+		if (this.champion) {
+			return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.champion.name + "_0.jpg')";
+		}
 	}
 }

@@ -36,4 +36,15 @@ export class HttpGuideService {
 
 		return this.httpClient.post( url, build, {responseType: 'json'} );
 	}
+
+	public put(data: GuideModel): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/guide/";
+
+		let build: GuideModel = new GuideModel(data);
+
+		delete build.starterItemsSlot;
+		delete build.buildItemsSlot;
+
+		return this.httpClient.put( url, build, {responseType: 'json'} );
+	}
 }

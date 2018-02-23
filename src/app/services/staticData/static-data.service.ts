@@ -14,4 +14,9 @@ export class StaticDataService {
 		let url: string = "http://164.132.69.238:3002/static-data/champions/" + args.championId;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
+
+	public getRealms(): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/realms";
+		return this.httpClient.get( url, {responseType: 'json'} );
+	}
 }

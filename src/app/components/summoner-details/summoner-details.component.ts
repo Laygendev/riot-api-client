@@ -73,6 +73,8 @@ export class SummonerDetailsComponent  {
 				this.dataService.spetactorData = new SpectatorModel(data);
 				this.dataService.spetactorData.participantsTeam100 = tmpPartipantsTeam100;
 				this.dataService.spetactorData.participantsTeam200 = tmpPartipantsTeam200;
+
+				this.dataService.loading = false;
 			}
 		});
 	}

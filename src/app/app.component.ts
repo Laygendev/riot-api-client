@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 
 import { DataService } from './services/data/data.service';
+import { StaticDataService } from './services/staticData/static-data.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,18 @@ import { DataService } from './services/data/data.service';
 export class AppComponent implements AfterViewInit {
   title = 'app';
 
+	realms: any;
+
 	constructor(
 		private dataService: DataService,
+		private staticDataService: StaticDataService,
 		private router: Router) {
 		this.dataService.loading = true;
+
+		this.staticDataService.getRealms().subscribe((data) => {
+			this.realms = data;
+		});
+
 		dataService.init();
 	}
 

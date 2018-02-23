@@ -1,32 +1,46 @@
-<section (changeName)="getUrl()" class="sub-header background">
+<section class="sub-header background" [ngStyle]="{'background-image': getUrl()}">
 	<div class="sub-header-content">
 		<div class="wrap-padder">
 			<p>Make sure you have read how to make a guide before created one</p>
 
+
 			<div *ngIf="updatedBuild">
 				<h2>Guide created with success !</h2>
 
-				<!-- <p>This form able you to be notified when your guide need to be updated to the next League of legends version</p>
-				<p>We don't use or sell your personal data. We make this application for passion and it's only what we need!</p>
+				<div *ngIf="guide.authorId">
+					<p>Edit successfull</p>
+				</div>
 
-				<form [formGroup]="userForm" (ngSubmit)="registerUser()">
-					<div class="input-group mb-3">
-						<input type="email"
-									 class="form-control"
-									 placeholder="Your email"
-									 formControlName="email"
-									 required>
+				<div *ngIf="!guide.authorId">
+					<p>Complete this form able you to <strong>edit your guide.</strong></p>
+					<p>Also to be notified when your guide need to be updated to the next League of legends version</p>
+					<p>We don't use or sell your personal data. We make this application for passion and it's only what we need!</p>
 
-						<input type="text"
-									 class="form-control"
-									 placeholder="Your name"
-									 formControlName="pseudo"
-									 required>
-						<div class="input-group-append">
+					<form [formGroup]="userForm" (ngSubmit)="registerUser()">
+							<div class="form-group">
+								<label for="email">Email address</label>
+								<input type="email"
+											 class="form-control"
+											 id="email"
+											 aria-describedby="emailHelp"
+											 placeholder="Enter email"
+											 formControlName="email"
+											 required>
+								<small id="emailHelp" class="form-text text-muted">You're email is not displayed or used anywhere</small>
+							</div>
+							<div class="form-group">
+								<label for="pseudo">Pseudo</label>
+								<input type="text"
+											 class="form-control"
+											 id="pseudo"
+											 placeholder="Pseudo"
+											 formControlName="pseudo"
+											 required>
+							</div>
+
 							<button type="submit" class="btn btn-primary" (click)="registerUser()" type="button">Confirm</button>
-						</div>
-					</div>
-				</form> -->
+					</form>
+				</div>
 
 				<a routerLink="/">Back to the home</a>
 			</div>
