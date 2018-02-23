@@ -14,6 +14,8 @@ export class DataService {
 	public champions: Array<ChampionModel> = new Array<ChampionModel>();
 	public items: Array<ItemModel> = new Array<ItemModel>();
 	public inited: boolean = false;
+	public loading: boolean = false;
+	public waitComponentLoad: boolean = false;
 
 	constructor(
 		private httpClient: HttpClient,

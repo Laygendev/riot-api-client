@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,7 +17,8 @@ import { UserModel } from './../../models/user.model';
   templateUrl: './guide-edit.component.html',
   styleUrls: ['./guide-edit.component.css']
 })
-export class GuideEditComponent {
+export class GuideEditComponent implements OnInit {
+	public loading: boolean = true;
 	public params: any;
 	public champion: ChampionModel;
 	public guide: GuideModel;
@@ -33,6 +34,8 @@ export class GuideEditComponent {
 		public httpGuideService: HttpGuideService,
 		public httpUserService: HttpUserService,
 	) {
+		this.dataService.waitComponentLoad = true;
+		this.dataService.loading = true;
 		this.createFormControls();
 		this.createForm();
 
@@ -52,6 +55,11 @@ export class GuideEditComponent {
 		});
 	}
 
+	ngOnInit(): void {
+		this.dataService.waitComponentLoad = true;
+		this.dataService.loading = true;
+	}
+
 	createFormControls(): void {
 		this.email  = new FormControl('', Validators.required);
 		this.pseudo = new FormControl('', Validators.required);
@@ -65,6 +73,8 @@ export class GuideEditComponent {
 	}
 
 	getGuide(): void {
+		this.dataService.loading = true;
+
 		let guideId: Number = this.params.guideId ? this.params.guideId : 0;
 
 		this.httpGuideService.get({
@@ -77,8 +87,6 @@ export class GuideEditComponent {
 				if (data.championId) {
 					this.guide = new GuideModel(data);
 				}
-
-				console.log(this.guide);
 
 				if ( this.guide.championId > 0 ) {
 					this.champion = this.dataService.getChampionById(this.guide.championId);
@@ -95,6 +103,8 @@ export class GuideEditComponent {
 
 					this.guide.buildItemsSlot[key] = tmpItemSlot;
 				}
+
+				this.dataService.loading = false;
 			}
 		});
 	}

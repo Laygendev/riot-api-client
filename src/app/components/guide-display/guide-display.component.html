@@ -1,15 +1,14 @@
 <div class="build-container">
+	<div class="bloc-create-guide" *ngIf="!favoriteGuide._id">
+		<h4>No guide for {{favoriteChampion.name}} in {{gameMode}}</h4>
+		<a routerLink="/guide/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
+	</div>
+
 	<h3 *ngIf="favoriteChampion">
 		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}}</span>
 	</h3>
 
-	<h4 class="bloc-no-guide" *ngIf="!favoriteChampion">
-		<i class="fal fa-times"></i>
-		<a routerLink="/guide/{{gameMode}}/{{championId}}">No guide for this champion in {{gameMode}}, clic here to create one</a>
-	</h4>
-
 	<div class="favorite-build" *ngIf="favoriteGuide">
-
 		<div class="favoriteChampion">
 			<p>
 				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{favoriteChampion.image.full}}" />
@@ -18,7 +17,7 @@
 					<li class="title">{{favoriteChampion.name}}</li>
 				</ul>
 
-				<a routerLink="/guide/{{favoriteGuide._id}}">Edit this guide</a>
+				<a *ngIf="favoriteGuide._id" routerLink="/guide/{{favoriteGuide._id}}">Edit this guide</a>
 		</div>
 
 		<div class="cases-container">

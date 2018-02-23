@@ -1,5 +1,4 @@
-<section (changeName)="getUrl()" class="sub-header background" [ngStyle]="{'background-image': getUrl()}">
-
+<section (changeName)="getUrl()" class="sub-header background">
 	<div class="sub-header-content">
 		<div class="wrap-padder">
 			<p>Make sure you have read how to make a guide before created one</p>
@@ -146,7 +145,7 @@
 									</div>
 								</div>
 							</ng-template>
-							<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('guideItemsSlot', i, item)">
+							<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('buildItemsSlot', i, item)">
 								<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
 								<span style="visibility: hidden">{{item.name}}</span>
 							</div>

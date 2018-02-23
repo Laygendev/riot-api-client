@@ -24,7 +24,6 @@ export class GuideDisplayComponent implements OnInit {
 	@Input() guideId: string;
 	@Input() championId: number;
 	@Input() gameMode: string;
-	@Output() changeName: EventEmitter<any> = new EventEmitter();
 
 	constructor(
 		public dataService: DataService,
@@ -37,7 +36,6 @@ export class GuideDisplayComponent implements OnInit {
 
 	getGuide() {
 		this.favoriteChampion = this.dataService.getChampionById(this.championId);
-		this.changeName.emit(this.favoriteChampion.name);
 
 		if ( this.guideId ) {
 			this.httpGuideService.get({ _id: this.guideId }).subscribe((data) => {
@@ -64,6 +62,10 @@ export class GuideDisplayComponent implements OnInit {
 			});
 		}
 
+		if ( ! this.favoriteGuide ) {
+			this.favoriteGuide = new GuideModel();
+			console.log(this.favoriteGuide)
+		}
 	}
 
 	getChampionInGuide(build: GuideModel): void {

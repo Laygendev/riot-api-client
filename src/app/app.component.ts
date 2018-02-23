@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 
 import { DataService } from './services/data/data.service';
 
@@ -7,12 +8,30 @@ import { DataService } from './services/data/data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
   title = 'app';
 
-	constructor(private dataService: DataService) {
+	constructor(
+		private dataService: DataService,
+		private router: Router) {
+		this.dataService.loading = true;
 		dataService.init();
 	}
 
-	ngOnInit(): void {}
+	ngAfterViewInit(): void {
+		this.router.events
+		.subscribe((event) => {
+			if(event instanceof NavigationStart) {
+				this.dataService.loading = true;
+			}
+			else if (
+				event instanceof NavigationEnd ||
+				event instanceof NavigationCancel
+			) {
+				if( '/' == event.url || '/guide' == event.url ) {
+					this.dataService.loading = false;
+				}
+			}
+		});
+	}
 }
