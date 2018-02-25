@@ -1,5 +1,5 @@
 <div class="build-container">
-	<div class="bloc-create-guide" *ngIf="!favoriteGuide._id">
+	<div class="bloc-create-guide" *ngIf="!favoriteGuide._id && favoriteChampion">
 		<h4>No guide for {{favoriteChampion.name}} in {{gameMode}}</h4>
 		<a routerLink="/guide/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
 	</div>
@@ -9,9 +9,9 @@
 	</h3>
 
 	<div class="favorite-build" *ngIf="favoriteGuide">
-		<div class="favoriteChampion">
+		<div *ngIf="favoriteChampion" class="favoriteChampion">
 			<p>
-				<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{favoriteChampion.image.full}}" />
+				<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{favoriteChampion.image.full}}" />
 			</p>
 				<ul>
 					<li class="title">{{favoriteChampion.name}}</li>
@@ -25,7 +25,7 @@
 				<li *ngFor="let starterItem of starterItems">
 					<ng-template #itemTemplate>
 						<div class="container">
-							<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{starterItem.image.full}}" /></div>
+							<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" /></div>
 							<div>
 								<strong>{{starterItem.name}}</strong>
 								<p [innerHTML]="starterItem.description"></p>
@@ -33,7 +33,7 @@
 						</div>
 					</ng-template>
 
-					<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="starterItem" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{starterItem.image.full}}" />
+					<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="starterItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" />
 				</li>
 			</ul>
 
@@ -42,7 +42,7 @@
 
 					<ng-template #itemTemplate>
 						<div class="container">
-							<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{buildItem.image.full}}" /></div>
+							<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" /></div>
 							<div>
 								<strong>{{buildItem.name}}</strong>
 								<p [innerHTML]="buildItem.description"></p>
@@ -50,7 +50,7 @@
 						</div>
 					</ng-template>
 
-					<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{buildItem.image.full}}" />
+					<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" />
 				</li>
 			</ul>
 		</div>

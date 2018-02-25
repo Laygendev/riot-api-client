@@ -14,6 +14,9 @@ export class GuideModel {
 	public gameMode: string;
 	public favorite: boolean;
 	public version: string;
+	public createdDate: string;
+	public modifiedDate: string;
+	public region: string;
 
 	constructor(fields?: any) {
 		this.starterItemsSlot = new Array<ItemSlotModel>();

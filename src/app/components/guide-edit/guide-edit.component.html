@@ -48,7 +48,7 @@
 			<div *ngIf="!updatedBuild">
 				<div class="row" *ngIf="champion">
 					<div class="col-sm">
-						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
 						{{champion.name}}
 					</div>
 					<div class="col-sm">
@@ -60,7 +60,7 @@
 					</div>
 				</div>
 
-				<h2 *ngIf="champion">You make a guide for {{champion.name}} in {{this.guide.gameMode}}</h2>
+				<h2 *ngIf="champion">You make a guide for {{champion.name}} in {{this.guide.gameMode}} for {{dataService.realms.data.v}}</h2>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
 
 				<ng-template #itemTemplate>
 					<div *ngIf="itemSlot.item" class="container">
-						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" /></div>
+						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" /></div>
 						<div>
 							<strong>{{itemSlot.item.name}}</strong>
 							<p [innerHTML]="itemSlot.item.description"></p>
@@ -90,7 +90,7 @@
 				</ng-template>
 
 				<button placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" appDropdown ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+					<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" />
 				</button>
 
 				<div class="dropdown-menu" ngbDropdownMenu>
@@ -102,7 +102,7 @@
 
 							<ng-template #itemTemplate>
 								<div class="container">
-									<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" /></div>
+									<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" /></div>
 									<div>
 										<strong>{{item.name}}</strong>
 										<p [innerHTML]="item.description"></p>
@@ -110,7 +110,7 @@
 								</div>
 							</ng-template>
 							<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('starterItemsSlot', i, item)">
-								<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+								<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" />
 								<span style="visibility: hidden">{{item.name}}</span>
 							</div>
 						</li>
@@ -129,7 +129,7 @@
 
 				<ng-template #itemTemplate>
 					<div *ngIf="itemSlot.item" class="container">
-						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" /></div>
+						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" /></div>
 						<div>
 							<strong>{{itemSlot.item.name}}</strong>
 							<p [innerHTML]="itemSlot.item.description"></p>
@@ -140,7 +140,7 @@
 				</ng-template>
 
 				<button placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" appDropdown ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{itemSlot.item.image.full}}" />
+					<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" />
 				</button>
 
 				<div class="dropdown-menu" ngbDropdownMenu>
@@ -152,7 +152,7 @@
 
 							<ng-template #itemTemplate>
 								<div class="container">
-									<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" /></div>
+									<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" /></div>
 									<div>
 										<strong>{{item.name}}</strong>
 										<p [innerHTML]="item.description"></p>
@@ -160,7 +160,7 @@
 								</div>
 							</ng-template>
 							<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('buildItemsSlot', i, item)">
-								<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/item/{{item.image.full}}" />
+								<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" />
 								<span style="visibility: hidden">{{item.name}}</span>
 							</div>
 						</li>

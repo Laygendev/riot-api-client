@@ -14,7 +14,7 @@
 					<button appDropdown ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span *ngIf="!champion">Champions</span>
 						<div *ngIf="champion">
-							<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+							<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
 							<span>{{champion.name}}</span>
 						</div>
 					</button>
@@ -25,7 +25,7 @@
 						<ul>
 							<li class="item" *ngFor="let champion of dataService.champions">
 								<div (click)="selectChampion(champion)">
-									<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{champion.image.full}}" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
 									<span>{{champion.name}}</span>
 								</div>
 							</li>
@@ -60,7 +60,7 @@
 	<div class="wrap-padder">
 		<h2>Favorite guide</h2>
 
-		<app-guide-display *ngIf="favoriteGuideId" [guideId]="favoriteGuideId"></app-guide-display>
+		<app-guide-display *ngIf="favoriteGuideId && champion" [gameMode]="gameMode" [champion]="champion"></app-guide-display>
 
 		<div *ngIf="champion && gameMode">
 			<h2>Availables guides for {{champion.name}} in {{gameMode}}</h2>
@@ -69,13 +69,17 @@
 
 			<table>
 				<tr>
-					<th>Created date</th>
+					<th>Modified date</th>
 					<th>Author name</th>
+					<th>Version</th>
+					<th>Region</th>
 					<th>Actions</th>
 				</tr>
 				<tr *ngFor="let guide of guides">
-					<td>12/02/2018</td>
-					<td>{{guide.author}}</td>
+					<td>{{guide.modifiedData}}</td>
+					<td>{{guide.author.pseudo}}</td>
+					<td>{{guide.version}}</td>
+					<td>{{guide.region}}</td>
 					<td>
 						<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
 					</td>

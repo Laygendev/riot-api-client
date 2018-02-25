@@ -9,7 +9,7 @@
 			</div>
 
 			<div *ngIf="myParticipant">
-				<app-guide-display *ngIf="myParticipant && dataService.spetactorData.gameMode" [championId]="myParticipant.championId" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
+				<app-guide-display *ngIf="myParticipant && myChampion && dataService.spetactorData.gameMode" [champion]="myChampion" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
 			</div>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 				<li *ngFor="let participant of dataService.spetactorData.participantsTeam100">
 
 					<div class="avatar" *ngIf="participant.championId">
-						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 						<strong>{{participant.summonerName}}</strong>
 					</div>
 				</li>
@@ -38,7 +38,7 @@
 
 					<div class="avatar" *ngIf="participant.championId">
 						<strong>{{participant.summonerName}}</strong>
-						<img src="http://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/{{participant.champion.image.full}}" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 					</div>
 				</li>
 			</ul>

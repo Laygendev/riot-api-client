@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { DataService } from './../../services/data/data.service';
 import { ChampionModel } from './../../models/champion.model';
@@ -21,9 +21,24 @@ export class GuideDisplayComponent implements OnInit {
 
 	public loaded: boolean = false;
 
-	@Input() guideId: string;
-	@Input() championId: number;
-	@Input() gameMode: string;
+	private _champion;
+	private _gameMode;
+
+	@Input()
+	set champion(champion: ChampionModel) {
+		this._champion = champion;
+		this.getGuide();
+	}
+
+	get champion(): ChampionModel { return this._champion; }
+
+	@Input()
+	set gameMode(gameMode: number) {
+		this._gameMode = gameMode;
+		this.getGuide();
+	}
+
+	get gameMode(): number { return this._gameMode; }
 
 	constructor(
 		public dataService: DataService,
@@ -35,36 +50,27 @@ export class GuideDisplayComponent implements OnInit {
 	}
 
 	getGuide() {
-		this.favoriteChampion = this.dataService.getChampionById(this.championId);
+		this.favoriteChampion = this._champion;
 
-		if ( this.guideId ) {
-			this.httpGuideService.get({ _id: this.guideId }).subscribe((data) => {
-				if ( data ) {
-
-					let tmpGuide: GuideModel = new GuideModel(data);
-					this.favoriteGuide = tmpGuide;
-					this.getChampionInGuide(this.favoriteGuide);
-					this.getItemsInGuide(this.favoriteGuide, 'starterItems');
-					this.getItemsInGuide(this.favoriteGuide, 'buildItems');
-				}
-			});
-		}
-
-		if ( this.championId && this.gameMode ) {
-			this.httpGuideService.get({ championId: this.championId, gameMode: this.gameMode, favorite: true }).subscribe((data) => {
+		if ( this._champion && this._gameMode ) {
+			this.httpGuideService.get({ championId: this._champion.id, gameMode: this._gameMode, favorite: true }).subscribe((data) => {
 				if ( data ) {
 					let tmpGuide: GuideModel = new GuideModel(data);
 					this.favoriteGuide = tmpGuide;
-					this.getChampionInGuide(this.favoriteGuide);
 					this.getItemsInGuide(this.favoriteGuide, 'starterItems');
 					this.getItemsInGuide(this.favoriteGuide, 'buildItems');
+				} else {
+					this.clearItems(this.favoriteGuide);
+
+					this.favoriteGuide = new GuideModel();
 				}
 			});
 		}
 
 		if ( ! this.favoriteGuide ) {
+			this.clearItems(this.favoriteGuide);
+
 			this.favoriteGuide = new GuideModel();
-			console.log(this.favoriteGuide)
 		}
 	}
 
@@ -75,6 +81,18 @@ export class GuideDisplayComponent implements OnInit {
 	getItemsInGuide(build: GuideModel, category: string): void {
 		for (let key in build[category + 'SlotId']) {
 			this[category][key] = this.dataService.getItemById(build[category + 'SlotId'][key]);
+		}
+	}
+
+	clearItems(build: GuideModel) {
+		if ( build ) {
+			for (let key in build['starterItemsSlotId']) {
+				this['starterItems'][key] = undefined;
+			}
+
+			for (let key in build['buildItemsSlotId']) {
+				this['buildItems'][key] = undefined;
+			}
 		}
 	}
 

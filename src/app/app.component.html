@@ -20,7 +20,7 @@
 		<div class="wrap-padder sub-content">
 			<div class="title">
 				<h1><a routerLink="/">LoL Hype</a></h1>
-				<p>Version <strong *ngIf="realms">{{realms.data.v}}</strong></p>
+				<p>Version <strong *ngIf="dataService.realms">{{dataService.realms.data.v}}</strong></p>
 			</div>
 
 			<ul class="menu">

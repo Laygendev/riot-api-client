@@ -120,6 +120,7 @@ export class GuideEditComponent implements OnInit {
 
 	update(): void {
 		this.httpGuideService.post(this.guide).subscribe((data) => {
+			this.guide = new GuideModel(data);
 			this.updatedBuild = true;
 		});
 	}

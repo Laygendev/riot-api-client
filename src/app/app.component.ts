@@ -20,10 +20,6 @@ export class AppComponent implements AfterViewInit {
 		private router: Router) {
 		this.dataService.loading = true;
 
-		this.staticDataService.getRealms().subscribe((data) => {
-			this.realms = data;
-		});
-
 		dataService.init();
 	}
 

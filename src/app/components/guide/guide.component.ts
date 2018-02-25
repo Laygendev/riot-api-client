@@ -40,20 +40,31 @@ export class GuideComponent {
 	}
 
 	getGuides(): void {
-		this.httpGuideService.get({
-			championId: this.champion.id,
-			gameMode: this.gameMode,
-			number: -1,
-		}).subscribe((data) => {
-			if ( data ) {
-				for (let key in data) {
-					let tmpGuide: GuideModel = new GuideModel(data[key]);
-					this.guides.push(tmpGuide);
-					if (true === tmpGuide.favorite) {
-						this.favoriteGuideId = tmpGuide._id;
+		if ( this.champion.id && this.gameMode ) {
+			this.httpGuideService.get({
+				championId: this.champion.id,
+				gameMode: this.gameMode,
+				number: -1,
+			}).subscribe((data) => {
+				this.guides = new Array<GuideModel>();
+
+				if ( data ) {
+					if ( data.length == 0 ) {
+						this.favoriteGuideId = 'no';
+					} else {
+
+						for (let key in data) {
+							let tmpGuide: GuideModel = new GuideModel(data[key]);
+							this.guides.push(tmpGuide);
+							if (true === tmpGuide.favorite) {
+								this.favoriteGuideId = tmpGuide._id;
+							}
+						}
 					}
+				} else {
+					this.favoriteGuideId = 'no';
 				}
-			}
-		});
+			});
+		}
 	}
 }

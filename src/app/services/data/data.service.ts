@@ -4,6 +4,7 @@ import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
 
 import { HttpClient } from '@angular/common/http';
+import { StaticDataService } from './../staticData/static-data.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -16,10 +17,12 @@ export class DataService {
 	public inited: boolean = false;
 	public loading: boolean = false;
 	public waitComponentLoad: boolean = false;
+	public realms: any;
 
 	constructor(
 		private httpClient: HttpClient,
-		private sanitizer: DomSanitizer) {
+		private sanitizer: DomSanitizer,
+		private staticDataService: StaticDataService) {
 	}
 
 	init(): void {
@@ -28,16 +31,19 @@ export class DataService {
 				this.champions.push(new ChampionModel(data[key]));
 			}
 
-			this.httpClient.get("./assets/json/items.json").subscribe((data) => {
-				for (let key in data) {
-					let tmpItem: ItemModel = new ItemModel(data[key]);
+			this.staticDataService.getItems().subscribe((responseObject) => {
+				for (let key in responseObject.data) {
+					let tmpItem: ItemModel = new ItemModel(responseObject.data[key]);
 					tmpItem.safeDescription = this.sanitizer.bypassSecurityTrustHtml( tmpItem.description );
 					this.items.push(tmpItem);
 
 				}
 
-				this.inited = true;
+				this.staticDataService.getRealms().subscribe((data) => {
+					this.realms = data;
 
+					this.inited = true;
+				});
 			});
 
 		});
