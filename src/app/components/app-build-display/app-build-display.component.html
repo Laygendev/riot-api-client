@@ -1,0 +1,21 @@
+<div class="favorite-build" *ngIf="guide">
+	<div class="cases-container">
+
+		<ul class="cases">
+			<li *ngFor="let buildItem of buildItems">
+
+				<ng-template #itemTemplate>
+					<div class="container">
+						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" /></div>
+						<div>
+							<strong>{{buildItem.name}}</strong>
+							<p [innerHTML]="buildItem.description"></p>
+						</div>
+					</div>
+				</ng-template>
+
+				<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" />
+			</li>
+		</ul>
+	</div>
+</div>

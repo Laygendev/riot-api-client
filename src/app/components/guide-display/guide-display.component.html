@@ -4,6 +4,8 @@
 		<a routerLink="/guide/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
 	</div>
 
+	<span class="right"><a class="underline" *ngIf="favoriteGuide._id" routerLink="/guide/{{favoriteGuide._id}}"><i class="fas fa-edit"></i> Edit this guide</a></span>
+
 	<h3 *ngIf="favoriteChampion">
 		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}}</span>
 	</h3>
@@ -13,46 +15,42 @@
 			<p>
 				<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{favoriteChampion.image.full}}" />
 			</p>
-				<ul>
-					<li class="title">{{favoriteChampion.name}}</li>
+
+			<div class="cases-container">
+				<ul class="cases">
+					<li *ngFor="let starterItem of starterItems">
+						<ng-template #itemTemplate>
+							<div class="container">
+								<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" /></div>
+								<div>
+									<strong>{{starterItem.name}}</strong>
+									<p [innerHTML]="starterItem.description"></p>
+								</div>
+							</div>
+						</ng-template>
+
+						<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="starterItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" />
+					</li>
 				</ul>
 
-				<a *ngIf="favoriteGuide._id" routerLink="/guide/{{favoriteGuide._id}}">Edit this guide</a>
-		</div>
+				<ul class="cases">
+					<li *ngFor="let buildItem of buildItems">
 
-		<div class="cases-container">
-			<ul class="cases">
-				<li *ngFor="let starterItem of starterItems">
-					<ng-template #itemTemplate>
-						<div class="container">
-							<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" /></div>
-							<div>
-								<strong>{{starterItem.name}}</strong>
-								<p [innerHTML]="starterItem.description"></p>
+						<ng-template #itemTemplate>
+							<div class="container">
+								<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" /></div>
+								<div>
+									<strong>{{buildItem.name}}</strong>
+									<p [innerHTML]="buildItem.description"></p>
+								</div>
 							</div>
-						</div>
-					</ng-template>
+						</ng-template>
 
-					<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="starterItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" />
-				</li>
-			</ul>
+						<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" />
+					</li>
+				</ul>
+			</div>
 
-			<ul class="cases">
-				<li *ngFor="let buildItem of buildItems">
-
-					<ng-template #itemTemplate>
-						<div class="container">
-							<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" /></div>
-							<div>
-								<strong>{{buildItem.name}}</strong>
-								<p [innerHTML]="buildItem.description"></p>
-							</div>
-						</div>
-					</ng-template>
-
-					<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" />
-				</li>
-			</ul>
 		</div>
 	</div>
 </div>

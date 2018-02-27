@@ -6,7 +6,17 @@
 				{{errorMessage}}
 			</div>
 
-			<p>Before make a guide, you have to select the champion and the game mode</p>
+			<ul class="arianne">
+				<li>
+					<a routerLink="/">Home</a>
+					<i class="fas fa-arrow-right"></i>
+				</li>
+				<li>Make a guide</li>
+			</ul>
+
+			<h2>Make a guide</h2>
+
+			<p>Before make a guide, you have to select the <strong>champion</strong> and the <strong>game mode</strong></p>
 			<p>Use the dropdown below for select, then you will can create or update a guide</p>
 
 			<div class="dropdown-parent">
@@ -60,30 +70,39 @@
 	<div class="wrap-padder">
 		<h2>Favorite guide</h2>
 
+		<p *ngIf="! gameMode || ! champion">Select champion and game mode for view and create guide</p>
+
 		<app-guide-display *ngIf="favoriteGuideId && champion" [gameMode]="gameMode" [champion]="champion"></app-guide-display>
 
 		<div *ngIf="champion && gameMode">
-			<h2>Availables guides for {{champion.name}} in {{gameMode}}</h2>
+			<h2>
+				Availables guides for {{champion.name}} in {{gameMode}}
+				<a routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
+			</h2>
 
-			<a routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
 
 			<table>
-				<tr>
-					<th>Modified date</th>
-					<th>Author name</th>
-					<th>Version</th>
-					<th>Region</th>
-					<th>Actions</th>
-				</tr>
-				<tr *ngFor="let guide of guides">
-					<td>{{guide.modifiedData}}</td>
-					<td>{{guide.author.pseudo}}</td>
-					<td>{{guide.version}}</td>
-					<td>{{guide.region}}</td>
-					<td>
-						<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
-					</td>
-				</tr>
+				<thead>
+					<tr>
+						<th style="width: 20%;">Modified date</th>
+						<th>Author name</th>
+						<th>Version</th>
+						<th>Build</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr *ngFor="let guide of guides">
+						<td>{{guide.modifiedData | date:'medium'}}</td>
+						<td>{{guide.author.pseudo}}</td>
+						<td>{{guide.version}}</td>
+						<td><app-build-display [guide]="guide"></app-build-display></td>
+						<td>
+							<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
+						</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>

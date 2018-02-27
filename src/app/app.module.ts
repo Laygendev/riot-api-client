@@ -25,6 +25,7 @@ import { SearchComponent } from './components/search/search.component';
 import { GuideComponent } from './components/guide/guide.component';
 import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
 import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
+import { AppBuildDisplayComponent } from './components/app-build-display/app-build-display.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -38,7 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 		GuideDisplayComponent,
     DropdownDirective,
     SearchDirective,
-    TooltipDirective
+    TooltipDirective,
+    AppBuildDisplayComponent
   ],
   imports: [
     BrowserModule,

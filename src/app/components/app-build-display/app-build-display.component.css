@@ -1,0 +1,25 @@
+
+.cases-container {
+	display: flex;
+}
+
+.favorite-build .cases {
+	margin-right: 2%;
+	display: flex;
+	padding: 0;
+	padding-top: 10px;
+}
+
+.favorite-build .cases li {
+	margin-left: 10px;
+	width: 32px;
+	height: 32px;
+	list-style: none;
+	border: dashed #646464 1px;
+	padding: 0;
+}
+
+.favorite-build .cases li img {
+	width: 32px;
+	height: 32px;
+}
