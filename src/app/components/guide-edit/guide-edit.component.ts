@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data/data.service';
@@ -24,9 +23,6 @@ export class GuideEditComponent implements OnInit {
 	public guide: GuideModel;
 
 	public updatedBuild: boolean = false;
-	public userForm: FormGroup;
-	public email: FormControl;
-	public pseudo: FormControl;
 
 	constructor(
 		public route: ActivatedRoute,
@@ -36,8 +32,7 @@ export class GuideEditComponent implements OnInit {
 	) {
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
-		this.createFormControls();
-		this.createForm();
+
 
 		this.guide = new GuideModel();
 
@@ -58,18 +53,6 @@ export class GuideEditComponent implements OnInit {
 	ngOnInit(): void {
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
-	}
-
-	createFormControls(): void {
-		this.email  = new FormControl('', Validators.required);
-		this.pseudo = new FormControl('', Validators.required);
-	}
-
-	createForm(): void {
-		this.userForm = new FormGroup({
-			email: this.email,
-			pseudo: this.pseudo
-		});
 	}
 
 	getGuide(): void {
@@ -122,17 +105,6 @@ export class GuideEditComponent implements OnInit {
 		this.httpGuideService.post(this.guide).subscribe((data) => {
 			this.guide = new GuideModel(data);
 			this.updatedBuild = true;
-		});
-	}
-
-	registerUser(): void {
-		let userModel: UserModel = new UserModel(this.userForm.value);
-
-		this.httpUserService.post(userModel).subscribe((data) => {
-			this.guide.authorId = data._id;
-			this.httpGuideService.put(this.guide).subscribe((data) => {
-
-			});
 		});
 	}
 
