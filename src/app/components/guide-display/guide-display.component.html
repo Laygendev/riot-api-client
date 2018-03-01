@@ -4,8 +4,6 @@
 		<a routerLink="/guide/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
 	</div>
 
-	<span class="right"><a class="underline" *ngIf="favoriteGuide._id" routerLink="/guide/{{favoriteGuide._id}}"><i class="fas fa-edit"></i> Edit this guide</a></span>
-
 	<h3 *ngIf="favoriteChampion">
 		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}}</span>
 	</h3>

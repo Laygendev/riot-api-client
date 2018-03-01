@@ -77,9 +77,10 @@
 		<div *ngIf="champion && gameMode">
 			<h2>
 				Availables guides for {{champion.name}} in {{gameMode}}
-				<a routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
+				<a *ngIf="dataService.user" routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
 			</h2>
 
+			<p *ngIf="!dataService.user">You need to be <a routerLink="/authentication">connected</a> for create a new guide</p>
 
 			<table>
 				<thead>
@@ -88,19 +89,15 @@
 						<th>Author name</th>
 						<th>Version</th>
 						<th>Build</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<tr *ngFor="let guide of guides">
 						<td>{{guide.modifiedData | date:'medium'}}</td>
-						<td>{{guide.author.pseudo}}</td>
+						<td><span ngIf="guide.author">{{guide.author.pseudo}}</span></td>
 						<td>{{guide.version}}</td>
 						<td><app-build-display [guide]="guide"></app-build-display></td>
-						<td>
-							<a routerLink="/guide/{{guide._id}}"><i class="fas fa-edit"></i>Edit</a>
-						</td>
 					</tr>
 				</tbody>
 			</table>

@@ -39,4 +39,9 @@ export class AppComponent implements AfterViewInit {
 			}
 		});
 	}
+
+	logout(): void {
+		window.localStorage.removeItem('user');
+		this.dataService.user = undefined;
+	}
 }
