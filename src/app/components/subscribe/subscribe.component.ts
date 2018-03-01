@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { UserModel } from './../../models/user.model';
 
@@ -10,35 +10,25 @@ import { HttpUserService } from './../../services/httpUser/http-user.service';
   templateUrl: './subscribe.component.html',
   styleUrls: ['./subscribe.component.css']
 })
-export class SubscribeComponent implements OnInit {
+export class SubscribeComponent {
 
 	public userForm: FormGroup;
-	public mail: FormControl;
-	public pseudo: FormControl;
-	public password: FormControl;
-	public repeatPassword: FormControl;
+	public errorMessage: string;
 
   constructor(
-		public httpUserService: HttpUserService) {
-		this.createFormControls();
+		public httpUserService: HttpUserService,
+		private fb: FormBuilder) {
 		this.createForm();
 	}
 
-	ngOnInit() {}
-
-	createFormControls(): void {
-		this.mail  = new FormControl('', [this.checkMail]);
-		this.pseudo = new FormControl('', Validators.required);
-		this.password = new FormControl('', [Validators.required, this.checkPassword]);
-		this.repeatPassword = new FormControl('', [Validators.required, this.checkPassword]);
-	}
-
 	createForm(): void {
-		this.userForm = new FormGroup({
-			mail: this.mail,
-			pseudo: this.pseudo,
-			password: this.password,
-			repeatPassword: this.repeatPassword
+		this.userForm = this.fb.group({
+			mail: ['latour.jimmy@gmail.com', [this.checkMail]],
+			pseudo: ['Laygen', [Validators.minLength(5)]],
+			passwords: this.fb.group({
+				password: ['mxlaser9', [Validators.minLength(5)]],
+				repeatPassword: ['mxlaser9'],
+			}, {validator: this.checkRepeatPassword})
 		});
 	}
 
@@ -46,28 +36,34 @@ export class SubscribeComponent implements OnInit {
 		return Validators.email(c);
 	}
 
-	checkPassword(control: FormControl): any {
-		if ( ! control.parent ) {
-			return {
-				passwordEquals: true
-			};
+	checkRepeatPassword(c: AbstractControl): { invalid: boolean } {
+		if (c.get('password').value !== c.get('repeatPassword').value) {
+			return {invalid: true};
 		}
-
-		// if ( control.parent.controls.password.value == control.parent.controls.repeatPassword.value ) {
-		// 	return {
-		// 		passwordEquals: true
-		// 	};
-		// }
-
-		return {
-			passwordEquals: false
-		};
 	}
 
-	registerUser(): void {
-		let userModel: UserModel = new UserModel(this.userForm.value);
 
-		this.httpUserService.post(userModel).subscribe((data) => {});
+	prepareSaveUser(): UserModel {
+		const formModel = this.userForm.value;
+		var dataModel = {
+			mail: formModel.mail,
+			pseudo: formModel.pseudo,
+			password: formModel.passwords.password
+		};
+
+		var userData: UserModel = new UserModel(dataModel);
+
+    return userData;
+  }
+
+	onSubmit(): void {
+		let userModel: UserModel = this.prepareSaveUser();
+
+		this.httpUserService.post(userModel).subscribe((data) => {
+			if ( data.errors ) {
+				this.errorMessage = data.message;
+			}
+		});
 	}
 
 }

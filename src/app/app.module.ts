@@ -27,6 +27,7 @@ import { GuideEditComponent } from './components/guide-edit/guide-edit.component
 import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
 import { AppBuildDisplayComponent } from './components/app-build-display/app-build-display.component';
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -42,7 +43,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SearchDirective,
     TooltipDirective,
     AppBuildDisplayComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,

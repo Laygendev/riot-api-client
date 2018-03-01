@@ -1,7 +1,7 @@
 export class UserModel {
 	public _id: string;
-	public email: string;
-	public pwd: string;
+	public mail: string;
+	public password: string;
 	public pseudo: string;
 
 

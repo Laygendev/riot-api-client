@@ -25,8 +25,12 @@ export class HttpUserService {
 	public post(data: UserModel): Observable<any> {
 		let url: string = "http://164.132.69.238:3002/user/";
 
-		let user: UserModel = new UserModel(data);
+		return this.httpClient.post( url, data, {responseType: 'json'} );
+	}
 
-		return this.httpClient.post( url, user, {responseType: 'json'} );
+	public auth(data: UserModel): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/user/auth";
+
+		return this.httpClient.post( url, data, {responseType: 'json'} );
 	}
 }

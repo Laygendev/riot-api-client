@@ -12,10 +12,6 @@
 				</li>
 				<li>Subscribe</li>
 			</ul>
-
-			<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-				{{errorMessage}}
-			</div>
 		</div>
 	</div>
 </section>
@@ -23,44 +19,45 @@
 <section class="page-secondary">
 
 	<div class="wrap-padder">
-		<form [formGroup]="userForm" (ngSubmit)="registerUser()" novalidate>
-				<div class="form-group">
-					<label for="mail">Email address</label>
-					<input
-								type="email"
-								 class="form-control"
-								 id="mail"
-								 aria-describedby="mailHelp"
-								 formControlName="mail">
-					<small id="mailHelp" class="form-text text-muted">You're email is not displayed or used anywhere</small>
-					<p class="red" *ngIf="mail.errors.email">*Email is not valid.</p>
-				</div>
+		<form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+			<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+				{{errorMessage}}
+			</div>
 
-				{{mail.errors | json}}
-				<div class="form-group">
-					<label for="pseudo">Pseudo</label>
-					<input
-								 class="form-control"
-								 id="pseudo"
-								 formControlName="pseudo">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password"
-								 class="form-control"
-								 id="password"
-								 formControlName="password">
-				</div>
-				<div class="form-group">
-					<label for="password">Confirm password</label>
-					<input class="form-control"
-									type="password"
-									formControlName="repeatPassword">
-					<p class="red" *ngIf="! repeatPassword.errors.passwordEquals && ! password.errors.passwordEquals">*Password and repeat password is different.</p>
-				</div>
+			<div class="form-group">
+				<label for="mail">Email address</label>
+				<input
+							 class="form-control"
+							 id="mail"
+							 aria-describedby="mailHelp"
+							 formControlName="mail">
+				<small id="mailHelp" class="form-text text-muted">You're email is not displayed or used anywhere</small>
+				<div class="red" *ngIf="userForm.get('mail').errors?.email">Email not valid.</div>
+			</div>
 
-				<button type="submit"
-								[disabled]="userForm.status == 'INVALID'" class="btn btn-primary" type="button">Confirm</button>
+			<div class="form-group">
+				<label for="pseudo">Pseudo (Min length 5)</label>
+				<input class="form-control"
+							 formControlName="pseudo">
+				<div class="red" *ngIf="userForm.get('pseudo').errors?.minlength">Pseudo need to be 5 characters more</div>
+			</div>
+
+			<div class="form-group" formGroupName="passwords">
+				<label for="password">Password (Min length 5)</label>
+				<input type="password"
+							 class="form-control"
+							 id="password"
+							 formControlName="password">
+				<div class="red" *ngIf="userForm.get(['passwords', 'password']).errors?.minlength">Password need to be 5 characters more</div>
+				<label for="password">Confirm password</label>
+				<input class="form-control"
+								type="password"
+								formControlName="repeatPassword">
+				<div class="red" *ngIf="userForm.get('passwords').errors?.invalid">Password does not match</div>
+			</div>
+
+			<button type="submit"
+							class="btn btn-primary">Subscribe</button>
 		</form>
 	</div>
 </section>

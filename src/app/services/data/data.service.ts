@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
+import { UserModel } from '../../models/user.model';
 
 import { HttpClient } from '@angular/common/http';
 import { StaticDataService } from './../staticData/static-data.service';
@@ -13,6 +14,7 @@ export class DataService {
 	public summonerData;
 	public spetactorData;
 	public champions: Array<ChampionModel> = new Array<ChampionModel>();
+	public user: UserModel;
 	public items: Array<ItemModel> = new Array<ItemModel>();
 	public inited: boolean = false;
 	public loading: boolean = false;
@@ -26,6 +28,10 @@ export class DataService {
 	}
 
 	init(): void {
+
+		if ( window.localStorage.getItem("user") ) {
+			this.user = new UserModel(JSON.parse(window.localStorage.getItem("user")));
+		}
 		this.httpClient.get("./assets/json/champions.json").subscribe((data) => {
 			for (let key in data) {
 				this.champions.push(new ChampionModel(data[key]));
