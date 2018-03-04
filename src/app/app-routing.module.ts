@@ -7,6 +7,8 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
 import { GuideComponent } from './components/guide/guide.component';
 import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
+import { AccountComponent } from './components/account/account.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
 	{ path: '', component: SearchComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
 	{ path: 'guide', component: GuideComponent },
 	{ path: 'guide/:guideId', component: GuideEditComponent },
 	{ path: 'guide/:gameMode/:championId', component: GuideEditComponent },
+	{ path: 'account', component: AccountComponent },
+	{ path: 'admin', component: AdminComponent },
 ];
 
 @NgModule({

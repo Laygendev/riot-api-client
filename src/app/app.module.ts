@@ -28,7 +28,8 @@ import { GuideDisplayComponent } from './components/guide-display/guide-display.
 import { AppBuildDisplayComponent } from './components/app-build-display/app-build-display.component';
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-
+import { AccountComponent } from './components/account/account.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -45,7 +46,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TooltipDirective,
     AppBuildDisplayComponent,
     SubscribeComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    AccountComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

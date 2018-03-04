@@ -95,7 +95,7 @@
 				<tbody>
 					<tr *ngFor="let guide of guides">
 						<td>{{guide.modifiedData | date:'medium'}}</td>
-						<td><span ngIf="guide.author">{{guide.author.pseudo}}</span></td>
+						<td>{{guide.author.pseudo}}</td>
 						<td>{{guide.version}}</td>
 						<td><app-build-display [guide]="guide"></app-build-display></td>
 					</tr>

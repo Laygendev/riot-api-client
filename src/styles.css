@@ -169,6 +169,7 @@ header .sub-content ul li {
 }
 
 header .dropdown-menu ul {
+	display: list-item;
 	padding: 0;
 }
 

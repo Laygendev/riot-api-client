@@ -12,16 +12,30 @@ import { HttpClient } from '@angular/common/http';
 export class HttpGuideService {
 	constructor(private httpClient: HttpClient) {}
 
-	public get(args: any): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/guide/" + args.gameMode + "/" + args.championId;
+	public get(args?: any): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/guide/";
 
-		if ( args._id ) {
+		if ( args && args.gameMode && args.championId ) {
+			url += args.gameMode + "/" + args.championId;
+		}
+
+		if ( args && args._id ) {
 			url = "http://164.132.69.238:3002/guide/" + args._id;
 		}
 
-		if ( args.favorite ) {
+		if ( args && args.favorite ) {
 			url += '/true';
 		}
+
+		if ( ! args ) {
+			url = "http://164.132.69.238:3002/guides";
+		}
+
+		return this.httpClient.get( url, {responseType: 'json'} );
+	}
+
+	public getByAuthorId(authorId: string): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/guide/author/" + authorId;
 
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}

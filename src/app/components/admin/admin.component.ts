@@ -1,0 +1,45 @@
+import { Component, OnInit } from '@angular/core';
+
+import { DataService } from './../../services/data/data.service';
+import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
+
+import { GuideModel } from './../../models/guide.model';
+
+@Component({
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
+})
+export class AdminComponent implements OnInit {
+	public routerActive = 'account';
+	public guides: Array<GuideModel> = new Array<GuideModel>();
+
+  constructor(
+		public dataService: DataService,
+		public httpGuideService: HttpGuideService
+	) { }
+
+  ngOnInit() {
+		this.httpGuideService.get().subscribe((data) => {
+			if (data) {
+				for ( let key in data ) {
+					let tmpGuide: GuideModel = new GuideModel(data[key]);
+					this.guides.push(tmpGuide);
+				}
+			}
+		});
+  }
+
+	switchRouter(router: string) {
+		this.routerActive = router;
+	}
+
+	toPublish(guide: GuideModel): void {
+		guide.state = 'publish';
+		
+		this.httpGuideService.put(guide).subscribe((data) => {
+
+		});
+	}
+
+}

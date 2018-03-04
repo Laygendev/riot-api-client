@@ -21,6 +21,7 @@ export class GuideEditComponent implements OnInit {
 	public params: any;
 	public champion: ChampionModel;
 	public guide: GuideModel;
+	public items: Array<ItemModel> = new Array<ItemModel>();
 
 	public updatedBuild: boolean = false;
 
@@ -33,8 +34,8 @@ export class GuideEditComponent implements OnInit {
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
 
-
 		this.guide = new GuideModel();
+		this.guide.author = this.dataService.user._id;
 
 		this.route.params.subscribe(params => {
 			this.params = params;
@@ -42,6 +43,10 @@ export class GuideEditComponent implements OnInit {
 			if ( params.championId && params.gameMode ) {
 				this.guide.championId = params.championId;
 				this.guide.gameMode = params.gameMode;
+
+				if (! this.items.length) {
+					this.items = this.dataService.getItemByMode(this.guide.gameMode);
+				}
 
 				this.champion = this.dataService.getChampionById(params.championId);
 			}
@@ -73,6 +78,12 @@ export class GuideEditComponent implements OnInit {
 
 				if ( this.guide.championId > 0 ) {
 					this.champion = this.dataService.getChampionById(this.guide.championId);
+				}
+
+				if ( this.guide.gameMode ) {
+					if (! this.items.length) {
+						this.items = this.dataService.getItemByMode(this.guide.gameMode);
+					}
 				}
 
 				for (let key in this.guide.starterItemsSlotId) {

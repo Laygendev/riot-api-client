@@ -1,0 +1,65 @@
+<section class="sub-header background">
+
+	<div class="sub-header-content">
+		<div class="wrap-padder">
+
+			<h2 class="big-title">My Account</h2>
+
+			<ul class="arianne">
+				<li>
+					<a routerLink="/">Home</a>
+					<i class="fas fa-arrow-right"></i>
+				</li>
+				<li>My Account</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="page-secondary">
+
+	<div class="wrap-padder">
+		<ul class="left-menu">
+			<li [class.active]="routerActive == 'account'"><a (click)="switchRouter('account')">Account</a></li>
+			<li [class.active]="routerActive == 'guides'"><a (click)="switchRouter('guides')">Guides</a></li>
+		</ul>
+
+		<div class="content">
+			<div *ngIf="routerActive == 'account'">
+				<h3>My Account</h3>
+
+				<h4>Change my Password</h4>
+
+				<h4>Delete my Account</h4>
+			</div>
+
+			<div *ngIf="routerActive == 'guides'">
+				<h3>My Guides</h3>
+
+				<table>
+					<thead>
+						<tr>
+							<th style="width: 20%;">Modified date</th>
+							<th>Author name</th>
+							<th>State</th>
+							<th>Version</th>
+							<th>Build</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngFor="let guide of guides">
+							<td>{{guide.modifiedData | date:'medium'}}</td>
+							<td>{{guide.author.pseudo}}</td>
+							<td>{{guide.state}}</td>
+							<td>{{guide.version}}</td>
+							<td><app-build-display [guide]="guide"></app-build-display></td>
+							<td><a routerLink="/guide/{{guide._id}}">Edit</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>

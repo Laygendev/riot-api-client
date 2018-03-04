@@ -19,7 +19,7 @@
 					<li *ngFor="let starterItem of starterItems">
 						<ng-template #itemTemplate>
 							<div class="container">
-								<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" /></div>
+								<div class="img"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{starterItem.iconPath}}" /></div>
 								<div>
 									<strong>{{starterItem.name}}</strong>
 									<p [innerHTML]="starterItem.description"></p>
@@ -27,7 +27,7 @@
 							</div>
 						</ng-template>
 
-						<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="starterItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{starterItem.image.full}}" />
+						<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="starterItem" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{starterItem.iconPath}}" />
 					</li>
 				</ul>
 
@@ -36,7 +36,7 @@
 
 						<ng-template #itemTemplate>
 							<div class="container">
-								<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" /></div>
+								<div class="img"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{buildItem.iconPath}}" /></div>
 								<div>
 									<strong>{{buildItem.name}}</strong>
 									<p [innerHTML]="buildItem.description"></p>
@@ -44,7 +44,7 @@
 							</div>
 						</ng-template>
 
-						<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{buildItem.image.full}}" />
+						<img placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" *ngIf="buildItem" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{buildItem.iconPath}}" />
 					</li>
 				</ul>
 			</div>

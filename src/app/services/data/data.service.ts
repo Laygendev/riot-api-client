@@ -76,4 +76,16 @@ export class DataService {
 
 		return null;
 	}
+
+	getItemByMode(gameMode: any): Array<ItemModel> {
+		let items: Array<ItemModel> = new Array<ItemModel>();
+
+		for (let key in this.items) {
+			if ( this.items[key].modeNameInclusions.indexOf(gameMode) > -1 ) {
+				items.push(this.items[key]);
+			}
+		}
+
+		return items;
+	}
 }

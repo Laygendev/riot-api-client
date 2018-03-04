@@ -33,7 +33,7 @@ export class AppComponent implements AfterViewInit {
 				event instanceof NavigationEnd ||
 				event instanceof NavigationCancel
 			) {
-				if( '/' == event.url || '/guide' == event.url || '/subscribe' == event.url || '/authentication' == event.url ) {
+				if( '/' == event.url || '/guide' == event.url || '/admin' == event.url || '/subscribe' == event.url || '/authentication' == event.url || '/account' == event.url ) {
 					this.dataService.loading = false;
 				}
 			}

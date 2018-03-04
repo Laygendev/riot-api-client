@@ -3,7 +3,7 @@ export class UserModel {
 	public mail: string;
 	public password: string;
 	public pseudo: string;
-
+	public roles: string[];
 
 	constructor(fields?: any) {
 		for (var f in fields) {

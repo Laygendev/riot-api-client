@@ -16,7 +16,6 @@ export class GuideModel {
 	public version: string;
 	public createdDate: string;
 	public modifiedDate: string;
-	public region: string;
 
 	constructor(fields?: any) {
 		this.starterItemsSlot = new Array<ItemSlotModel>();
@@ -30,8 +29,8 @@ export class GuideModel {
 			this.buildItemsSlot.push( new ItemSlotModel() );
 		}
 
-		this.starterItemsSlotId = new Array<Number>(0, 0);
-		this.buildItemsSlotId   = new Array<Number>(0, 0, 0, 0, 0, 0);
+		this.starterItemsSlotId = new Array<Number>(-1, -1);
+		this.buildItemsSlotId   = new Array<Number>(-1, -1, -1, -1, -1, -1);
 
 		for (var f in fields) {
 			this[f] = fields[f];

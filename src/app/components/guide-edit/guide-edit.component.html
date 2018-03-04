@@ -7,42 +7,10 @@
 			<div *ngIf="updatedBuild">
 				<h2>Guide created with success !</h2>
 
-				<div *ngIf="guide.authorId">
-					<p>Edit successfull</p>
-				</div>
-
-				<div *ngIf="!guide.authorId">
-					<p>Complete this form able you to <strong>edit your guide.</strong></p>
-					<p>Also to be notified when your guide need to be updated to the next League of legends version</p>
-					<p>We don't use or sell your personal data. We make this application for passion and it's only what we need!</p>
-
-					<form [formGroup]="userForm" (ngSubmit)="registerUser()">
-							<div class="form-group">
-								<label for="email">Email address</label>
-								<input type="email"
-											 class="form-control"
-											 id="email"
-											 aria-describedby="emailHelp"
-											 placeholder="Enter email"
-											 formControlName="email"
-											 required>
-								<small id="emailHelp" class="form-text text-muted">You're email is not displayed or used anywhere</small>
-							</div>
-							<div class="form-group">
-								<label for="pseudo">Pseudo</label>
-								<input type="text"
-											 class="form-control"
-											 id="pseudo"
-											 placeholder="Pseudo"
-											 formControlName="pseudo"
-											 required>
-							</div>
-
-							<button type="submit" class="btn btn-primary" (click)="registerUser()" type="button">Confirm</button>
-					</form>
-				</div>
-
+				<p>Edit successfull</p>
+				<p>To edit your guide go to <a routerLink="/">"my guides"</a> page</p>
 				<a routerLink="/">Back to the home</a>
+
 			</div>
 
 			<div *ngIf="!updatedBuild">
@@ -79,7 +47,7 @@
 
 				<ng-template #itemTemplate>
 					<div *ngIf="itemSlot.item" class="container">
-						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" /></div>
+						<div class="img"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{itemSlot.item.iconPath}}" /></div>
 						<div>
 							<strong>{{itemSlot.item.name}}</strong>
 							<p [innerHTML]="itemSlot.item.description"></p>
@@ -90,7 +58,7 @@
 				</ng-template>
 
 				<button placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" appDropdown ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" />
+					<img *ngIf="itemSlot.item" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{itemSlot.item.iconPath}}" />
 				</button>
 
 				<div class="dropdown-menu" ngbDropdownMenu>
@@ -98,11 +66,11 @@
 						<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
 					</div>
 					<ul>
-						<li class="item" *ngFor="let item of dataService.items">
+						<li class="item" *ngFor="let item of items">
 
 							<ng-template #itemTemplate>
 								<div class="container">
-									<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" /></div>
+									<div class="img"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{item.iconPath}}" /></div>
 									<div>
 										<strong>{{item.name}}</strong>
 										<p [innerHTML]="item.description"></p>
@@ -110,7 +78,7 @@
 								</div>
 							</ng-template>
 							<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('starterItemsSlot', i, item)">
-								<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" />
+								<img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{item.iconPath}}" />
 								<span style="visibility: hidden">{{item.name}}</span>
 							</div>
 						</li>
@@ -119,7 +87,7 @@
 			</div>
 		</div>
 
-		<h2>Best guide</h2>
+		<h2>Best build</h2>
 
 		<p>Clic on slot for open dropdown with all items of current map.</p>
 		<p>Clic on item for assign him to the current slot.</p>
@@ -129,7 +97,7 @@
 
 				<ng-template #itemTemplate>
 					<div *ngIf="itemSlot.item" class="container">
-						<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" /></div>
+						<div class="img"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{itemSlot.item.iconPath}}" /></div>
 						<div>
 							<strong>{{itemSlot.item.name}}</strong>
 							<p [innerHTML]="itemSlot.item.description"></p>
@@ -140,7 +108,7 @@
 				</ng-template>
 
 				<button placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" appDropdown ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img *ngIf="itemSlot.item" src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{itemSlot.item.image.full}}" />
+					<img *ngIf="itemSlot.item" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{itemSlot.item.iconPath}}" />
 				</button>
 
 				<div class="dropdown-menu" ngbDropdownMenu>
@@ -148,11 +116,11 @@
 						<input appSearch class="form-control form-control-lg" type="text" placeholder="Search by item name">
 					</div>
 					<ul>
-						<li class="item" *ngFor="let item of dataService.items">
+						<li class="item" *ngFor="let item of items">
 
 							<ng-template #itemTemplate>
 								<div class="container">
-									<div class="img"><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" /></div>
+									<div class="img"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{item.iconPath}}" /></div>
 									<div>
 										<strong>{{item.name}}</strong>
 										<p [innerHTML]="item.description"></p>
@@ -160,7 +128,7 @@
 								</div>
 							</ng-template>
 							<div placement="top" data-toggle="tooltip" [ngbTooltip]="itemTemplate" container="body" (click)="selectItem('buildItemsSlot', i, item)">
-								<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/item/{{item.image.full}}" />
+								<img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{{item.iconPath}}" />
 								<span style="visibility: hidden">{{item.name}}</span>
 							</div>
 						</li>
