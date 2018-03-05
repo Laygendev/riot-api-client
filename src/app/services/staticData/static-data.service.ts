@@ -24,4 +24,8 @@ export class StaticDataService {
 		let url: string = "http://164.132.69.238:3002/realms";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
+
+	public getRegions(): Observable<any> {
+		return this.httpClient.get("./assets/json/regions.json", { responseType: 'json'});
+	}
 }

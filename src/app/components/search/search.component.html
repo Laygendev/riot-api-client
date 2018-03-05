@@ -18,6 +18,11 @@
 						<button type="submit" class="btn btn-primary" (click)="onSubmit()" type="button"><i class="fas fa-search"></i></button>
 					</div>
 				</div>
+				<ul class="regions">
+					<li *ngFor="let region of dataService.regions">
+						<button type="button" [class.btn-primary]="currentRegion == region" [class.btn-secondary]="currentRegion != region" (click)="switchRegion(region)" class="btn">{{region}}</button>
+					</li>
+				</ul>
 			</form>
 		</div>
 	</div>
@@ -49,16 +54,6 @@
 					<p>and help other summoner to be a hero</p>
 				</div>
 			</div>
-		</div>
-
-		<div>
-			<h2>Last created guides</h2>
-
-			<ul>
-				<li>
-					Empty
-				</li>
-			</ul>
 		</div>
 	</div>
 </section>

@@ -98,7 +98,10 @@
 					<tr *ngFor="let guide of guides">
 						<ng-container *ngIf="! guide.favorite">
 							<td>{{guide.modifiedData | date:'medium'}}</td>
-							<td>{{guide.author.pseudo}}</td>
+							<td>
+								<span *ngIf="guide.author">{{guide.author.pseudo}}</span>
+								<span *ngIf="!guide.author">Deleted user</span>
+							</td>
 							<td>{{guide.version}}</td>
 							<td><app-build-display [guide]="guide"></app-build-display></td>
 							<td>{{guide.vote}}</td>

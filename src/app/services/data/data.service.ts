@@ -20,6 +20,7 @@ export class DataService {
 	public loading: boolean = false;
 	public waitComponentLoad: boolean = false;
 	public realms: any;
+	public regions: Array<String>;
 
 	constructor(
 		private httpClient: HttpClient,
@@ -48,7 +49,11 @@ export class DataService {
 				this.staticDataService.getRealms().subscribe((data) => {
 					this.realms = data;
 
-					this.inited = true;
+					this.staticDataService.getRegions().subscribe((data) => {
+						this.regions = data;
+						
+						this.inited = true;
+					});
 				});
 			});
 

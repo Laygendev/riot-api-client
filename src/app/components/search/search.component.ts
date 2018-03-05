@@ -19,6 +19,7 @@ export class SearchComponent {
 
 	public searchForm: FormGroup;
 	public summonerName: FormControl;
+	public currentRegion: string = 'EUW';
 
 	public loaded: false;
 
@@ -41,6 +42,10 @@ export class SearchComponent {
 		this.searchForm = new FormGroup({
 			summonerName: this.summonerName
 		});
+	}
+
+	switchRegion(region: string): void {
+		this.currentRegion = region;
 	}
 
 	/**
