@@ -46,12 +46,16 @@ export class SummonerDetailsComponent  {
 				});
 			});
 		} else {
-			this.getSpectator();
+			this.route.params.subscribe(param => {
+				this.summonerName = param.id;
+				this.currentRegion = param.region;
+				this.getSpectator();
+			});
 		}
 	}
 
 	getSpectator() {
-		this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
+		this.httpSpectatorService.get(this.dataService.summonerData.id, this.currentRegion).subscribe((data) => {
 			if ( data && data.status && data.status.status_code != 200 ) {
 				this.errorMessage = data.status.status_code + ' ' + 'This summoner is not in a match for now.';
 			} else {

@@ -20,7 +20,9 @@ export class DataService {
 	public loading: boolean = false;
 	public waitComponentLoad: boolean = false;
 	public realms: any;
-	public regions: Array<String>;
+	public regions: any;
+	public userLang: any = navigator.language || navigator.userLanguage;
+	public currentRegion: string = 'euw1';
 
 	constructor(
 		private httpClient: HttpClient,
@@ -51,7 +53,18 @@ export class DataService {
 
 					this.staticDataService.getRegions().subscribe((data) => {
 						this.regions = data;
-						
+
+						for (let key in this.regions) {
+							if (this.regions[key].langs.indexOf(this.userLang) != -1) {
+								this.currentRegion = this.regions[key].slug;
+								break;
+							}
+						}
+
+						if ( ! this.currentRegion ) {
+							this.currentRegion = 'euw1';
+						}
+
 						this.inited = true;
 					});
 				});

@@ -19,7 +19,6 @@ export class SearchComponent {
 
 	public searchForm: FormGroup;
 	public summonerName: FormControl;
-	public currentRegion: string = 'EUW';
 
 	public loaded: false;
 
@@ -45,7 +44,7 @@ export class SearchComponent {
 	}
 
 	switchRegion(region: string): void {
-		this.currentRegion = region;
+		this.dataService.currentRegion = region;
 	}
 
 	/**
@@ -62,18 +61,18 @@ export class SearchComponent {
 	 * @return void.
 	 */
 	onSubmit(): void {
-		this.httpSummonerService.get(this.searchForm.value.summonerName).subscribe((data) => {
+		this.httpSummonerService.get(this.searchForm.value.summonerName, this.dataService.currentRegion).subscribe((data) => {
 			if ( data.status && 200 !== data.status.status_code) {
 				this.errorMessage = data.status.status_code + ' ' + data.status.message;
 			} else {
 				let summonerData = new SummonerModel(data);
 				this.dataService.summonerData = summonerData;
 
-				this.httpSpectatorService.get(this.dataService.summonerData.id).subscribe((data) => {
+				this.httpSpectatorService.get(this.dataService.summonerData.id, this.dataService.currentRegion).subscribe((data) => {
 					if ( data.status && 200 !== data.status.status_code) {
 						this.errorMessage = data.status.status_code + ' ' + 'This summoner ' + this.searchForm.value.summonerName + ' is not in a match for now.';
 					} else {
-						this.router.navigate(['/summoner/' + this.currentRegion + '/' + this.searchForm.value.summonerName]);
+						this.router.navigate(['/summoner/' + this.dataService.currentRegion + '/' + this.searchForm.value.summonerName]);
 					}
 				});
 

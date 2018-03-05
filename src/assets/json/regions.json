@@ -1,12 +1,69 @@
-{
-	"na": "NA",
-	"euw1": "EUW",
-	"eune": "EUNE",
-	"br": "BR",
-	"tr": "TR",
-	"ru": "RU",
-	"lan": "LAN",
-	"oce": "OCE",
-	"kr": "KR",
-	"jp": "JP",
-}
+[
+	{
+		"name": "NA",
+		"slug": "na",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "EUW",
+		"slug": "euw1",
+		"langs": [
+			"fr"
+		]
+	},
+	{
+		"name": "EUNE",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "BR",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "TR",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "RU",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "LAN",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "OCE",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "KR",
+		"slug": "",
+		"langs": [
+
+		]
+	},
+	{
+		"name": "JP",
+		"slug": ""
+	}
+]

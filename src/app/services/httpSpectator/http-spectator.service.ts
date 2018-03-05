@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class HttpSpectatorService {
 	constructor(private httpClient: HttpClient) {}
 
-	public get(summonerId: number): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/spectator/" + summonerId;
+	public get(summonerId: number, region: string): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/spectator/" + region + "/" + summonerId;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }

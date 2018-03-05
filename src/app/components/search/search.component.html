@@ -20,7 +20,7 @@
 				</div>
 				<ul class="regions">
 					<li *ngFor="let region of dataService.regions">
-						<button type="button" [class.btn-primary]="currentRegion == region" [class.btn-secondary]="currentRegion != region" (click)="switchRegion(region)" class="btn">{{region}}</button>
+						<button type="button" [class.btn-primary]="dataService.currentRegion == region.slug" [class.btn-secondary]="dataService.currentRegion != region.slug" (click)="switchRegion(region.slug)" class="btn">{{region.name}}</button>
 					</li>
 				</ul>
 			</form>
