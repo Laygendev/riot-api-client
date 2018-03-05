@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class HttpSummonerService {
 	constructor(private httpClient: HttpClient) {}
 
-	public get(summonerName: string): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/summoner/" + summonerName;
+	public get(summonerName: string, region: string): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/summoner/" + region + "/" + summonerName;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }

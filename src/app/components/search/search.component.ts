@@ -73,7 +73,7 @@ export class SearchComponent {
 					if ( data.status && 200 !== data.status.status_code) {
 						this.errorMessage = data.status.status_code + ' ' + 'This summoner ' + this.searchForm.value.summonerName + ' is not in a match for now.';
 					} else {
-						this.router.navigate(['/summoner/' + this.searchForm.value.summonerName]);
+						this.router.navigate(['/summoner/' + this.currentRegion + '/' + this.searchForm.value.summonerName]);
 					}
 				});
 

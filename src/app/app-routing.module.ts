@@ -14,7 +14,7 @@ const routes: Routes = [
 	{ path: '', component: SearchComponent },
 	{ path: 'subscribe', component: SubscribeComponent },
 	{ path: 'authentication', component: AuthenticationComponent },
-	{ path: 'summoner/:id', component: SummonerDetailsComponent },
+	{ path: 'summoner/:region/:id', component: SummonerDetailsComponent },
 	{ path: 'guide', component: GuideComponent },
 	{ path: 'guide/:guideId', component: GuideEditComponent },
 	{ path: 'guide/:gameMode/:championId', component: GuideEditComponent },

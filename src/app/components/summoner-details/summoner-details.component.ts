@@ -23,6 +23,7 @@ export class SummonerDetailsComponent  {
 	public myChampion: ChampionModel = null;
 	public myParticipant: ParticipantModel;
 	public summonerName: string;
+	public currentRegion: string;
 	public errorMessage: string = '';
 
 	constructor(
@@ -35,7 +36,8 @@ export class SummonerDetailsComponent  {
 		if ( ! this.dataService.summonerData ) {
 			this.route.params.subscribe(param => {
 				this.summonerName = param.id;
-				this.httpSummonerService.get(param.id).subscribe((data) => {
+				this.currentRegion = param.region;
+				this.httpSummonerService.get(param.id, param.region).subscribe((data) => {
 					let summonerData = new SummonerModel(data);
 					this.dataService.summonerData = summonerData;
 
