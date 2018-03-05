@@ -12,6 +12,9 @@ import { StaticDataService } from './services/staticData/static-data.service';
 export class AppComponent implements AfterViewInit {
   title = 'app';
 
+	private urlAccepted: string[] = ['/', '/guide', '/admin', '/subscribe', '/authentication', '/account' ];
+	private urlAdmin: string[] = ['/admin'];
+
 	realms: any;
 
 	constructor(
@@ -33,7 +36,12 @@ export class AppComponent implements AfterViewInit {
 				event instanceof NavigationEnd ||
 				event instanceof NavigationCancel
 			) {
-				if( '/' == event.url || '/guide' == event.url || '/admin' == event.url || '/subscribe' == event.url || '/authentication' == event.url || '/account' == event.url ) {
+				if( this.urlAccepted.indexOf(event.url) != -1 ) {
+
+					if ( this.urlAdmin.indexOf(event.url) != -1 && ( this.dataService.user == undefined || ( this.dataService.user && this.dataService.user.roles.indexOf('administrator') == -1 ) ) ) {
+						this.router.navigate(['/']);
+					}
+
 					this.dataService.loading = false;
 				}
 			}

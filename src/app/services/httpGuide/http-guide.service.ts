@@ -40,6 +40,16 @@ export class HttpGuideService {
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 
+	public getFavorite(args?: any): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/guide-favorite/";
+
+		if ( args && args.gameMode && args.championId ) {
+			url += args.gameMode + "/" + args.championId;
+		}
+
+		return this.httpClient.get( url, {responseType: 'json'} );
+	}
+
 	public post(data: GuideModel): Observable<any> {
 		let url: string = "http://164.132.69.238:3002/guide/";
 
@@ -60,5 +70,16 @@ export class HttpGuideService {
 		delete build.buildItemsSlot;
 
 		return this.httpClient.put( url, build, {responseType: 'json'} );
+	}
+
+	public vote(guideId: string, userId: string): Observable<any> {
+		let url: string = "http://164.132.69.238:3002/vote/";
+
+		let data = {
+			_id: guideId,
+			userId: userId,
+		};
+
+		return this.httpClient.post( url, data, {responseType: 'json'} );
 	}
 }

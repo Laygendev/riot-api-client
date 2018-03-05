@@ -67,4 +67,10 @@ export class GuideComponent {
 			});
 		}
 	}
+
+	vote(guide: GuideModel): void {
+		this.httpGuideService.vote(guide._id, this.dataService.user._id).subscribe((data) => {
+
+		});
+	}
 }

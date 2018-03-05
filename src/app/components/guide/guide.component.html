@@ -89,15 +89,21 @@
 						<th>Author name</th>
 						<th>Version</th>
 						<th>Build</th>
+						<th>Vote</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<tr *ngFor="let guide of guides">
-						<td>{{guide.modifiedData | date:'medium'}}</td>
-						<td>{{guide.author.pseudo}}</td>
-						<td>{{guide.version}}</td>
-						<td><app-build-display [guide]="guide"></app-build-display></td>
+						<ng-container *ngIf="! guide.favorite">
+							<td>{{guide.modifiedData | date:'medium'}}</td>
+							<td>{{guide.author.pseudo}}</td>
+							<td>{{guide.version}}</td>
+							<td><app-build-display [guide]="guide"></app-build-display></td>
+							<td>{{guide.vote}}</td>
+							<td><a (click)="vote(guide)">Vote for favorite</a></td>
+						</ng-container>
 					</tr>
 				</tbody>
 			</table>

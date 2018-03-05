@@ -5,7 +5,7 @@
 	</div>
 
 	<h3 *ngIf="favoriteChampion">
-		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}}</span>
+		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}}</span><span *ngIf="favoriteGuide" class="vote">Favorite guide: {{favoriteGuide.vote}}</span>
 	</h3>
 
 	<div class="favorite-build" *ngIf="favoriteGuide">

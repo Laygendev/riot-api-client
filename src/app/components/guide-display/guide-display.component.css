@@ -22,6 +22,15 @@
 	font-weight: bold;
 }
 
+.build-container .vote {
+	width: 20px;
+	margin-left: 20px;
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	padding: 10px;
+	font-size: 0.8em;
+}
+
 .cases-container {
 	margin-top: 25px;
 	display: flex;

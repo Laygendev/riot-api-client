@@ -4,6 +4,7 @@ export class UserModel {
 	public password: string;
 	public pseudo: string;
 	public roles: string[];
+	public votes: any;
 
 	constructor(fields?: any) {
 		for (var f in fields) {

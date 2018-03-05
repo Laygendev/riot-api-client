@@ -53,7 +53,7 @@ export class GuideDisplayComponent implements OnInit {
 		this.favoriteChampion = this._champion;
 
 		if ( this._champion && this._gameMode ) {
-			this.httpGuideService.get({ championId: this._champion.id, gameMode: this._gameMode, favorite: true }).subscribe((data) => {
+			this.httpGuideService.getFavorite({ championId: this._champion.id, gameMode: this._gameMode }).subscribe((data) => {
 				if ( data ) {
 					let tmpGuide: GuideModel = new GuideModel(data);
 					this.favoriteGuide = tmpGuide;

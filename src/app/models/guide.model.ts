@@ -10,6 +10,7 @@ export class GuideModel {
 	public starterItemsSlotId: Array<Number>;
 	public buildItemsSlot: Array<ItemSlotModel>;
 	public buildItemsSlotId: Array<Number>;
+	public vote: number;
 	public author: string;
 	public gameMode: string;
 	public favorite: boolean;

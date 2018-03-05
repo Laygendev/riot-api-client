@@ -15,7 +15,6 @@ import { SummonerModel } from './../../models/summoner.model';
 	styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-	public serverStatus: any;
 	public errorMessage: string;
 
 	public searchForm: FormGroup;
@@ -32,9 +31,7 @@ export class SearchComponent {
 		private dataService: DataService) {
 			this.createFormControls();
 			this.createForm();
-			this.checkServerStatus();
 		}
-
 
 	createFormControls(): void {
 		this.summonerName = new FormControl('', Validators.required);
@@ -43,18 +40,6 @@ export class SearchComponent {
 	createForm(): void {
 		this.searchForm = new FormGroup({
 			summonerName: this.summonerName
-		});
-	}
-
-	/**
-	 * Check the status of the serverStatus
-	 *
-	 * @since 0.2.0
-	 * @version 0.2.0
-	 */
-	checkServerStatus(): void {
-		this.httpStatusService.get().subscribe((data) => {
-			this.serverStatus = data;
 		});
 	}
 

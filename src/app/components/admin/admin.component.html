@@ -41,6 +41,7 @@
 							<th>Favorite</th>
 							<th>Version</th>
 							<th>Build</th>
+							<th>Vote</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -53,8 +54,9 @@
 							<td>{{guide.favorite}}</td>
 							<td>{{guide.version}}</td>
 							<td><app-build-display [guide]="guide"></app-build-display></td>
+							<td>{{guide.vote}}</td>
 							<td>
-								<a (click)="toPublish(guide)">To publish</a>
+								<a *ngIf="guide.state != 'publish'" (click)="toPublish(guide)">To publish</a>
 								<a routerLink="/guide/{{guide._id}}">Edit</a>
 							</td>
 						</tr>
