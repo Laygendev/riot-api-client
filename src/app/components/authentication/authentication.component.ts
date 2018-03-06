@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { DataService } from './../../services/data/data.service';
@@ -17,6 +18,7 @@ export class AuthenticationComponent {
 	public errorMessage: string;
 
   constructor(
+		public router: Router,
 		public httpUserService: HttpUserService,
 		private fb: FormBuilder,
 		private dataService: DataService,) {
@@ -39,6 +41,8 @@ export class AuthenticationComponent {
 			} else {
 				this.dataService.user = new UserModel(data);
 				window.localStorage.setItem("user", JSON.stringify(this.dataService.user));
+
+				this.router.navigate(['/']);
 			}
 		});
 	}

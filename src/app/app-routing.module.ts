@@ -16,9 +16,11 @@ const routes: Routes = [
 	{ path: 'authentication', component: AuthenticationComponent },
 	{ path: 'summoner/:region/:id', component: SummonerDetailsComponent },
 	{ path: 'guide', component: GuideComponent },
-	{ path: 'guide/:guideId', component: GuideEditComponent },
-	{ path: 'guide/:gameMode/:championId', component: GuideEditComponent },
+	{ path: 'guide/:gameMode/:championId', component: GuideComponent },
+	{ path: 'guide-edit/:guideId', component: GuideEditComponent },
+	{ path: 'guide-edit/:gameMode/:championId', component: GuideEditComponent },
 	{ path: 'account', component: AccountComponent },
+	{ path: 'account/:routerActive', component: AccountComponent },
 	{ path: 'admin', component: AdminComponent },
 ];
 

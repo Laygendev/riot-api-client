@@ -5,6 +5,7 @@ export class UserModel {
 	public pseudo: string;
 	public roles: string[];
 	public votes: any;
+	public state: string;
 
 	constructor(fields?: any) {
 		for (var f in fields) {

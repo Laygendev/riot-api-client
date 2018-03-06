@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
 import { UserModel } from '../../models/user.model';
+import { GuideModel } from '../../models/guide.model';
 
 import { HttpClient } from '@angular/common/http';
 import { StaticDataService } from './../staticData/static-data.service';
@@ -21,7 +22,7 @@ export class DataService {
 	public waitComponentLoad: boolean = false;
 	public realms: any;
 	public regions: any;
-	public userLang: any = navigator.language || navigator.userLanguage;
+	public userLang: any = navigator.language;
 	public currentRegion: string = 'euw1';
 
 	constructor(

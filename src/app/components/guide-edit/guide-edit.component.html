@@ -1,15 +1,33 @@
 <section class="sub-header background" [ngStyle]="{'background-image': getUrl()}">
 	<div class="sub-header-content">
 		<div class="wrap-padder">
+
+			<h2 class="big-title">Create guide</h2>
+
+			<ul class="arianne">
+				<li>
+					<a routerLink="/">Home</a>
+					<i class="fas fa-arrow-right"></i>
+				</li>
+				<li *ngIf="this.guide && champion">
+					<a routerLink="/guide/{{guide.gameMode}}//{{champion.id}}">Guides</a>
+					<i class="fas fa-arrow-right"></i>
+				</li>
+				<li>Create guide</li>
+			</ul>
+
 			<p>Make sure you have read how to make a guide before created one</p>
 
 
 			<div *ngIf="updatedBuild">
 				<h2>Guide created with success !</h2>
 
-				<p>Edit successfull</p>
-				<p>To edit your guide go to <a routerLink="/">"my guides"</a> page</p>
-				<a routerLink="/">Back to the home</a>
+				<p>Thanks you for your contribute</p>
+
+				<p>Before use your guide in game, your guide need to be validated. Now, a mail has been send to an administrator. You just have to wait validate status on your guide.</p>
+				<p>When your guide is validated, you will receive a mail, or you can check statut or edit your guide <a routerLink="/account/guides">here</a>in "My guides" page on your account page</p>
+
+				<p>Wathever, you can go <a routerLink="/">home</a></p>
 
 			</div>
 
@@ -18,13 +36,6 @@
 					<div class="col-sm">
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
 						{{champion.name}}
-					</div>
-					<div class="col-sm">
-						<ul>
-							<li>Strength: 100</li>
-							<li>Armor: 100</li>
-							<li>Vitality: 100</li>
-						</ul>
 					</div>
 				</div>
 

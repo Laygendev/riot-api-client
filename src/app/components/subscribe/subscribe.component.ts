@@ -14,6 +14,7 @@ export class SubscribeComponent {
 
 	public userForm: FormGroup;
 	public errorMessage: string;
+	public inscriptionSuccess: boolean = false;
 
   constructor(
 		public httpUserService: HttpUserService,
@@ -23,11 +24,11 @@ export class SubscribeComponent {
 
 	createForm(): void {
 		this.userForm = this.fb.group({
-			mail: ['latour.jimmy@gmail.com', [this.checkMail]],
-			pseudo: ['Laygen', [Validators.minLength(5)]],
+			mail: ['', [this.checkMail]],
+			pseudo: ['', [Validators.minLength(5)]],
 			passwords: this.fb.group({
-				password: ['mxlaser9', [Validators.minLength(5)]],
-				repeatPassword: ['mxlaser9'],
+				password: ['', [Validators.minLength(5)]],
+				repeatPassword: [''],
 			}, {validator: this.checkRepeatPassword})
 		});
 	}
@@ -63,6 +64,8 @@ export class SubscribeComponent {
 			if ( data.errors ) {
 				this.errorMessage = data.message;
 			}
+
+			this.inscriptionSuccess = true;
 		});
 	}
 

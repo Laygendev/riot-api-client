@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data/data.service';
 import { ChampionModel } from './../../models/champion.model';
 import { GuideModel } from './../../models/guide.model';
 import { ItemModel } from './../../models/item.model';
+import { UserModel } from './../../models/user.model';
 
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
 
@@ -23,9 +25,21 @@ export class GuideComponent {
 	public favoriteGuideId: string;
 
 	constructor(
+		public route: ActivatedRoute,
 		public dataService: DataService,
-		public httpGuideService: HttpGuideService
-	) {}
+		public httpGuideService: HttpGuideService,
+	) {
+		this.route.params.subscribe(params => {
+			if ( params.championId && params.gameMode ) {
+				this.gameMode = params.gameMode;
+
+				this.champion = this.dataService.getChampionById(params.championId)
+
+				this.getGuides();
+
+			}
+		});
+	}
 
 	selectChampion(champion: ChampionModel): void {
 		this.champion = champion;
@@ -56,11 +70,14 @@ export class GuideComponent {
 						for (let key in data) {
 							let tmpGuide: GuideModel = new GuideModel(data[key]);
 							this.guides.push(tmpGuide);
+
 							if (true === tmpGuide.favorite) {
 								this.favoriteGuideId = tmpGuide._id;
 							}
 						}
 					}
+
+					this.dataService.loading = false;
 				} else {
 					this.favoriteGuideId = 'no';
 				}
@@ -70,7 +87,8 @@ export class GuideComponent {
 
 	vote(guide: GuideModel): void {
 		this.httpGuideService.vote(guide._id, this.dataService.user._id).subscribe((data) => {
-
+			this.dataService.user = new UserModel(data.user);
+			window.localStorage.setItem("user", JSON.stringify(this.dataService.user));
 		});
 	}
 }

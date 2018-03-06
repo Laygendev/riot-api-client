@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data/data.service';
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
@@ -15,9 +16,15 @@ export class AccountComponent implements OnInit {
 	public guides: Array<GuideModel> = new Array<GuideModel>();
 
   constructor(
+		public route: ActivatedRoute,
 		public dataService: DataService,
 		public httpGuideService: HttpGuideService
-	) { }
+	) {
+		this.route.params.subscribe(params => {
+			this.routerActive = params.routerActive;
+			this.dataService.loading = false;
+		});
+	}
 
   ngOnInit() {
 		this.httpGuideService.getByAuthorId(this.dataService.user._id).subscribe((data) => {

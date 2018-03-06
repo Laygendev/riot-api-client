@@ -49,7 +49,10 @@
 					<tbody>
 						<tr *ngFor="let guide of guides">
 							<td>{{guide.modifiedData | date:'medium'}}</td>
-							<td>{{guide.author.pseudo}}</td>
+							<td>
+								<span *ngIf="guide.author">{{guide.author.pseudo}}</span>
+								<span *ngIf="!guide.author">Deleted user</span>
+							</td>
 							<td>{{guide.state}}</td>
 							<td>{{guide.favorite}}</td>
 							<td>{{guide.version}}</td>
@@ -57,7 +60,7 @@
 							<td>{{guide.vote}}</td>
 							<td>
 								<a *ngIf="guide.state != 'publish'" (click)="toPublish(guide)">To publish</a>
-								<a routerLink="/guide/{{guide._id}}">Edit</a>
+								<a routerLink="/guide-edit/{{guide._id}}">Edit</a>
 							</td>
 						</tr>
 					</tbody>

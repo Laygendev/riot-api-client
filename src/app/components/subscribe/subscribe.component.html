@@ -21,7 +21,15 @@
 <section class="page-secondary">
 
 	<div class="wrap-padder">
-		<form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+		<div *ngIf="inscriptionSuccess">
+			<h3>Subscribed success</h3>
+
+			<p>You will receive an email (check spam) to validate your account</p>
+			<p>In waiting, you can go <a routerLink="/">home</a> and watch player in game</p>
+		</div>
+
+
+		<form *ngIf="! inscriptionSuccess" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
 			<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
 				{{errorMessage}}
 			</div>

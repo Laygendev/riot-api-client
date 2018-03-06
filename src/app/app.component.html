@@ -57,7 +57,7 @@
 			<div class="sub-content">
 				<ul class="messages">
 					<li>Made with <i class="fas fa-heart"></i>!</li>
-					<li>Data powered by <a href="https://developer.riotgames.com">Riot API</a> and <a href="http://ddragon.leagueoflegends.com/">ddragon</a>. Data version 8.3</li>
+					<li *ngIf="dataService.inited">Data powered by <a href="https://developer.riotgames.com">Riot API</a> and <a href="http://ddragon.leagueoflegends.com/">ddragon</a>. Data version {{dataService.realms.data.v}}</li>
 				</ul>
 
 

@@ -77,7 +77,7 @@
 		<div *ngIf="champion && gameMode">
 			<h2>
 				Availables guides for {{champion.name}} in {{gameMode}}
-				<a *ngIf="dataService.user" routerLink="/guide/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
+				<a *ngIf="dataService.user" routerLink="/guide-edit/{{gameMode}}/{{champion.id}}" type="button" class="btn btn-primary">Make new guide</a>
 			</h2>
 
 			<p *ngIf="!dataService.user">You need to be <a routerLink="/authentication">connected</a> for create a new guide</p>
@@ -105,7 +105,16 @@
 							<td>{{guide.version}}</td>
 							<td><app-build-display [guide]="guide"></app-build-display></td>
 							<td>{{guide.vote}}</td>
-							<td><a (click)="vote(guide)">Vote for favorite</a></td>
+							<td>
+								<span *ngIf="dataService.user">
+									<a *ngIf="dataService.user.votes.indexOf(guide._id) == -1" (click)="vote(guide)">Vote for favorite</a>
+									<span *ngIf="dataService.user.votes.indexOf(guide._id) != -1">Already voted</span>
+								</span>
+
+								<span *ngIf="!dataService.user">
+									You need to be connected for vote
+								</span>
+							</td>
 						</ng-container>
 					</tr>
 				</tbody>
