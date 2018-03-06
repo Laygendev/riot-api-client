@@ -61,23 +61,28 @@ export class SearchComponent {
 	 * @return void.
 	 */
 	onSubmit(): void {
-		this.httpSummonerService.get(this.searchForm.value.summonerName, this.dataService.currentRegion).subscribe((data) => {
-			if ( data.status && 200 !== data.status.status_code) {
-				this.errorMessage = data.status.status_code + ' ' + data.status.message;
-			} else {
-				let summonerData = new SummonerModel(data);
-				this.dataService.summonerData = summonerData;
+		var patt = /^[a-z0-9\\p{L} _\\.]+$/;
+		if ( ! patt.test(this.searchForm.value.summonerName) ) {
+			this.errorMessage = "Summoner name is not valid";
+		} else {
+			this.httpSummonerService.get(this.searchForm.value.summonerName, this.dataService.currentRegion).subscribe((data) => {
+				if ( data.status && 200 !== data.status.status_code) {
+					this.errorMessage = data.status.status_code + ' ' + data.status.message;
+				} else {
+					let summonerData = new SummonerModel(data);
+					this.dataService.summonerData = summonerData;
 
-				this.httpSpectatorService.get(this.dataService.summonerData.id, this.dataService.currentRegion).subscribe((data) => {
-					if ( data.status && 200 !== data.status.status_code) {
-						this.errorMessage = data.status.status_code + ' ' + 'This summoner ' + this.searchForm.value.summonerName + ' is not in a match for now.';
-					} else {
-						this.router.navigate(['/summoner/' + this.dataService.currentRegion + '/' + this.searchForm.value.summonerName]);
-					}
-				});
+					this.httpSpectatorService.get(this.dataService.summonerData.id, this.dataService.currentRegion).subscribe((data) => {
+						if ( data.status && 200 !== data.status.status_code) {
+							this.errorMessage = data.status.status_code + ' ' + 'This summoner ' + this.searchForm.value.summonerName + ' is not in a match for now.';
+						} else {
+							this.router.navigate(['/summoner/' + this.dataService.currentRegion + '/' + this.searchForm.value.summonerName]);
+						}
+					});
 
 
-			}
-		});
+				}
+			});
+		}
 	}
 }

@@ -8,7 +8,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class StaticDataService {
-	constructor(private httpClient: HttpClient) {}
+	constructor(
+		private httpClient: HttpClient
+	) {}
 
 	public get(endpoint: string, args: any): Observable<any> {
 		let url: string = "http://164.132.69.238:3002/static-data/champions/" + args.championId;
@@ -16,7 +18,7 @@ export class StaticDataService {
 	}
 
 	public getItems(): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/static-data/items/";
+		let url: string = "http://164.132.69.238:3002/static-data/items/" + navigator.language;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 

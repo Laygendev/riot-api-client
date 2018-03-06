@@ -9,6 +9,9 @@ import { GuideComponent } from './components/guide/guide.component';
 import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
 import { AccountComponent } from './components/account/account.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
+import { AboutThisWebsiteComponent } from './components/about-this-website/about-this-website.component';
+import { HelpUsComponent } from './components/help-us/help-us.component';
 
 const routes: Routes = [
 	{ path: '', component: SearchComponent },
@@ -22,6 +25,9 @@ const routes: Routes = [
 	{ path: 'account', component: AccountComponent },
 	{ path: 'account/:routerActive', component: AccountComponent },
 	{ path: 'admin', component: AdminComponent },
+	{ path: 'who-we-are', component: WhoWeAreComponent },
+	{ path: 'about-this-website', component: AboutThisWebsiteComponent },
+	{ path: 'help-us', component: HelpUsComponent },
 ];
 
 @NgModule({

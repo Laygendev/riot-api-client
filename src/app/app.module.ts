@@ -30,8 +30,12 @@ import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { AccountComponent } from './components/account/account.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
+import { AboutThisWebsiteComponent } from './components/about-this-website/about-this-website.component';
+import { HelpUsComponent } from './components/help-us/help-us.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +52,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SubscribeComponent,
     AuthenticationComponent,
     AccountComponent,
-    AdminComponent
+    AdminComponent,
+    WhoWeAreComponent,
+    AboutThisWebsiteComponent,
+    HelpUsComponent
   ],
   imports: [
     BrowserModule,

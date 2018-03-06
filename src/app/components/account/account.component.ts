@@ -21,8 +21,10 @@ export class AccountComponent implements OnInit {
 		public httpGuideService: HttpGuideService
 	) {
 		this.route.params.subscribe(params => {
-			this.routerActive = params.routerActive;
-			this.dataService.loading = false;
+			if ( params.routerActive ) {
+				this.routerActive = params.routerActive;
+				this.dataService.loading = false;
+			}
 		});
 	}
 

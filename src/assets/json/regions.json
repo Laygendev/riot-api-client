@@ -1,7 +1,7 @@
 [
 	{
 		"name": "NA",
-		"slug": "na",
+		"slug": "na1",
 		"langs": [
 
 		]
@@ -15,55 +15,55 @@
 	},
 	{
 		"name": "EUNE",
-		"slug": "",
+		"slug": "eun1",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "BR",
-		"slug": "",
+		"slug": "br1",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "TR",
-		"slug": "",
+		"slug": "tr1",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "RU",
-		"slug": "",
+		"slug": "ru",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "LAN",
-		"slug": "",
+		"slug": "la1",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "OCE",
-		"slug": "",
+		"slug": "oc1",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "KR",
-		"slug": "",
+		"slug": "kr",
 		"langs": [
 
 		]
 	},
 	{
 		"name": "JP",
-		"slug": ""
+		"slug": "jp1"
 	}
 ]

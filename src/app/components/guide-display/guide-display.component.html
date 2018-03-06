@@ -1,7 +1,7 @@
 <div class="build-container">
 	<div class="bloc-create-guide" *ngIf="!favoriteGuide._id && favoriteChampion">
 		<h4>No guide for {{favoriteChampion.name}} in {{gameMode}}</h4>
-		<a routerLink="/guide/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
+		<a routerLink="/guide-edit/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
 	</div>
 
 	<h3 *ngIf="favoriteChampion">
