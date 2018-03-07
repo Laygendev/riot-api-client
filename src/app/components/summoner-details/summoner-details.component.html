@@ -1,12 +1,17 @@
-<section class="sub-header background" *ngIf="myChampion" [ngStyle]="{'background-image': getUrl()}">
+<section class="sub-header background" [ngStyle]="{'background-image': getUrl()}">
 
 	<div class="sub-header-content">
 		<div class="wrap-padder">
+
 			<h2 class="big-title">{{summonerName}}</h2>
 
-			<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-				{{errorMessage}}
-			</div>
+			<ul class="arianne">
+				<li>
+					<a routerLink="/">Home</a>
+					<i class="fas fa-arrow-right"></i>
+				</li>
+				<li>{{summonerName}}</li>
+			</ul>
 
 			<div *ngIf="myParticipant">
 				<app-guide-display *ngIf="myParticipant && myChampion && dataService.spetactorData.gameMode" [champion]="myChampion" [gameMode]="dataService.spetactorData.gameMode"></app-guide-display>
@@ -20,7 +25,11 @@
 	<div class="wrap-padder">
 		<h2>Current Game</h2>
 
-		<div class="participants-container">
+		<div *ngIf="!myParticipant">
+			<p>Current summoner is not in match for now. Refresh this page when summoner is playing game.</p>
+		</div>
+
+		<div *ngIf="myParticipant" class="participants-container">
 			<ul class="participants team100" *ngIf="dataService.spetactorData">
 				<li class="details" *ngFor="let participant of dataService.spetactorData.participantsTeam100">
 
@@ -28,7 +37,7 @@
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 						<p>
 							<strong>{{participant.summonerName}}</strong>
-							<span *ngIf="participant.summonerData" class="level">{{participant.summonerData.summonerLevel}}</span>
+							<span *ngIf="participant.summonerData" class="level">Level {{participant.summonerData.summonerLevel}}</span>
 						</p>
 					</div>
 
@@ -44,17 +53,17 @@
 			<ul class="participants team200" *ngIf="dataService.spetactorData">
 				<li *ngFor="let participant of dataService.spetactorData.participantsTeam200">
 
+					<div class="summonerSpells" *ngIf="participant.spells">
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
+					</div>
+
 					<div class="avatar" *ngIf="participant.championId">
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 						<p>
 							<strong>{{participant.summonerName}}</strong>
-							<span *ngIf="participant.summonerData" class="level">{{participant.summonerData.summonerLevel}}</span>
+							<span *ngIf="participant.summonerData" class="level">Level {{participant.summonerData.summonerLevel}}</span>
 						</p>
-					</div>
-
-					<div class="summonerSpells" *ngIf="participant.spells">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
 					</div>
 				</li>
 			</ul>

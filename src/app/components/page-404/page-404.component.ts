@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from './../../services/data/data.service';
+
 @Component({
   selector: 'app-page-404',
   templateUrl: './page-404.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Page404Component implements OnInit {
 
-  constructor() { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
+		this.dataService.loading = false;
   }
 
 }

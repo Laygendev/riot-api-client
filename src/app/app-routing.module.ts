@@ -34,6 +34,7 @@ const routes: Routes = [
 	{ path: 'all-guides', component: AllGuidesComponent },
 	{ path: 'members', component: MembersComponent },
 	{ path: '404', component: Page404Component },
+	{ path: '**', component: Page404Component }
 ];
 
 @NgModule({
