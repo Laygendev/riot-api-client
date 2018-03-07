@@ -32,3 +32,8 @@
 .content {
 	margin-left: 50px;
 }
+
+.content table img {
+	width: 64px;
+	height: 64px;
+}

@@ -61,7 +61,7 @@ export class SearchComponent {
 	 * @return void.
 	 */
 	onSubmit(): void {
-		var patt = /^[a-z0-9\\p{L} _\\.]+$/;
+		var patt = /^[A-Za-z0-9\\p{L} _\\.]+$/;
 		if ( ! patt.test(this.searchForm.value.summonerName) ) {
 			this.errorMessage = "Summoner name is not valid";
 		} else {

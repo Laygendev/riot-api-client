@@ -45,6 +45,7 @@
 							<th>Author name</th>
 							<th>State</th>
 							<th>Version</th>
+							<th>Champion</th>
 							<th>Build</th>
 							<th>Vote</th>
 							<th>Actions</th>
@@ -57,6 +58,7 @@
 							<td>{{guide.author.pseudo}}</td>
 							<td>{{guide.state}}</td>
 							<td>{{guide.version}}</td>
+							<td><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{guide.champion.image.full}}" /></td>
 							<td><app-build-display [guide]="guide"></app-build-display></td>
 							<td>{{guide.vote}}</td>
 							<td><a routerLink="/guide-edit/{{guide._id}}">Edit</a></td>

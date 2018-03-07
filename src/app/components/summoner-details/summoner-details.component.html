@@ -28,6 +28,11 @@
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 						<strong>{{participant.summonerName}}</strong>
 					</div>
+
+					<div class="summonerSpells" *ngIf="participant.spells">
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
+					</div>
 				</li>
 			</ul>
 
@@ -39,6 +44,11 @@
 					<div class="avatar" *ngIf="participant.championId">
 						<strong>{{participant.summonerName}}</strong>
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
+					</div>
+
+					<div class="summonerSpells" *ngIf="participant.spells">
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
 					</div>
 				</li>
 			</ul>

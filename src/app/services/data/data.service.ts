@@ -4,6 +4,7 @@ import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
 import { UserModel } from '../../models/user.model';
 import { GuideModel } from '../../models/guide.model';
+import { SummonerSpellModel } from '../../models/summonerSpell.model';
 
 import { HttpClient } from '@angular/common/http';
 import { StaticDataService } from './../staticData/static-data.service';
@@ -24,6 +25,7 @@ export class DataService {
 	public regions: any;
 	public userLang: any = navigator.language;
 	public currentRegion: string = 'euw1';
+	public summonerSpells: Array<SummonerSpellModel> = new Array<SummonerSpellModel>();
 
 	constructor(
 		private httpClient: HttpClient,
@@ -66,7 +68,16 @@ export class DataService {
 							this.currentRegion = 'euw1';
 						}
 
-						this.inited = true;
+						this.staticDataService.getSummoners().subscribe((responseObject) => {
+							for (let key in responseObject.data) {
+								let tmpSummonerSpell: SummonerSpellModel = new SummonerSpellModel(responseObject.data[key]);
+								this.summonerSpells.push(tmpSummonerSpell);
+							}
+
+							this.inited = true;
+
+						});
+
 					});
 				});
 			});
@@ -106,5 +117,15 @@ export class DataService {
 		}
 
 		return items;
+	}
+
+	getSummonerSpellById(id: any): SummonerSpellModel {
+		for(let key in this.summonerSpells) {
+			if (this.summonerSpells[key].id == id) {
+				return this.summonerSpells[key]
+			}
+		}
+
+		return null;
 	}
 }

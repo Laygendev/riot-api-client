@@ -65,6 +65,11 @@ export class SummonerDetailsComponent  {
 					let tmpParticipant = new ParticipantModel(data.participants[key]);
 					tmpParticipant.champion = this.dataService.getChampionById(tmpParticipant.championId);
 
+					tmpParticipant['spells'] = {
+						'one': this.dataService.getSummonerSpellById(tmpParticipant.spell1Id),
+						'two': this.dataService.getSummonerSpellById(tmpParticipant.spell2Id),
+					};
+
 					if ( tmpParticipant.teamId == 100 ) {
 						tmpPartipantsTeam100.push(tmpParticipant);
 					} else {

@@ -34,6 +34,8 @@ export class AccountComponent implements OnInit {
 				for ( let key in data ) {
 					let tmpGuide: GuideModel = new GuideModel(data[key]);
 					this.guides.push(tmpGuide);
+
+					tmpGuide['champion'] = this.dataService.getChampionById(tmpGuide.championId);
 				}
 			}
 		});
