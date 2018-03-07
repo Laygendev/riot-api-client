@@ -38,9 +38,10 @@ export class DataService {
 		if ( window.localStorage.getItem("user") ) {
 			this.user = new UserModel(JSON.parse(window.localStorage.getItem("user")));
 		}
-		this.httpClient.get("./assets/json/champions.json").subscribe((data) => {
-			for (let key in data) {
-				this.champions.push(new ChampionModel(data[key]));
+
+		this.staticDataService.getChampions().subscribe((responseObject) => {
+			for (let key in responseObject.data) {
+				this.champions.push(new ChampionModel(responseObject.data[key]));
 			}
 
 			this.staticDataService.getItems().subscribe((responseObject) => {

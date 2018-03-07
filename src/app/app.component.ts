@@ -12,7 +12,7 @@ import { StaticDataService } from './services/staticData/static-data.service';
 export class AppComponent implements AfterViewInit {
   title = 'app';
 
-	private urlAccepted: string[] = ['/', '/guide', '/admin', '/subscribe', '/authentication', '/account', '/who-we-are', '/about-this-website', '/help-us' ];
+	private urlAccepted: string[] = ['/', '/guide', '/admin', '/subscribe', '/authentication', '/account', '/who-we-are', '/about-this-website', '/help-us', '/all-guides', '/members', '/404' ];
 	private urlAdmin: string[] = ['/admin'];
 
 	realms: any;

@@ -72,7 +72,7 @@
 
 		<p *ngIf="! gameMode || ! champion">Select champion and game mode for view and create guide</p>
 
-		<app-guide-display *ngIf="favoriteGuideId && champion" [gameMode]="gameMode" [champion]="champion"></app-guide-display>
+		<app-guide-display *ngIf="champion && gameMode" [gameMode]="gameMode" [champion]="champion"></app-guide-display>
 
 		<div *ngIf="champion && gameMode">
 			<h2>

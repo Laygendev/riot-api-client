@@ -71,7 +71,7 @@ export class GuideComponent {
 							let tmpGuide: GuideModel = new GuideModel(data[key]);
 							this.guides.push(tmpGuide);
 
-							if (true === tmpGuide.favorite) {
+							if (true === tmpGuide.favorite && tmpGuide.version == this.dataService.realms.data.v) {
 								this.favoriteGuideId = tmpGuide._id;
 							}
 						}

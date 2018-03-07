@@ -58,6 +58,7 @@ export class SummonerDetailsComponent  {
 		this.httpSpectatorService.get(this.dataService.summonerData.id, this.currentRegion).subscribe((data) => {
 			if ( data && data.status && data.status.status_code != 200 ) {
 				this.errorMessage = data.status.status_code + ' ' + 'This summoner is not in a match for now.';
+				this.dataService.loading = false;
 			} else {
 				let tmpPartipantsTeam100: Array<ParticipantModel> = new Array<ParticipantModel>();
 				let tmpPartipantsTeam200: Array<ParticipantModel> = new Array<ParticipantModel>();
@@ -76,6 +77,11 @@ export class SummonerDetailsComponent  {
 						tmpPartipantsTeam200.push(tmpParticipant);
 					}
 
+					this.httpSummonerService.get(tmpParticipant.summonerName, this.currentRegion).subscribe((data) => {
+						tmpParticipant['summonerData'] = new SummonerModel(data);
+					});
+
+
 					if ( tmpParticipant.summonerId == this.dataService.summonerData.id) {
 						this.myParticipant = tmpParticipant;
 						this.myChampion = this.myParticipant.champion;
@@ -91,6 +97,10 @@ export class SummonerDetailsComponent  {
 	}
 
 	getUrl(): string {
-		return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.myChampion.name + "_0.jpg')";
+		if (this.myChampion) {
+			return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.myChampion.name + "_0.jpg')";
+		} else {
+			return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sion_0.jpg')";
+		}
 	}
 }

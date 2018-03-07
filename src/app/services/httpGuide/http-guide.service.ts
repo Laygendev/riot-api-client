@@ -6,11 +6,15 @@ import 'rxjs/add/operator/map';
 
 import { GuideModel } from '../../models/guide.model';
 
+import { DataService } from './../data/data.service';
+
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class HttpGuideService {
-	constructor(private httpClient: HttpClient) {}
+	constructor(
+		private httpClient: HttpClient,
+		private dataService: DataService) {}
 
 	public get(args?: any): Observable<any> {
 		let url: string = "http://164.132.69.238:3002/guide/";
@@ -24,7 +28,7 @@ export class HttpGuideService {
 		}
 
 		if ( args && args.favorite ) {
-			url += '/true';
+			url += '/' + this.dataService.realms.data.v + '/true';
 		}
 
 		if ( ! args ) {
@@ -44,7 +48,7 @@ export class HttpGuideService {
 		let url: string = "http://164.132.69.238:3002/guide-favorite/";
 
 		if ( args && args.gameMode && args.championId ) {
-			url += args.gameMode + "/" + args.championId;
+			url += this.dataService.realms.data.v + "/" + args.gameMode + "/" + args.championId;
 		}
 
 		return this.httpClient.get( url, {responseType: 'json'} );

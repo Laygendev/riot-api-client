@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data/data.service';
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
@@ -27,10 +27,16 @@ export class GuideEditComponent implements OnInit {
 
 	constructor(
 		public route: ActivatedRoute,
+		public router: Router,
 		public dataService: DataService,
 		public httpGuideService: HttpGuideService,
 		public httpUserService: HttpUserService,
 	) {
+		if ( ! this.dataService.user._id ) {
+			this.router.navigate(['/']);
+		}
+
+
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
 

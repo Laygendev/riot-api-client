@@ -9,7 +9,7 @@ export class ParticipantModel {
 	public spell2Id: number;
 	public spell1Id: number;
 	public teamId: number;
-	public summonerId: number;
+	public summonerId: string;
 	public champion: ChampionModel;
 
 	constructor(fields: any) {

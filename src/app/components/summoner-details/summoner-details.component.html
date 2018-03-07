@@ -22,11 +22,14 @@
 
 		<div class="participants-container">
 			<ul class="participants team100" *ngIf="dataService.spetactorData">
-				<li *ngFor="let participant of dataService.spetactorData.participantsTeam100">
+				<li class="details" *ngFor="let participant of dataService.spetactorData.participantsTeam100">
 
 					<div class="avatar" *ngIf="participant.championId">
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
-						<strong>{{participant.summonerName}}</strong>
+						<p>
+							<strong>{{participant.summonerName}}</strong>
+							<span *ngIf="participant.summonerData" class="level">{{participant.summonerData.summonerLevel}}</span>
+						</p>
 					</div>
 
 					<div class="summonerSpells" *ngIf="participant.spells">
@@ -42,8 +45,11 @@
 				<li *ngFor="let participant of dataService.spetactorData.participantsTeam200">
 
 					<div class="avatar" *ngIf="participant.championId">
-						<strong>{{participant.summonerName}}</strong>
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
+						<p>
+							<strong>{{participant.summonerName}}</strong>
+							<span *ngIf="participant.summonerData" class="level">{{participant.summonerData.summonerLevel}}</span>
+						</p>
 					</div>
 
 					<div class="summonerSpells" *ngIf="participant.spells">

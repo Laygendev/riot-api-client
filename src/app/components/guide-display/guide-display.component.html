@@ -1,11 +1,11 @@
 <div class="build-container">
 	<div class="bloc-create-guide" *ngIf="!favoriteGuide._id && favoriteChampion">
-		<h4>No guide for {{favoriteChampion.name}} in {{gameMode}}</h4>
+		<h4>No guide for {{favoriteChampion.name}} in {{gameMode}} in version {{dataService.realms.data.v}}</h4>
 		<a routerLink="/guide-edit/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
 	</div>
 
 	<h3 *ngIf="favoriteChampion">
-		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}}</span><span *ngIf="favoriteGuide" class="vote">Favorite guide: {{favoriteGuide.vote}}</span>
+		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}} in {{favoriteGuide.version}}</span><span *ngIf="favoriteGuide" class="vote">Favorite guide: {{favoriteGuide.vote}}</span>
 	</h3>
 
 	<div class="favorite-build" *ngIf="favoriteGuide">

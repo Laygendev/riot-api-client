@@ -33,9 +33,11 @@ import { AdminComponent } from './components/admin/admin.component';
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { AboutThisWebsiteComponent } from './components/about-this-website/about-this-website.component';
 import { HelpUsComponent } from './components/help-us/help-us.component';
+import { AllGuidesComponent } from './components/all-guides/all-guides.component';
+import { MembersComponent } from './components/members/members.component';
+import { Page404Component } from './components/page-404/page-404.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -55,7 +57,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AdminComponent,
     WhoWeAreComponent,
     AboutThisWebsiteComponent,
-    HelpUsComponent
+    HelpUsComponent,
+    AllGuidesComponent,
+    MembersComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
