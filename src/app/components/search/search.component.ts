@@ -6,6 +6,7 @@ import { HttpSpectatorService } from './../../services/httpSpectator/http-specta
 import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
 import { HttpStatusService } from './../../services/httpStatus/http-status.service';
 import { DataService } from './../../services/data/data.service';
+import { TitleService } from './../../services/title/title.service';
 
 import { SummonerModel } from './../../models/summoner.model';
 
@@ -28,7 +29,10 @@ export class SearchComponent {
 		private httpStatusService: HttpStatusService,
 		private httpSummonerService: HttpSummonerService,
 		private httpSpectatorService: HttpSpectatorService,
-		private dataService: DataService) {
+		private dataService: DataService,
+		private titleService: TitleService) {
+			titleService.setTitle('Home - LoL Hype');
+
 			this.createFormControls();
 			this.createForm();
 		}

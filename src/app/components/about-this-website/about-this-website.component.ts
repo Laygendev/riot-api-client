@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TitleService } from './../../services/title/title.service';
+
 @Component({
   selector: 'app-about-this-website',
   templateUrl: './about-this-website.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutThisWebsiteComponent implements OnInit {
 
-  constructor() { }
+	constructor(private titleService: TitleService) {
+		titleService.setTitle('About this Website - LoL Hype');
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {}
 
 }

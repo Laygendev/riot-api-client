@@ -6,6 +6,7 @@ import { HttpSpectatorService } from './../../services/httpSpectator/http-specta
 import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
 import { StaticDataService } from './../../services/staticData/static-data.service';
 import { DataService } from './../../services/data/data.service';
+import { TitleService } from './../../services/title/title.service';
 
 import { ParticipantModel } from './../../models/participant.model';
 import { SpectatorModel } from './../../models/spectator.model';
@@ -32,10 +33,13 @@ export class SummonerDetailsComponent  {
 		public dataService: DataService,
 		private httpSpectatorService: HttpSpectatorService,
 		private httpSummonerService: HttpSummonerService,
-		private staticDataService: StaticDataService) {
+		private staticDataService: StaticDataService,
+		private titleService: TitleService) {
+		this.titleService.setTitle( 'Current Game - LoL Hype' );
 		if ( ! this.dataService.summonerData ) {
 			this.route.params.subscribe(param => {
 				this.summonerName = param.id;
+				this.titleService.setTitle( this.summonerName + ' Current Game - LoL Hype' );
 				this.currentRegion = param.region;
 				this.httpSummonerService.get(param.id, param.region).subscribe((data) => {
 					let summonerData = new SummonerModel(data);

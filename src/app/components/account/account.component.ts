@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data/data.service';
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
+import { TitleService } from './../../services/title/title.service';
 
 import { GuideModel } from './../../models/guide.model';
 
@@ -18,8 +19,11 @@ export class AccountComponent implements OnInit {
   constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
-		public httpGuideService: HttpGuideService
+		public httpGuideService: HttpGuideService,
+		private titleService: TitleService
 	) {
+		this.titleService.setTitle( 'Account - LoL Hype' );
+
 		this.route.params.subscribe(params => {
 			if ( params.routerActive ) {
 				this.routerActive = params.routerActive;

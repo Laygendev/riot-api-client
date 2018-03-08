@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data/data.service';
+import { TitleService } from './../../services/title/title.service';
+import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
+
 import { ChampionModel } from './../../models/champion.model';
 import { GuideModel } from './../../models/guide.model';
 import { ItemModel } from './../../models/item.model';
 import { UserModel } from './../../models/user.model';
-
-import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
 
 @Component({
   selector: 'app-build',
@@ -28,7 +29,10 @@ export class GuideComponent {
 		public route: ActivatedRoute,
 		public dataService: DataService,
 		public httpGuideService: HttpGuideService,
+		private titleService: TitleService,
 	) {
+		this.titleService.setTitle( 'Create guide - LoL Hype' );
+
 		this.route.params.subscribe(params => {
 			if ( params.championId && params.gameMode ) {
 				this.gameMode = params.gameMode;

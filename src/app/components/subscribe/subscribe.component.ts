@@ -4,6 +4,7 @@ import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, V
 import { UserModel } from './../../models/user.model';
 
 import { HttpUserService } from './../../services/httpUser/http-user.service';
+import { TitleService } from './../../services/title/title.service';
 
 @Component({
   selector: 'app-subscribe',
@@ -18,7 +19,9 @@ export class SubscribeComponent {
 
   constructor(
 		public httpUserService: HttpUserService,
-		private fb: FormBuilder) {
+		private fb: FormBuilder,
+		private titleService: TitleService) {
+		titleService.setTitle( 'Subscribe - LoL Hype' );
 		this.createForm();
 	}
 
