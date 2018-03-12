@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { DataService } from './../../services/data/data.service';
-import { UserModel } from './../../models/user.model';
-
 import { HttpUserService } from './../../services/httpUser/http-user.service';
+import { TitleService } from './../../services/title/title.service';
+
+import { UserModel } from './../../models/user.model';
 
 @Component({
   selector: 'app-authentication',
@@ -21,7 +22,9 @@ export class AuthenticationComponent {
 		public router: Router,
 		public httpUserService: HttpUserService,
 		private fb: FormBuilder,
-		private dataService: DataService,) {
+		private dataService: DataService,
+		private titleService: TitleService) {
+		titleService.setTitle( 'Authentication - LoL Hype' );
 		this.createForm();
 	}
 

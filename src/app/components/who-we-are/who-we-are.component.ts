@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TitleService } from './../../services/title/title.service';
+
 @Component({
   selector: 'app-who-we-are',
   templateUrl: './who-we-are.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhoWeAreComponent implements OnInit {
 
-  constructor() { }
+	constructor(titleService: TitleService) {
+		titleService.setTitle( 'Who We Are - LoL Hype' );
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {}
 
 }

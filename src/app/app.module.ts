@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -14,6 +14,7 @@ import { StaticDataService } from './services/staticData/static-data.service';
 import { HttpGuideService } from './services/httpGuide/http-guide.service';
 import { HttpStatusService } from './services/httpStatus/http-status.service';
 import { HttpUserService } from './services/httpUser/http-user.service';
+import { TitleService } from './services/title/title.service';
 
 import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 import { SearchDirective } from './directives/search/search.directive';
@@ -78,7 +79,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 		StaticDataService,
 		HttpGuideService,
 		HttpStatusService,
-		HttpUserService
+		HttpUserService,
+		TitleService,
+		Title
 	],
   bootstrap: [AppComponent]
 })

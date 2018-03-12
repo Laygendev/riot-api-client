@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from './../../services/data/data.service';
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
 import { HttpUserService } from './../../services/httpUser/http-user.service';
+import { TitleService } from './../../services/title/title.service';
 
 import { ChampionModel } from './../../models/champion.model';
 import { ItemModel } from './../../models/item.model';
@@ -31,11 +32,21 @@ export class GuideEditComponent implements OnInit {
 		public dataService: DataService,
 		public httpGuideService: HttpGuideService,
 		public httpUserService: HttpUserService,
+		private titleService: TitleService
 	) {
+<<<<<<< HEAD
 		if ( ! this.dataService.user ) {
 			this.router.navigate(['/']);
 		}
 
+=======
+		if ( ! this.dataService.user || ( this.dataService.user && ! this.dataService.user._id ) ) {
+			this.router.navigate(['/']);
+		}
+
+		titleService.setTitle( 'Create guide - LoL Hype' );
+
+>>>>>>> b005f304ff6b7db4431d731ee1cd4399d4e9c957
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
 
@@ -104,6 +115,8 @@ export class GuideEditComponent implements OnInit {
 				}
 
 				this.dataService.loading = false;
+
+				this.titleService.setTitle( 'Create guide ' + this.champion.name + ' in ' + this.guide.gameMode + ' - LoL Hype' );
 			}
 		});
 	}

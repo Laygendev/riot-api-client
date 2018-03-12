@@ -107,11 +107,16 @@ ul.arianne li a:hover {
 	font-size: 1em;
 }
 
+.bloc-create-guide .tooltip {
+	border: solid 1px rgba(255,0,0,0.2);
+}
+
 .tooltip .tooltip-inner {
 	text-align: left!important;
 	font-size: 1em;
 	max-width: 500px;
 }
+
 
 .tooltip .tooltip-inner div.container {
 	display: flex;

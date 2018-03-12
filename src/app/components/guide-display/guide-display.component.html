@@ -1,7 +1,9 @@
 <div class="build-container">
 	<div class="bloc-create-guide" *ngIf="!favoriteGuide._id && favoriteChampion">
 		<h4>No guide for {{favoriteChampion.name}} in {{gameMode}} in version {{dataService.realms.data.v}}</h4>
-		<a routerLink="/guide-edit/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
+
+		<a *ngIf="dataService.user" routerLink="/guide-edit/{{gameMode}}/{{favoriteChampion.id}}">Clic here to create one</a>
+		<span placement="top" data-toggle="tooltip" ngbTooltip="You need to be connected to create a guide" *ngIf="! dataService.user">Clic here to create one</span>
 	</div>
 
 	<h3 *ngIf="favoriteChampion">

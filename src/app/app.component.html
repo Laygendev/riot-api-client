@@ -25,7 +25,6 @@
 
 			<ul class="menu">
 				<li><a routerLink="/who-we-are">Who we are ?</a></li>
-				<li><a routerLink="/help-us">Help us</a></li>
 				<li *ngIf="!dataService.user"><a routerLink="/authentication">Login</a></li>
 
 				<li *ngIf="dataService.user">
@@ -35,7 +34,7 @@
 						</button>
 						<div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownUser">
 							<ul>
-								<li><a routerLink="/account">Account</a></li>
+								<li><a routerLink="/account">My Account</a></li>
 								<li><a (click)="logout()">Logout</a></li>
 							</ul>
 						</div>
@@ -51,19 +50,17 @@
 
 	<footer>
 		<div class="wrap-padder">
-			<h3>Be the first summoner with Lol Hype!</h3>
 
 			<div class="sub-content">
 				<ul class="messages">
 					<li>Made with <i class="fas fa-heart"></i>!</li>
 					<li *ngIf="dataService.inited">Data powered by <a href="https://developer.riotgames.com">Riot API</a>, <a href="http://ddragon.leagueoflegends.com/">ddragon</a> and <a href="https://github.com/CommunityDragon/">Community Dragon</a>. Data version {{dataService.realms.data.v}}</li>
+					<li>Copyright 2018, LoL Hype.</li>
 				</ul>
 
 
 				<ul class="menu">
 					<li><a routerLink="/who-we-are">Who we are ?</a></li>
-					<li><a routerLink="/about-this-website">About this website</a></li>
-					<li><a routerLink="/help-us">Help us</a></li>
 				</ul>
 			</div>
 		</div>
