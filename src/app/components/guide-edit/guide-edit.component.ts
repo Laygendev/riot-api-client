@@ -32,10 +32,9 @@ export class GuideEditComponent implements OnInit {
 		public httpGuideService: HttpGuideService,
 		public httpUserService: HttpUserService,
 	) {
-		if ( ! this.dataService.user._id ) {
+		if ( ! this.dataService.user ) {
 			this.router.navigate(['/']);
 		}
-
 
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;

@@ -27,8 +27,8 @@ export class AuthenticationComponent {
 
 	createForm(): void {
 		this.userForm = this.fb.group({
-			mail: ['latour.jimmy@gmail.com'],
-			password: ['mxlaser9'],
+			mail: [],
+			password: [],
 		});
 	}
 
