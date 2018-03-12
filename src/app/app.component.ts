@@ -21,7 +21,7 @@ export class AppComponent implements AfterViewInit {
 	realms: any;
 
 	constructor(
-		private dataService: DataService,
+		public dataService: DataService,
 		private staticDataService: StaticDataService,
 		private titleService: TitleService,
 		private router: Router,

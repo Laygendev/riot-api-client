@@ -29,7 +29,7 @@ export class SearchComponent {
 		private httpStatusService: HttpStatusService,
 		private httpSummonerService: HttpSummonerService,
 		private httpSpectatorService: HttpSpectatorService,
-		private dataService: DataService,
+		public dataService: DataService,
 		private titleService: TitleService) {
 			titleService.setTitle('Home - LoL Hype');
 
