@@ -34,19 +34,12 @@ export class GuideEditComponent implements OnInit {
 		public httpUserService: HttpUserService,
 		private titleService: TitleService
 	) {
-<<<<<<< HEAD
-		if ( ! this.dataService.user ) {
-			this.router.navigate(['/']);
-		}
-
-=======
 		if ( ! this.dataService.user || ( this.dataService.user && ! this.dataService.user._id ) ) {
 			this.router.navigate(['/']);
 		}
 
 		titleService.setTitle( 'Create guide - LoL Hype' );
 
->>>>>>> b005f304ff6b7db4431d731ee1cd4399d4e9c957
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
 
