@@ -64,6 +64,9 @@
 	},
 	{
 		"name": "JP",
-		"slug": "jp1"
+		"slug": "jp1",
+		"langs": [
+			
+		]
 	}
 ]
