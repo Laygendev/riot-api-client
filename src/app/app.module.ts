@@ -40,6 +40,25 @@ import { Page404Component } from './components/page-404/page-404.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'lolhype.com' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  },
+  palette: {
+    popup: {
+      background: '#000'
+    },
+    button: {
+      background: '#f1d600'
+    }
+  },
+  theme: 'edgeless',
+  type: 'opt-out'
+};
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +88,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 		HttpModule,
 		HttpClientModule,
 		AppRoutingModule,
-		NgbModule.forRoot()
+		NgbModule.forRoot(),
+		NgcCookieConsentModule.forRoot(cookieConfig)
   ],
   providers: [
 		HttpService,

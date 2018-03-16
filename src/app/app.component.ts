@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
 
 import { DataService } from './services/data/data.service';
 import { StaticDataService } from './services/staticData/static-data.service';
@@ -13,6 +14,7 @@ import { TitleService } from './services/title/title.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+
 	subscription: Subscription;
 
 	private urlAccepted: string[] = ['/', '/guide', '/admin', '/subscribe', '/authentication', '/account', '/who-we-are', '/about-this-website', '/help-us', '/all-guides', '/members', '/404' ];
@@ -25,7 +27,8 @@ export class AppComponent implements AfterViewInit {
 		private staticDataService: StaticDataService,
 		private titleService: TitleService,
 		private router: Router,
-		public title: Title) {
+		public title: Title,
+		private ccService: NgcCookieConsentService) {
 		this.dataService.loading = true;
 
 		this.subscription = this.titleService.getTitle().subscribe((newTitle) => this.setTitle(newTitle));
@@ -58,6 +61,7 @@ export class AppComponent implements AfterViewInit {
 	ngOnDestroy() {
 		// unsubscribe to ensure no memory leaks
 		this.subscription.unsubscribe();
+
 	}
 
 	setTitle(newTitle: any): void {
