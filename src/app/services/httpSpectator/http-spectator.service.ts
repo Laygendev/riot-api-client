@@ -11,7 +11,7 @@ export class HttpSpectatorService {
 	constructor(private httpClient: HttpClient) {}
 
 	public get(summonerId: number, region: string): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/spectator/" + region + "/" + summonerId;
+		let url: string = "http://54.36.43.4:3002/spectator/" + region + "/" + summonerId;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }

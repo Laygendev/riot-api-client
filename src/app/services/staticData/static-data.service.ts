@@ -13,22 +13,22 @@ export class StaticDataService {
 	) {}
 
 	public get(endpoint: string, args: any): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/static-data/champions/" + args.championId;
+		let url: string = "http://54.36.43.4:3002/static-data/champions/" + args.championId;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 
 	public getItems(): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/static-data/items/" + navigator.language;
+		let url: string = "http://54.36.43.4:3002/static-data/items/" + navigator.language;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 
 	public getChampions(): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/static-data/champions";
+		let url: string = "http://54.36.43.4:3002/static-data/champions";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 
 	public getRealms(): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/realms";
+		let url: string = "http://54.36.43.4:3002/realms";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 
@@ -37,7 +37,7 @@ export class StaticDataService {
 	}
 
 	public getSummoners(): Observable<any> {
-		let url: string = "http://164.132.69.238:3002/static-data/summoner";
+		let url: string = "http://54.36.43.4:3002/static-data/summoner";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }
