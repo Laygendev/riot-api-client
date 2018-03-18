@@ -73,7 +73,7 @@ export class HttpGuideService {
 		delete build.starterItemsSlot;
 		delete build.buildItemsSlot;
 
-		return this.httpClient.post( url, build, {responseType: 'json'} );
+		return this.httpClient.put( url, build, {responseType: 'json'} );
 	}
 
 	public vote(guideId: string, userId: string): Observable<any> {
