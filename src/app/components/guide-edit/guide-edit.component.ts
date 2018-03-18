@@ -25,6 +25,7 @@ export class GuideEditComponent implements OnInit {
 	public items: Array<ItemModel> = new Array<ItemModel>();
 
 	public updatedBuild: boolean = false;
+	public createdBuild: boolean = false;
 
 	constructor(
 		public route: ActivatedRoute,
@@ -124,10 +125,17 @@ export class GuideEditComponent implements OnInit {
 	}
 
 	update(): void {
-		this.httpGuideService.post(this.guide).subscribe((data) => {
-			this.guide = new GuideModel(data);
-			this.updatedBuild = true;
-		});
+		if (this.guide._id) {
+			this.httpGuideService.put(this.guide).subscribe((data) => {
+				this.guide = new GuideModel(data);
+				this.updatedBuild = true;
+			});
+		} else {
+			this.httpGuideService.post(this.guide).subscribe((data) => {
+				this.guide = new GuideModel(data);
+				this.createdBuild = true;
+			});
+		}
 	}
 
 	getUrl(): string {

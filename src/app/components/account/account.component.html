@@ -61,7 +61,7 @@
 							<td><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{guide.champion.image.full}}" /></td>
 							<td><app-build-display [guide]="guide"></app-build-display></td>
 							<td>{{guide.vote}}</td>
-							<td><a routerLink="/guide-edit/{{guide._id}}">Edit</a></td>
+							<td><button type="button" class="btn btn-primary" routerLink="/guide-edit/{{guide._id}}">Edit</button></td>
 						</tr>
 					</tbody>
 				</table>

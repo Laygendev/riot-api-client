@@ -19,7 +19,7 @@
 			<p>Make sure you have read how to make a guide before created one</p>
 
 
-			<div *ngIf="updatedBuild">
+			<div *ngIf="createdBuild">
 				<h2>Guide created with success !</h2>
 
 				<p>Thanks you for your contribute</p>
@@ -31,7 +31,16 @@
 
 			</div>
 
-			<div *ngIf="!updatedBuild">
+			<div *ngIf="updatedBuild">
+				<h2>Guide updated with success !</h2>
+
+				<p>Thanks you for your contribute</p>
+
+				<p>You can go <a routerLink="/">home</a></p>
+
+			</div>
+
+			<div *ngIf="!updatedBuild && !createdBuild">
 				<div class="row" *ngIf="champion">
 					<div class="col-sm">
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
