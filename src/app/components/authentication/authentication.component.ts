@@ -45,6 +45,10 @@ export class AuthenticationComponent {
 				this.dataService.user = new UserModel(data);
 				window.localStorage.setItem("user", JSON.stringify(this.dataService.user));
 
+				if ( this.dataService.user.roles.indexOf( 'administrator') != -1 ) {
+					this.dataService.isAdmin = true;
+				}
+
 				this.router.navigate(['/']);
 			}
 		});

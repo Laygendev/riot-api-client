@@ -27,6 +27,8 @@
 		<div class="content">
 			<div *ngIf="routerActive == 'account'">
 				<h3>All Accounts</h3>
+
+				<p>Not available</p>
 			</div>
 
 			<div *ngIf="routerActive == 'guides'">
@@ -61,8 +63,8 @@
 							<td><app-build-display [guide]="guide"></app-build-display></td>
 							<td>{{guide.vote}}</td>
 							<td>
-								<a *ngIf="guide.state != 'publish'" (click)="toPublish(guide)">To publish</a>
-								<a routerLink="/guide-edit/{{guide._id}}">Edit</a>
+								<button type="button" class="btn btn-primary" *ngIf="guide.state != 'publish'" (click)="toPublish(guide)">To publish</button>
+								<button type="button" class="btn btn-primary" routerLink="/guide-edit/{{guide._id}}">Edit</button>
 							</td>
 						</tr>
 					</tbody>

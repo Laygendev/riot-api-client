@@ -26,6 +26,7 @@ export class DataService {
 	public userLang: any = navigator.language;
 	public currentRegion: string = 'euw1';
 	public summonerSpells: Array<SummonerSpellModel> = new Array<SummonerSpellModel>();
+	public isAdmin: boolean = false;
 
 	constructor(
 		private httpClient: HttpClient,
@@ -37,6 +38,10 @@ export class DataService {
 
 		if ( window.localStorage.getItem("user") ) {
 			this.user = new UserModel(JSON.parse(window.localStorage.getItem("user")));
+
+			if ( this.user.roles.indexOf( 'administrator') != -1 ) {
+				this.isAdmin = true;
+			}
 		}
 
 		this.staticDataService.getChampions().subscribe((responseObject) => {
