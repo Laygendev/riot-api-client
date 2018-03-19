@@ -126,7 +126,7 @@ export class GuideEditComponent implements OnInit {
 
 	update(): void {
 		if (this.guide._id) {
-			this.httpGuideService.put(this.guide).subscribe((data) => {
+			this.httpGuideService.put(this.guide, 'updateGuide').subscribe((data) => {
 				this.guide = new GuideModel(data);
 				this.updatedBuild = true;
 			});

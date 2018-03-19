@@ -43,7 +43,7 @@ export class AdminComponent implements OnInit {
 	toPublish(guide: GuideModel): void {
 		guide.state = 'publish';
 
-		this.httpGuideService.put(guide).subscribe((data) => {
+		this.httpGuideService.put(guide, 'toPublish').subscribe((data) => {
 			guide.favorite = data.favorite;
 		});
 	}
