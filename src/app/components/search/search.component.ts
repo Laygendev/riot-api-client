@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Meta } from '@angular/platform-browser';
 
 import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
 import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
@@ -30,8 +31,16 @@ export class SearchComponent {
 		private httpSummonerService: HttpSummonerService,
 		private httpSpectatorService: HttpSpectatorService,
 		public dataService: DataService,
-		private titleService: TitleService) {
-			titleService.setTitle('Guides LoL | Home');
+		private titleService: TitleService,
+	  private meta: Meta) {
+			titleService.setTitle('Guides LoL - ' + dataService.realms.data.v + ' | Home');
+
+			this.meta.addTags([
+				{
+					name: 'description',
+					content: 'Guides LoL - Real-time League of Legends Guides for any champions and all game mode.',
+				}
+			]);
 
 			this.createFormControls();
 			this.createForm();
