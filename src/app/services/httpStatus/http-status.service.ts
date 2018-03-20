@@ -11,7 +11,7 @@ export class HttpStatusService {
 	constructor(private httpClient: HttpClient) {}
 
 	public get(): Observable<any> {
-		let url: string = "http://54.36.43.4/status";
+		let url: string = "http://54.36.43.4:3002/status";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }
