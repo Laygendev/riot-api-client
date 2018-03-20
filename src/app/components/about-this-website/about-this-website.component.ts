@@ -10,7 +10,7 @@ import { TitleService } from './../../services/title/title.service';
 export class AboutThisWebsiteComponent implements OnInit {
 
 	constructor(private titleService: TitleService) {
-		titleService.setTitle('About this Website - LoL Hype');
+		titleService.setTitle('About this Website - Guides LoL');
 	}
 
 	ngOnInit() {}

@@ -31,7 +31,7 @@ export class SearchComponent {
 		private httpSpectatorService: HttpSpectatorService,
 		public dataService: DataService,
 		private titleService: TitleService) {
-			titleService.setTitle('Home - LoL Hype');
+			titleService.setTitle('Guides LoL | Home');
 
 			this.createFormControls();
 			this.createForm();

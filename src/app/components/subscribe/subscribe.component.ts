@@ -21,7 +21,7 @@ export class SubscribeComponent {
 		public httpUserService: HttpUserService,
 		private fb: FormBuilder,
 		private titleService: TitleService) {
-		titleService.setTitle( 'Subscribe - LoL Hype' );
+		titleService.setTitle( 'Subscribe - Guides LoL' );
 		this.createForm();
 	}
 

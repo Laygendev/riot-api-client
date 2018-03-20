@@ -22,7 +22,7 @@ export class AccountComponent implements OnInit {
 		public httpGuideService: HttpGuideService,
 		private titleService: TitleService
 	) {
-		this.titleService.setTitle( 'Account - LoL Hype' );
+		this.titleService.setTitle( 'Account - Guides LoL' );
 
 		this.route.params.subscribe(params => {
 			if ( params.routerActive ) {

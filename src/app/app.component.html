@@ -19,7 +19,7 @@
 	<header>
 		<div class="wrap-padder sub-content">
 			<div class="title">
-				<h1><a routerLink="/">LoL Hype</a></h1>
+				<h1><a routerLink="/">Guides LoL</a></h1>
 				<p>Version <strong *ngIf="dataService.realms">{{dataService.realms.data.v}}</strong></p>
 			</div>
 
@@ -56,12 +56,12 @@
 				<ul class="messages">
 					<li>Made with <i class="fas fa-heart"></i>!</li>
 					<li *ngIf="dataService.inited">Data powered by <a href="https://developer.riotgames.com">Riot API</a>, <a href="http://ddragon.leagueoflegends.com/">ddragon</a> and <a href="https://github.com/CommunityDragon/">Community Dragon</a>. Data version {{dataService.realms.data.v}}</li>
-					<li>Copyright 2018, LoL Hype.</li>
+					<li>Copyright 2018, Guides LoL.</li>
 				</ul>
 
 
 				<ul class="menu">
-					<li>contact@lolhype.com</li>
+					<li>contact@guideslol.com</li>
 					<li><a routerLink="/who-we-are">Who we are ?</a></li>
 				</ul>
 			</div>

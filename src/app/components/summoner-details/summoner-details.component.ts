@@ -35,11 +35,11 @@ export class SummonerDetailsComponent  {
 		private httpSummonerService: HttpSummonerService,
 		private staticDataService: StaticDataService,
 		private titleService: TitleService) {
-		this.titleService.setTitle( 'Current Game - LoL Hype' );
+		this.titleService.setTitle( 'Current Game - Guides LoL' );
 		if ( ! this.dataService.summonerData ) {
 			this.route.params.subscribe(param => {
 				this.summonerName = param.id;
-				this.titleService.setTitle( this.summonerName + ' Current Game - LoL Hype' );
+				this.titleService.setTitle( this.summonerName + ' Current Game - Guides LoL' );
 				this.currentRegion = param.region;
 				this.httpSummonerService.get(param.id, param.region).subscribe((data) => {
 					let summonerData = new SummonerModel(data);

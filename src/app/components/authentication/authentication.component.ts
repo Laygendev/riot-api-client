@@ -24,7 +24,7 @@ export class AuthenticationComponent {
 		private fb: FormBuilder,
 		private dataService: DataService,
 		private titleService: TitleService) {
-		titleService.setTitle( 'Authentication - LoL Hype' );
+		titleService.setTitle( 'Authentication - Guides LoL' );
 		this.createForm();
 	}
 

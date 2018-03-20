@@ -10,7 +10,7 @@ import { TitleService } from './../../services/title/title.service';
 export class AllGuidesComponent implements OnInit {
 
 	constructor(titleService: TitleService) {
-		titleService.setTitle( 'All Guides - LoL Hype' );
+		titleService.setTitle( 'All Guides - Guides LoL' );
 	}
 
 	ngOnInit() {}

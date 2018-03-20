@@ -39,7 +39,7 @@ export class GuideEditComponent implements OnInit {
 			this.router.navigate(['/']);
 		}
 
-		titleService.setTitle( 'Create guide - LoL Hype' );
+		titleService.setTitle( 'Create guide - Guides LoL' );
 
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
@@ -110,7 +110,7 @@ export class GuideEditComponent implements OnInit {
 
 				this.dataService.loading = false;
 
-				this.titleService.setTitle( 'Create guide ' + this.champion.name + ' in ' + this.guide.gameMode + ' - LoL Hype' );
+				this.titleService.setTitle( 'Create guide ' + this.champion.name + ' in ' + this.guide.gameMode + ' - Guides LoL' );
 			}
 		});
 	}

@@ -14,7 +14,7 @@ export class Page404Component implements OnInit {
 		public dataService: DataService,
 		public titleService: TitleService
 	) {
-		titleService.setTitle( '404 - LoL Hype' );
+		titleService.setTitle( '404 - Guides LoL' );
 	}
 
   ngOnInit() {

@@ -31,7 +31,7 @@ export class GuideComponent {
 		public httpGuideService: HttpGuideService,
 		private titleService: TitleService,
 	) {
-		this.titleService.setTitle( 'Create guide - LoL Hype' );
+		this.titleService.setTitle( 'Create guide - Guides LoL' );
 
 		this.route.params.subscribe(params => {
 			if ( params.championId && params.gameMode ) {

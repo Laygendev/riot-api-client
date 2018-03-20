@@ -12,7 +12,7 @@ export class HttpService {
 	constructor(private httpClient: HttpClient) {}
 
 	public get(): Observable<any> {
-		let url: string = "https://lolhype.com:3002/summoner/bearbehindpc";
+		let url: string = "https://guideslol.com:3002/summoner/bearbehindpc";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }
