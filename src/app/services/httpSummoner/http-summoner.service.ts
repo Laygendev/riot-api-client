@@ -11,7 +11,7 @@ export class HttpSummonerService {
 	constructor(private httpClient: HttpClient) {}
 
 	public get(summonerName: string, region: string): Observable<any> {
-		let url: string = "http://server.guideslol.com:3002/summoner/" + region + "/" + summonerName;
+		let url: string = "http://54.36.43.4:3002/summoner/" + region + "/" + summonerName;
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 }
