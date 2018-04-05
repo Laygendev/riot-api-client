@@ -5,7 +5,6 @@ import { Meta } from '@angular/platform-browser';
 
 import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
 import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
-import { HttpStatusService } from './../../services/httpStatus/http-status.service';
 import { DataService } from './../../services/data/data.service';
 import { TitleService } from './../../services/title/title.service';
 
@@ -27,7 +26,6 @@ export class SearchComponent {
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
-		private httpStatusService: HttpStatusService,
 		private httpSummonerService: HttpSummonerService,
 		private httpSpectatorService: HttpSpectatorService,
 		public dataService: DataService,
