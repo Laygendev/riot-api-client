@@ -1,6 +1,5 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 
-import {  } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { NgModule, LOCALE_ID, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
@@ -16,7 +15,6 @@ import { HttpSummonerService } from './services/httpSummoner/http-summoner.servi
 import { HttpSpectatorService } from './services/httpSpectator/http-spectator.service';
 import { StaticDataService } from './services/staticData/static-data.service';
 import { HttpGuideService } from './services/httpGuide/http-guide.service';
-import { HttpStatusService } from './services/httpStatus/http-status.service';
 import { HttpUserService } from './services/httpUser/http-user.service';
 import { TitleService } from './services/title/title.service';
 
@@ -104,7 +102,6 @@ const cookieConfig:NgcCookieConsentConfig = {
 		DataService,
 		StaticDataService,
 		HttpGuideService,
-		HttpStatusService,
 		HttpUserService,
 		TitleService,
 		Title

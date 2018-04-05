@@ -39,13 +39,17 @@
 				"ngx-cookieconsent": "^1.0.1",
 				"popper.js": "^1.14.1",
 				"rxjs": "^5.5.7",
-				"ts-loader": "^4.1.0",
-				"zone.js": "^0.8.14"
+				"ts-loader": "3.5.0",
+				"zone.js": "^0.8.14",
+				"describe": "^1.2.0",
+				"beforeEach": "^2.1.1",
+				"it": "^1.1.1",
+				"expect": "^22.4.3"
 		},
 		"devDependencies": {
 				"@angular/cli": "^1.7.3",
 				"@angular/compiler-cli": "^5.2.9",
 				"@angular/language-service": "^5.2.9",
 				"typescript": "~2.4.1"
-		}
+			}
 }
