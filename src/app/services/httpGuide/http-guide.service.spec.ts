@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HttpBuildService } from './http-build.service';
+import { HttpGuideService } from './http-guide.service';
 
-describe('HttpBuildService', () => {
+describe('HttpGuideService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HttpBuildService]
+      providers: [HttpGuideService]
     });
   });
 
-  it('should be created', inject([HttpBuildService], (service: HttpBuildService) => {
+  it('should be created', inject([HttpGuideService], (service: HttpGuideService) => {
     expect(service).toBeTruthy();
   }));
 });

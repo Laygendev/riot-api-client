@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HttpSummonerService } from './http-summoner.service';
+import { HttpSpectatorService } from './http-spectator.service';
 
-describe('HttpSummonerService', () => {
+describe('HttpSpectatorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HttpSummonerService]
+      providers: [HttpSpectatorService]
     });
   });
 
-  it('should be created', inject([HttpSummonerService], (service: HttpSummonerService) => {
+  it('should be created', inject([HttpSpectatorService], (service: HttpSpectatorService) => {
     expect(service).toBeTruthy();
   }));
 });

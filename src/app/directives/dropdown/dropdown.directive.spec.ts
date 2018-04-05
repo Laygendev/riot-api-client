@@ -2,7 +2,7 @@ import { DropdownDirective } from './dropdown.directive';
 
 describe('DropdownDirective', () => {
   it('should create an instance', () => {
-    const directive = new DropdownDirective();
+    const directive = new DropdownDirective(undefined);
     expect(directive).toBeTruthy();
   });
 });
