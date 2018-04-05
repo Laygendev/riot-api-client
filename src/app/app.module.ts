@@ -1,5 +1,9 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+
+import {  } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
+import { NgModule, LOCALE_ID, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
