@@ -85,7 +85,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     GuidePageComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'guideslol' }),
 		ReactiveFormsModule,
 		HttpModule,
 		HttpClientModule,
