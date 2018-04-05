@@ -85,7 +85,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     GuidePageComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'guideslol' }),
+    BrowserModule.withServerTransition({appId: 'riot-api-client' }),
 		ReactiveFormsModule,
 		HttpModule,
 		HttpClientModule,
