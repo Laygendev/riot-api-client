@@ -102,6 +102,17 @@ export class DataService {
 		return null;
 	}
 
+	getChampionByName(name: any): ChampionModel {
+
+		for(let key in this.champions) {
+			if (this.champions[key].name.toLowerCase() == name.toLowerCase()) {
+				return this.champions[key]
+			}
+		}
+
+		return null;
+	}
+
 	getItemById(id: any): ItemModel {
 
 		for(let key in this.items) {

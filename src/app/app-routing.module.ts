@@ -6,6 +6,7 @@ import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
 import { GuideComponent } from './components/guide/guide.component';
+import { GuidePageComponent } from './components/guide-page/guide-page.component';
 import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
 import { AccountComponent } from './components/account/account.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
 	{ path: 'summoner/:region/:id', component: SummonerDetailsComponent },
 	{ path: 'guide', component: GuideComponent },
 	{ path: 'guide/:gameMode/:championId', component: GuideComponent },
+	{ path: 'guide/:gameMode/current/:championName', component: GuidePageComponent },
 	{ path: 'guide-edit/:guideId', component: GuideEditComponent },
 	{ path: 'guide-edit/:gameMode/:championId', component: GuideEditComponent },
 	{ path: 'account', component: AccountComponent },

@@ -18,7 +18,7 @@ import { UserModel } from './../../models/user.model';
 export class GuideComponent {
 	public champion: ChampionModel;
 
-	public gamesMode: String[] = ['ARAM', 'CLASSIC']
+	public gamesMode: String[] = ['ARAM', 'CLASSIC'];
 	public gameMode: String;
 
 	public guides: Array<GuideModel> = new Array<GuideModel>();

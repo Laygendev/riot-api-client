@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from './../../services/data/data.service';
+
 import { TitleService } from './../../services/title/title.service';
 
 @Component({
@@ -9,10 +11,18 @@ import { TitleService } from './../../services/title/title.service';
 })
 export class AllGuidesComponent implements OnInit {
 
-	constructor(titleService: TitleService) {
+  public gamesMode: String[] = ['ARAM', 'CLASSIC'];
+	public currentGameMode: String = 'CLASSIC';
+
+	constructor(
+    public dataService: DataService,
+    titleService: TitleService) {
 		titleService.setTitle( 'All Guides - Guides LoL' );
 	}
 
 	ngOnInit() {}
 
+  selectGameMode(gameMode:String): void {
+    this.currentGameMode = gameMode;
+  }
 }

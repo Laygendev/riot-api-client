@@ -19,6 +19,20 @@
 <section class="page-secondary">
 
 	<div class="wrap-padder">
-		This page is not available.
+		<ul>
+			<li class="item" *ngFor="let gameMode of gamesMode">
+				<div class="btn" [class.btn-primary]="gameMode == currentGameMode" [class.btn-secondary]="gameMode != currentGameMode" (click)="selectGameMode(gameMode)">
+					<span>{{gameMode}}</span>
+				</div>
+			</li>
+		</ul>
+
+		<ul>
+			<li class="item" ngbTooltip="Guide - {{dataService.realms.data.v}} {{champion.name}} in {{currentGameMode}}" *ngFor="let champion of dataService.champions">
+				<a routerLink="/guide/{{currentGameMode}}/current/{{champion.name}}">
+					<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
+				</a>
+			</li>
+		</ul>
 	</div>
 </section>

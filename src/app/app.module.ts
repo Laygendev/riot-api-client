@@ -37,6 +37,7 @@ import { HelpUsComponent } from './components/help-us/help-us.component';
 import { AllGuidesComponent } from './components/all-guides/all-guides.component';
 import { MembersComponent } from './components/members/members.component';
 import { Page404Component } from './components/page-404/page-404.component';
+import { GuidePageComponent } from './components/guide-page/guide-page.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -80,7 +81,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     HelpUsComponent,
     AllGuidesComponent,
     MembersComponent,
-    Page404Component
+    Page404Component,
+    GuidePageComponent
   ],
   imports: [
     BrowserModule,
