@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { ChampionModel } from './../../models/champion.model';
 
@@ -16,7 +17,9 @@ export class GuidePageComponent implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
-    public dataService: DataService
+    public dataService: DataService,
+    private meta: Meta,
+    private title: Title
   ) { }
 
   ngOnInit() {
@@ -24,6 +27,10 @@ export class GuidePageComponent implements OnInit {
       this.champion = this.dataService.getChampionByName(param.championName);
       this.gameMode = param.gameMode;
       this.dataService.loading = false;
+
+      this.title.setTitle( 'League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode );
+      this.meta.addTag({ name: 'description', content: 'League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode });
+      this.meta.addTag({ name: 'keywords', content: 'League of Legends, Guide, Guide ' + this.dataService.realms.data.v + ', ' + param.championName + ', ' + param.championName + ' ' + param.gameMode + ', ' + param.championName + ' ' + this.dataService.realms.data.v });
     });
   }
 
