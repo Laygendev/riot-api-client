@@ -18,7 +18,7 @@ export class StaticDataService {
 	}
 
 	public getItems(): Observable<any> {
-		let url: string = "https://server.guideslol.com/static-data/items/" + navigator.language;
+		let url: string = "https://server.guideslol.com/static-data/items/en_US";
 		return this.httpClient.get( url, {responseType: 'json'} );
 	}
 

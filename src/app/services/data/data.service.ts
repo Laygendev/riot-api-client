@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 
 import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { StaticDataService } from './../staticData/static-data.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class DataService {
@@ -23,7 +24,7 @@ export class DataService {
 	public waitComponentLoad: boolean = false;
 	public realms: any;
 	public regions: any;
-	public userLang: any = navigator.language;
+	public userLang: any = 'en_US'
 	public currentRegion: string = 'euw1';
 	public summonerSpells: Array<SummonerSpellModel> = new Array<SummonerSpellModel>();
 	public isAdmin: boolean = false;
@@ -31,16 +32,18 @@ export class DataService {
 	constructor(
 		private httpClient: HttpClient,
 		private sanitizer: DomSanitizer,
-		private staticDataService: StaticDataService) {
+		private staticDataService: StaticDataService,
+		@Inject(PLATFORM_ID) private platformId: Object) {
 	}
 
 	init(): void {
+		if (isPlatformBrowser(this.platformId)) {
+			if ( window.localStorage.getItem("user") ) {
+				this.user = new UserModel(JSON.parse(window.localStorage.getItem("user")));
 
-		if ( window.localStorage.getItem("user") ) {
-			this.user = new UserModel(JSON.parse(window.localStorage.getItem("user")));
-
-			if ( this.user.roles.indexOf( 'administrator') != -1 ) {
-				this.isAdmin = true;
+				if ( this.user.roles.indexOf( 'administrator') != -1 ) {
+					this.isAdmin = true;
+				}
 			}
 		}
 
