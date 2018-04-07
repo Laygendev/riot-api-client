@@ -10,7 +10,8 @@
 		"name": "EUW",
 		"slug": "euw1",
 		"langs": [
-			"fr"
+			"fr",
+			"en"
 		]
 	},
 	{
@@ -66,7 +67,7 @@
 		"name": "JP",
 		"slug": "jp1",
 		"langs": [
-			
+
 		]
 	}
 ]

@@ -33,7 +33,7 @@ export class StaticDataService {
 	}
 
 	public getRegions(): Observable<any> {
-		return this.httpClient.get("./assets/json/regions.json", { responseType: 'json'});
+		return this.httpClient.get("https://guideslol.com/assets/json/regions.json", { responseType: 'json'});
 	}
 
 	public getSummoners(): Observable<any> {

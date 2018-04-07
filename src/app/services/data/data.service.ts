@@ -24,7 +24,7 @@ export class DataService {
 	public waitComponentLoad: boolean = false;
 	public realms: any;
 	public regions: any;
-	public userLang: any = 'en_US'
+	public userLang: any = 'en'
 	public currentRegion: string = 'euw1';
 	public summonerSpells: Array<SummonerSpellModel> = new Array<SummonerSpellModel>();
 	public isAdmin: boolean = false;
