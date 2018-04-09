@@ -10,7 +10,7 @@
 		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}} in {{favoriteGuide.version}}</span><span *ngIf="favoriteGuide" class="vote">Favorite guide: {{favoriteGuide.vote}}</span>
 	</h3>
 
-	<div class="favorite-build" *ngIf="favoriteGuide">
+	<div class="favorite-build" *ngIf="favoriteGuide && dataService && dataService.realms">
 		<div *ngIf="favoriteChampion" class="favoriteChampion">
 			<p>
 				<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{favoriteChampion.image.full}}" />
