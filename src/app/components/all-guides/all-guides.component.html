@@ -27,8 +27,8 @@
 			</li>
 		</ul>
 
-		<ul>
-			<li *ngIf="dataService && dataService.realms" class="item" ngbTooltip="Guide - {{dataService.realms.data.v}} {{champion.name}} in {{currentGameMode}}" *ngFor="let champion of dataService.champions">
+		<ul *ngIf="dataService && dataService.realms">
+			<li class="item" ngbTooltip="Guide - {{dataService.realms.data.v}} {{champion.name}} in {{currentGameMode}}" *ngFor="let champion of dataService.champions">
 				<a routerLink="/guide/{{currentGameMode}}/current/{{champion.name}}">
 					<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
 				</a>
