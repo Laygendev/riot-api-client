@@ -14,7 +14,7 @@
 
 			<p>Before make a guide, you have to select the <strong>champion</strong> and the <strong>game mode</strong></p>
 
-			<div class="dropdown-parent">
+			<div class="dropdown-parent" *ngIf="dataService && dataService.realms">
 				<div ngbDropdown class="dropdown">
 					<button appDropdown ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownChampion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span *ngIf="!champion">Champions</span>
