@@ -40,7 +40,7 @@
 
 			</div>
 
-			<div *ngIf="!updatedBuild && !createdBuild">
+			<div *ngIf="!updatedBuild && !createdBuild && dataService && dataService.realms">
 				<div class="row" *ngIf="champion">
 					<div class="col-sm">
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
@@ -48,7 +48,7 @@
 					</div>
 				</div>
 
-				<h2 *ngIf="champion">You make a guide for {{champion.name}} in {{this.guide.gameMode}} for {{dataService.realms.data.v}}</h2>
+				<h2 *ngIf="champion && dataService && dataService.realms">You make a guide for {{champion.name}} in {{this.guide.gameMode}} for {{dataService.realms.data.v}}</h2>
 			</div>
 		</div>
 	</div>
