@@ -1,6 +1,6 @@
 <section class="sub-header background">
 
-	<div class="sub-header-content">
+	<div class="sub-header-content" *ngIf="dataService && dataService.realms">
 		<div class="wrap-padder">
 
 			<h2 class="big-title">Guide ARAM Aram {{dataService.realms.data.v}}</h2>
