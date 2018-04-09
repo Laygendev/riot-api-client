@@ -1,4 +1,8 @@
-import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
+
+
+import { isPlatformBrowser } from '@angular/common';
 
 declare var $:any;
 
@@ -8,12 +12,14 @@ declare var $:any;
 export class DropdownDirective implements OnInit {
 
 	ngOnInit(): void {
-		$('.dropdown-menu .search').click(function(e) {
-			e.stopPropagation();
-		});
+    if (isPlatformBrowser(this.platformId)) {
+  		$('.dropdown-menu .search').click(function(e) {
+  			e.stopPropagation();
+  		});
+    }
 	}
 
-	constructor(public el: ElementRef) {}
+	constructor(public el: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {}
 
 	@HostListener('click') onClick() {
 		this.focusField();
@@ -21,7 +27,9 @@ export class DropdownDirective implements OnInit {
 
 	focusField(): void {
 		setTimeout(() => {
-			$(this.el.nativeElement).closest('.dropdown').find('input[type="text"]').focus();
+      if (isPlatformBrowser(this.platformId)) {
+  			$(this.el.nativeElement).closest('.dropdown').find('input[type="text"]').focus();
+      }
 		}, 100 );
 
 	}
