@@ -6,15 +6,16 @@ import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
 import { join } from 'path';
+var fs = require('fs');
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
 // Express server
-const app = express();
+const app = module.exports = express();
 
-const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist');
+const PORT = process.env.PORT || 443;
+const DIST_FOLDER = join(process.cwd(), 'riot-api-client/dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main.bundle');
@@ -47,7 +48,10 @@ app.get('*', (req, res) => {
   res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
 });
 
-// Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
-});
+
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/guideslol.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/guideslol.com/fullchain.pem')
+};
+
+require('https').createServer(options, app);
