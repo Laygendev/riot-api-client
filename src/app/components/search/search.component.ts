@@ -29,10 +29,9 @@ export class SearchComponent {
 		private httpSummonerService: HttpSummonerService,
 		private httpSpectatorService: HttpSpectatorService,
 		public dataService: DataService,
-		private titleService: TitleService,
 	  private meta: Meta,
 		private title: Title) {
-			this.title.setTitle('Guides LoL -  | Home');
+			this.title.setTitle('Guides LoL - All champions guides ' + this.dataService.realms.data.v + ' | Home');
 
 			this.meta.addTags([
 				{

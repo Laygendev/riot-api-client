@@ -4,6 +4,8 @@ import { DataService } from './../../services/data/data.service';
 
 import { TitleService } from './../../services/title/title.service';
 
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-all-guides',
   templateUrl: './all-guides.component.html',
@@ -16,8 +18,8 @@ export class AllGuidesComponent implements OnInit {
 
 	constructor(
     public dataService: DataService,
-    titleService: TitleService) {
-		titleService.setTitle( 'All Guides - Guides LoL' );
+    private title: Title) {
+		this.title.setTitle( 'All Guides - Guides LoL' );
 	}
 
 	ngOnInit() {}
