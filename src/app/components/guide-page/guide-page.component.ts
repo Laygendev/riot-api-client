@@ -22,9 +22,7 @@ export class GuidePageComponent implements OnInit {
     public dataService: DataService,
     private meta: Meta,
     private title: Title
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.route.params.subscribe(param => {
       this.champion = this.dataService.getChampionByName(param.championName);
       this.gameMode = param.gameMode;
@@ -36,6 +34,10 @@ export class GuidePageComponent implements OnInit {
         this.meta.addTag({ name: 'keywords', content: 'League of Legends, Guide, Guide ' + this.dataService.realms.data.v + ', ' + param.championName + ', ' + param.championName + ' ' + param.gameMode + ', ' + param.championName + ' ' + this.dataService.realms.data.v });
 			});
     });
+   }
+
+  ngOnInit() {
+
   }
 
   ngOnDestroy() {
