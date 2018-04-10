@@ -1,5 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
+
 import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
 import { UserModel } from '../../models/user.model';
@@ -28,6 +31,7 @@ export class DataService {
 	public currentRegion: string = 'euw1';
 	public summonerSpells: Array<SummonerSpellModel> = new Array<SummonerSpellModel>();
 	public isAdmin: boolean = false;
+	private initied = new Subject<any>();
 
 	constructor(
 		private httpClient: HttpClient,
@@ -84,6 +88,7 @@ export class DataService {
 							}
 
 							this.inited = true;
+							this.setInitied();
 
 						});
 
@@ -147,5 +152,13 @@ export class DataService {
 		}
 
 		return null;
+	}
+
+	setInitied() {
+		this.initied.next();
+	}
+
+	getInitied(): Observable<any> {
+		return this.initied.asObservable();
 	}
 }

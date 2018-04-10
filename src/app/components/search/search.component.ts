@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { Subscription } from 'rxjs/Subscription';
 
 import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
 import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
@@ -23,6 +24,8 @@ export class SearchComponent {
 
 	public loaded: false;
 
+	subscription: Subscription;
+
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
@@ -30,8 +33,8 @@ export class SearchComponent {
 		private httpSpectatorService: HttpSpectatorService,
 		public dataService: DataService,
 	  private meta: Meta,
-		private title: Title) {
-			this.title.setTitle('Guides LoL ' + this.dataService.realms.data.v + ' - All champions guides and Real-time search | Home');
+		public title: Title) {
+			this.subscription = this.dataService.getInitied().subscribe(() => this.setTitle);
 
 			this.meta.addTags([
 				{
@@ -43,6 +46,18 @@ export class SearchComponent {
 			this.createFormControls();
 			this.createForm();
 		}
+
+
+	ngOnDestroy() {
+		// unsubscribe to ensure no memory leaks
+		this.subscription.unsubscribe();
+
+	}
+
+
+	setTitle(): void {
+		this.title.setTitle('Guides LoL ' + this.dataService.realms.data.v + ' - All champions guides and Real-time search | Home');
+	}
 
 	createFormControls(): void {
 		this.summonerName = new FormControl('', Validators.required);
