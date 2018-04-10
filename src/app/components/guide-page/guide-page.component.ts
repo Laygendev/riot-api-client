@@ -30,14 +30,11 @@ export class GuidePageComponent implements OnInit {
       this.gameMode = param.gameMode;
       this.dataService.loading = false;
 
-      if ( this.dataService && this.dataService.realms ) {
-        this.subscription = this.dataService.getInitied().subscribe(() => {
-          console.log('title');
-  				this.title.setTitle('League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode);
-          this.meta.addTag({ name: 'description', content: 'League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode });
-          this.meta.addTag({ name: 'keywords', content: 'League of Legends, Guide, Guide ' + this.dataService.realms.data.v + ', ' + param.championName + ', ' + param.championName + ' ' + param.gameMode + ', ' + param.championName + ' ' + this.dataService.realms.data.v });
-  			});
-      }
+      this.subscription = this.dataService.getInitied().subscribe(() => {
+				this.title.setTitle('League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode);
+        this.meta.addTag({ name: 'description', content: 'League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode });
+        this.meta.addTag({ name: 'keywords', content: 'League of Legends, Guide, Guide ' + this.dataService.realms.data.v + ', ' + param.championName + ', ' + param.championName + ' ' + param.gameMode + ', ' + param.championName + ' ' + this.dataService.realms.data.v });
+			});
     });
   }
 
