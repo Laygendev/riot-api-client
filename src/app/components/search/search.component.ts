@@ -34,7 +34,9 @@ export class SearchComponent {
 		public dataService: DataService,
 	  private meta: Meta,
 		public title: Title) {
-			this.subscription = this.dataService.getInitied().subscribe(() => this.setTitle);
+			this.subscription = this.dataService.getInitied().subscribe(() => {
+				this.title.setTitle('Guides LoL ' + this.dataService.realms.data.v + ' - All champions guides and Real-time search | Home');
+			});
 
 			this.meta.addTags([
 				{
@@ -54,10 +56,6 @@ export class SearchComponent {
 
 	}
 
-
-	setTitle(): void {
-		this.title.setTitle('Guides LoL ' + this.dataService.realms.data.v + ' - All champions guides and Real-time search | Home');
-	}
 
 	createFormControls(): void {
 		this.summonerName = new FormControl('', Validators.required);
