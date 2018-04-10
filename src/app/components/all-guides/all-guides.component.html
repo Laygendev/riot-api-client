@@ -27,17 +27,9 @@
 			</li>
 		</ul>
 
-		<ul *ngIf="dataService && dataService.realms && dataService.champions && currentGameMode == 'CLASSIC'">
+		<ul *ngIf="dataService && dataService.realms && dataService.champions">
 			<li class="item" ngbTooltip="Guide - {{dataService.realms.data.v}} {{champion.name}} in {{currentGameMode}}" *ngFor="let champion of dataService.champions">
-				<a routerLink="/guide/CLASSIC/current/{{champion.name}}">
-					<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
-				</a>
-			</li>
-		</ul>
-
-		<ul *ngIf="dataService && dataService.realms && dataService.champions && currentGameMode == 'ARAM'">
-			<li class="item" ngbTooltip="Guide - {{dataService.realms.data.v}} {{champion.name}} in {{currentGameMode}}" *ngFor="let champion of dataService.champions">
-				<a routerLink="/guide/ARAM/current/{{champion.name}}">
+				<a routerLink="/guide/{{currentGameMode}}/current/{{champion.name}}">
 					<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{champion.image.full}}" />
 				</a>
 			</li>
