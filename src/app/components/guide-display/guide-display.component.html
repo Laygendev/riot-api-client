@@ -7,7 +7,7 @@
 	</div>
 
 	<h3 *ngIf="favoriteChampion && favoriteGuide">
-		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}} in {{favoriteGuide.version}}</span><span *ngIf="favoriteGuide" class="vote">Favorite guide: {{favoriteGuide.vote}}</span>
+		Best guide for <span>{{favoriteChampion.name}} in {{gameMode}} in {{favoriteGuide.version}}</span>
 	</h3>
 
 	<div class="favorite-build" *ngIf="favoriteGuide && dataService && dataService.realms">
