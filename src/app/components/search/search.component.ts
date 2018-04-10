@@ -31,7 +31,7 @@ export class SearchComponent {
 		public dataService: DataService,
 	  private meta: Meta,
 		private title: Title) {
-			this.title.setTitle('Guides LoL - All champions guides and Real-time search | Home');
+			this.title.setTitle('Guides LoL ' + this.dataService.realms.data.v + ' - All champions guides and Real-time search | Home');
 
 			this.meta.addTags([
 				{
