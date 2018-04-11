@@ -16,14 +16,41 @@
 </div>
 
 <div class="wrap">
-	<header>
-		<div class="wrap-padder sub-content">
+	<div ngbDropdown placement="bottom-right" class="dropdown menu-mobile">
+		<div class="dropdown_categories" ngbDropdown placement="bottom-right">
+			<div appDropdown ngbDropdownToggle class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-bars"></i>
+			</div>
+
+			<div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenu">
+				<ul>
+					<li><a routerLink="/who-we-are" class="btn btn-secondary">Who we are</a></li>
+					<li *ngIf="!dataService.user" class="btn btn-secondary"><a routerLink="/authentication">Login</a></li>
+					<li *ngIf="dataService.isAdmin" class="btn btn-secondary"><a routerLink="/admin">Admin</a></li>
+					<li *ngIf="dataService.user">
+						<div ngbDropdown placement="bottom-right" class="dropdown">
+							<button appDropdown ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								{{dataService.user.pseudo}}
+							</button>
+							<div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownUser">
+								<ul>
+									<li><a routerLink="/account">My Account</a></li>
+									<li><a (click)="logout()">Logout</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
 			<div class="title">
 				<h1><a routerLink="/">Guides LoL</a></h1>
 				<p>Version <strong *ngIf="dataService.realms">{{dataService.realms.data.v}}</strong></p>
 			</div>
-
-			<ul class="menu">
+		</div>
+	</div>
+	<header>
+		<div class="wrap-padder sub-content">
+			<ul class="menu-normal">
 				<li><a routerLink="/who-we-are">Who we are</a></li>
 				<li *ngIf="!dataService.user"><a routerLink="/authentication">Login</a></li>
 				<li *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a></li>
@@ -43,6 +70,8 @@
 				</li>
 			</ul>
 		</div>
+
+
 	</header>
 
 		<router-outlet></router-outlet>

@@ -130,6 +130,7 @@ ul.arianne li a:hover {
 	background-color: #2f2f2f;
 }
 
+
 /** Design **/
 .wrap {
 	position: relative;
@@ -147,6 +148,9 @@ ul.arianne li a:hover {
 	width: 100%;
 }
 
+.wrap .menu-mobile {
+	display: none;
+}
 header {
 	margin-top: 50px;
 	position: absolute;
@@ -442,4 +446,40 @@ footer .sub-content {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+/** mobile **/
+@media (max-width: 640px) {
+	* {
+		box-sizing: border-box;
+	}
+
+	.wrap {
+		width: 100%;
+	}
+
+	.wrap .wrap-padder {
+		width: 90%;
+	}
+
+	.wrap header .title {
+		width: 100%;
+		color: white;
+	}
+
+	.wrap .menu-normal {
+		display: none;
+	}
+
+	.wrap .menu-mobile {
+		display: flex;
+		width: 100%;
+		background-color: #f1c40f;
+		padding: 10px;
+	}
+
+
+	.wrap .menu-mobile li {
+		list-style-type: none;
+	}
 }
