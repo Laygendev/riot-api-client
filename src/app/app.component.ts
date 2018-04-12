@@ -22,6 +22,8 @@ export class AppComponent implements AfterViewInit {
 
 	realms: any;
 
+  public menuIsOpen: boolean = false;
+
 	constructor(
 		public dataService: DataService,
 		private staticDataService: StaticDataService,
@@ -59,10 +61,16 @@ export class AppComponent implements AfterViewInit {
 	}
 
 	ngOnDestroy() {
-		// unsubscribe to ensure no memory leaks
 		this.subscription.unsubscribe();
-
 	}
+
+  openMenu(): void {
+    this.menuIsOpen = true;
+  }
+
+  closeMenu(): void {
+    this.menuIsOpen = false;
+  }
 
 	setTitle(newTitle: any): void {
 		this.title.setTitle( newTitle );

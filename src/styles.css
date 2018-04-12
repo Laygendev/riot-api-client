@@ -275,7 +275,7 @@ header .sub-content ul li a:hover:before, footer .sub-content ul li a:hover:befo
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=90, Strength=20);
 	background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sion_2.jpg);
 	background-repeat: no-repeat;
-	background-position: top center;
+	background-position: center center;
 	background-size: cover;
 }
 
@@ -458,28 +458,74 @@ footer .sub-content {
 		width: 100%;
 	}
 
+	.wrap header.pc {
+		display: none;
+	}
+
 	.wrap .wrap-padder {
 		width: 90%;
 	}
 
 	.wrap header .title {
+		width: 80%;
+		float: left;
+	}
+	.wrap header .title a {
+		color: white;
+		font-size: 0.6em;
+		margin-left: 4px;
 		width: 100%;
+	}
+
+	.wrap header.mobile {
+		width: 100%;
+		background-color: #f1c40f;
+		margin-top: 0;
+	}
+
+	.wrap header .dropdown {
+		float: right;
+	}
+
+	.wrap header p, .wrap header ul, .wrap header li, .wrap header a {
 		color: white;
 	}
 
-	.wrap .menu-normal {
+	.wrap header .menu {
 		display: none;
-	}
-
-	.wrap .menu-mobile {
-		display: flex;
-		width: 100%;
+		top: 0;
+		width: 80%;
+		position: absolute;
 		background-color: #f1c40f;
-		padding: 10px;
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		border-right: solid #ffe765 1px;
+		border-bottom: solid #ffe765 1px;
 	}
 
+	.wrap header .menu-button {
+		width: 40px;
+		float: left;
+		padding: 10px;
+		font-size: 1.8em;
+	}
 
-	.wrap .menu-mobile li {
-		list-style-type: none;
+	.wrap header .menu.open {
+		display: block;
+	}
+
+	.wrap header .menu li {
+		padding: 10px;
+		margin: 0px;
+		border-top: solid #ffe765 1px;
+	}
+
+	.wrap header .menu li:hover {
+		background-color: #ffe765;
+	}
+
+	.wrap .background {
+		background-position-y: 20px; 
 	}
 }
