@@ -66,3 +66,20 @@
 	list-style: none;
 	margin-right: 20px;
 }
+
+
+/** mobile **/
+@media (max-width: 640px) {
+	.flex {
+		display: block;
+	}
+	.wrap-padder {
+		margin: auto;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.bloc-button {
+		width: 100%;
+		margin-bottom: 50px;
+	}
+}

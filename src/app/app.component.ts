@@ -22,7 +22,10 @@ export class AppComponent implements AfterViewInit {
 
 	realms: any;
 
-  public menuIsOpen: boolean = false;
+  public menuIsOpen: any = {
+    main: false,
+    user: false
+  };
 
 	constructor(
 		public dataService: DataService,
@@ -64,12 +67,12 @@ export class AppComponent implements AfterViewInit {
 		this.subscription.unsubscribe();
 	}
 
-  openMenu(): void {
-    this.menuIsOpen = true;
+  openMenu(name): void {
+    this.menuIsOpen[name] = true;
   }
 
-  closeMenu(): void {
-    this.menuIsOpen = false;
+  closeMenu(name): void {
+    this.menuIsOpen[name] = false;
   }
 
 	setTitle(newTitle: any): void {

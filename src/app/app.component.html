@@ -17,16 +17,23 @@
 
 <div class="wrap">
 	<header class="mobile">
-		<div class="menu-button" (click)="openMenu()">
+		<div class="menu-button" (click)="openMenu('main')">
 			<i class="fas fa-bars"></i>
 		</div>
-		<ul class="menu" [class.open]="menuIsOpen">
-			<li (click)="closeMenu()"><i class="fas fa-times"></i> Menu</li>
-			<li><a routerLink="/who-we-are">Who we are</a></li>
-			<li *ngIf="!dataService.user"><a routerLink="/authentication">Login</a></li>
-			<li *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a></li>
-			<li *ngIf="dataService.user">User</li>
+		<ul class="menu" [class.open]="menuIsOpen.main">
+			<li (click)="closeMenu('main')"><i class="fas fa-times"></i> Menu</li>
+			<li (click)="closeMenu('main')"><a routerLink="/">Home</a></li>
+			<li (click)="closeMenu('main')"><a routerLink="/who-we-are">Who we are</a></li>
+			<li (click)="closeMenu('main')" *ngIf="!dataService.user"><a routerLink="/authentication">Login</a></li>
+			<li (click)="closeMenu('main')" *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a></li>
+			<li (click)="openMenu('user'); closeMenu('main')" *ngIf="dataService.user">{{dataService.user.pseudo}}</li>
 		</ul>
+
+		<ul class="menu" [class.open]="menuIsOpen.user" *ngIf="!dataService.user">
+			<li (click)="closeMenu('user'); openMenu('main')"><i class="fas fa-times"></i> Retour</li>
+			<li><i class="fas fa-times"></i> Retour</li>
+		</ul>
+
 		<div class="title">
 			<h1><a routerLink="/">guideslol.com</a> <span *ngIf="dataService.realms">{{dataService.realms.data.v}}</span></h1>
 		</div>

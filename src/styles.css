@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
 a {
 	color: #f1c40f;
 }
@@ -307,6 +312,10 @@ footer .sub-content {
 	justify-content: space-between;
 }
 
+footer ul {
+	list-style-type: none;
+}
+
 .sk-circle {
   margin: 100px auto;
   width: 40px;
@@ -462,8 +471,14 @@ footer .sub-content {
 		display: none;
 	}
 
-	.wrap .wrap-padder {
+	.wrap-padder {
 		width: 90%;
+	}
+
+	.wrap .wrap-padder {
+		padding-left: 10px;
+		padding-right: 10px;
+		margin: auto;
 	}
 
 	.wrap header .title {
@@ -526,6 +541,8 @@ footer .sub-content {
 	}
 
 	.wrap .background {
-		background-position-y: 20px; 
+		background-position-y: 20px;
 	}
+
+
 }
