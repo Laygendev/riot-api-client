@@ -24,11 +24,11 @@ export class GuidePageComponent implements OnInit {
     private title: Title
   ) {
     this.route.params.subscribe(param => {
-      this.champion = this.dataService.getChampionByName(param.championName);
       this.gameMode = param.gameMode;
-      this.dataService.loading = false;
 
       this.subscription = this.dataService.getInitied().subscribe(() => {
+        this.dataService.loading = false;
+        this.champion = this.dataService.getChampionByName(param.championName);
 				this.title.setTitle('League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode);
         this.meta.addTag({ name: 'description', content: 'League of Legends Guide - ' + this.dataService.realms.data.v + ' ' + param.championName + ' ' + param.gameMode });
         this.meta.addTag({ name: 'keywords', content: 'League of Legends, Guide, Guide ' + this.dataService.realms.data.v + ', ' + param.championName + ', ' + param.championName + ' ' + param.gameMode + ', ' + param.championName + ' ' + this.dataService.realms.data.v });

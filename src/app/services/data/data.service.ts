@@ -67,19 +67,19 @@ export class DataService {
 				this.staticDataService.getRealms().subscribe((data) => {
 					this.realms = data;
 
-					this.staticDataService.getRegions().subscribe((data) => {
-						this.regions = data;
-
-						for (let key in this.regions) {
-							if (this.regions[key].langs.indexOf(this.userLang) != -1) {
-								this.currentRegion = this.regions[key].slug;
-								break;
-							}
-						}
-
-						if ( ! this.currentRegion ) {
-							this.currentRegion = 'euw1';
-						}
+					// this.staticDataService.getRegions().subscribe((data) => {
+					// 	this.regions = data;
+					//
+					// 	for (let key in this.regions) {
+					// 		if (this.regions[key].langs.indexOf(this.userLang) != -1) {
+					// 			this.currentRegion = this.regions[key].slug;
+					// 			break;
+					// 		}
+					// 	}
+					//
+					// 	if ( ! this.currentRegion ) {
+					// 		this.currentRegion = 'euw1';
+					// 	}
 
 						this.staticDataService.getSummoners().subscribe((responseObject) => {
 							for (let key in responseObject.data) {
@@ -89,10 +89,9 @@ export class DataService {
 
 							this.inited = true;
 							this.setInitied();
-
 						});
 
-					});
+					// });
 				});
 			});
 
@@ -111,9 +110,9 @@ export class DataService {
 	}
 
 	getChampionByName(name: any): ChampionModel {
-
 		for(let key in this.champions) {
 			if (this.champions[key].name.toLowerCase() == name.toLowerCase()) {
+
 				return this.champions[key]
 			}
 		}

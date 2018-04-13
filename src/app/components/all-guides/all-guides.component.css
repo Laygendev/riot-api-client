@@ -10,3 +10,14 @@ ul li {
   margin-right: 3px;
   margin-bottom: 3px;
 }
+
+/** mobile **/
+@media (max-width: 640px) {
+  ul {
+    justify-content: center;
+  }
+	li, li a, li a img {
+    height: 80px;
+    width: 80px;
+  }
+}
