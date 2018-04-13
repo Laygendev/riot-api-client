@@ -153,9 +153,10 @@ ul.arianne li a:hover {
 	width: 100%;
 }
 
-.wrap .menu-mobile {
+.wrap header.mobile {
 	display: none;
 }
+
 header {
 	margin-top: 50px;
 	position: absolute;

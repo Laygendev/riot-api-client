@@ -44,7 +44,12 @@
 
 	<header class="pc">
 		<div class="wrap-padder sub-content">
-			<ul class="menu-normal">
+			<div class="title">
+				<h1><a routerLink="/">Guides LoL</a></h1>
+				<p>Version <strong *ngIf="dataService.realms">{{dataService.realms.data.v}}</strong></p>
+			</div>
+
+			<ul class="menu">
 				<li><a routerLink="/who-we-are">Who we are</a></li>
 				<li *ngIf="!dataService.user"><a routerLink="/authentication">Login</a></li>
 				<li *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a></li>
