@@ -82,4 +82,15 @@
 		width: 100%;
 		margin-bottom: 50px;
 	}
+
+	.regions {
+		width: 100%;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.regions li {
+		margin-bottom: 2px;
+		margin-right: 2px;
+	}
 }

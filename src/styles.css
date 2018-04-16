@@ -494,6 +494,7 @@ footer ul {
 	}
 
 	.wrap header.mobile {
+		display: block;
 		width: 100%;
 		background-color: #f1c40f;
 		margin-top: 0;

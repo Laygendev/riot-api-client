@@ -22,16 +22,18 @@
 		</div>
 		<ul class="menu" [class.open]="menuIsOpen.main">
 			<li (click)="closeMenu('main')"><i class="fas fa-times"></i> Menu</li>
-			<li (click)="closeMenu('main')"><a routerLink="/">Home</a></li>
-			<li (click)="closeMenu('main')"><a routerLink="/who-we-are">Who we are</a></li>
-			<li (click)="closeMenu('main')" *ngIf="!dataService.user"><a routerLink="/authentication">Login</a></li>
-			<li (click)="closeMenu('main')" *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a></li>
-			<li (click)="openMenu('user'); closeMenu('main')" *ngIf="dataService.user">{{dataService.user.pseudo}}</li>
+			<li (click)="closeMenu('main')"><a routerLink="/">Home</a> <i class="fas fa-angle-right"></i></li>
+			<li (click)="closeMenu('main')"><a routerLink="/who-we-are">Who we are</a> <i class="fas fa-angle-right"></i></li>
+			<li (click)="closeMenu('main')" *ngIf="!dataService.user"><a routerLink="/authentication">Login</a> <i class="fas fa-angle-right"></i></li>
+			<li (click)="openMenu('user'); closeMenu('main')" *ngIf="dataService.user">{{dataService.user.pseudo}} <i class="fas fa-angle-right"></i></li>
 		</ul>
 
-		<ul class="menu" [class.open]="menuIsOpen.user" *ngIf="!dataService.user">
+		<ul class="menu" [class.open]="menuIsOpen.user" *ngIf="dataService.user">
 			<li (click)="closeMenu('user'); openMenu('main')"><i class="fas fa-times"></i> Retour</li>
-			<li><i class="fas fa-times"></i> Retour</li>
+			<li><a routerLink="/account">My account</a> <i class="fas fa-angle-right"></i></li>
+			<li><a routerLink="/account">My guides</a> <i class="fas fa-angle-right"></i></li>
+			<li (click)="closeMenu('user');" *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a> <i class="fas fa-angle-right"></i></li>
+			<li (click)="logout()">Logout <i class="fas fa-angle-right"></i></li>
 		</ul>
 
 		<div class="title">
