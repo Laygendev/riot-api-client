@@ -48,7 +48,7 @@ export class GuidePageComponent implements OnInit {
 
   getUrl(): string {
 		if (this.champion) {
-			return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.champion.name + "_0.jpg')";
+			return "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.champion.name.replace( '%20', '' ) + "_0.jpg')";
 		}
 	}
 }
