@@ -32,6 +32,21 @@ app.engine('html', ngExpressEngine({
   ]
 }));
 
+// Add headers
+app.use(function (req, res, next) {
+var allowedOrigins = ['http://localhost:4200', 'https://guideslol.com', 'http://guideslol.com', 'http://www.guideslol.com', 'http://54.36.43.4:4000', 'http://localhost:4000'];
+
+var origin = req.headers.origin;
+if(allowedOrigins.indexOf(origin) > -1){
+  res.setHeader('Access-Control-Allow-Origin', origin);
+}
+
+res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, OPTIONS, PATCH, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+res.setHeader('Access-Control-Allow-Credentials', true);
+next();
+});
+
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
@@ -46,21 +61,6 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
   res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
-});
-
-// Add headers
-app.use(function (req, res, next) {
-	var allowedOrigins = ['http://localhost:4200', 'https://guideslol.com', 'http://guideslol.com', 'http://www.guideslol.com', 'http://54.36.43.4:4000', 'http://localhost:4000'];
-
-	var origin = req.headers.origin;
-	if(allowedOrigins.indexOf(origin) > -1){
-		res.setHeader('Access-Control-Allow-Origin', origin);
-	}
-
-	res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, OPTIONS, PATCH, DELETE');
-	res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-	res.setHeader('Access-Control-Allow-Credentials', true);
-	next();
 });
 
 
