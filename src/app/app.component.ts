@@ -34,33 +34,31 @@ export class AppComponent implements AfterViewInit {
 		private router: Router,
 		public title: Title,
 		private ccService: NgcCookieConsentService) {
-		this.dataService.loading = true;
-
-		this.subscription = this.titleService.getTitle().subscribe((newTitle) => this.setTitle(newTitle));
-
+		this.dataService.loading = false;
 		dataService.init();
 	}
 
 	ngAfterViewInit(): void {
-		this.router.events
-		.subscribe((event) => {
-			if(event instanceof NavigationStart) {
-				this.dataService.loading = true;
-			}
-			else if (
-				event instanceof NavigationEnd ||
-				event instanceof NavigationCancel
-			) {
-				if( this.urlAccepted.indexOf(event.url) != -1 ) {
+		this.dataService.loading = false;
+		// this.router.events
+		// .subscribe((event) => {
+		// 	if(event instanceof NavigationStart) {
+		// 		this.dataService.loading = true;
+		// 	}
+		// 	else if (
+		// 		event instanceof NavigationEnd ||
+		// 		event instanceof NavigationCancel
+		// 	) {
+		// 		if( this.urlAccepted.indexOf(event.url) != -1 ) {
 
-					if ( this.urlAdmin.indexOf(event.url) != -1 && ( this.dataService.user == undefined || ( this.dataService.user && this.dataService.user.roles.indexOf('administrator') == -1 ) ) ) {
-						this.router.navigate(['/']);
-					}
+		// 			if ( this.urlAdmin.indexOf(event.url) != -1 && ( this.dataService.user == undefined || ( this.dataService.user && this.dataService.user.roles.indexOf('administrator') == -1 ) ) ) {
+		// 				this.router.navigate(['/']);
+		// 			}
 
-					this.dataService.loading = false;
-				}
-			}
-		});
+		// 			this.dataService.loading = false;
+		// 		}
+		// 	}
+		// });
 	}
 
 	ngOnDestroy() {

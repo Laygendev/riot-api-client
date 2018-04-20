@@ -4,14 +4,14 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from './../../services/data/data.service';
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
-import { HttpUserService } from './../../services/httpUser/http-user.service';
+import { HttpUserService } from './../../../authentication/services/httpUser/http-user.service';
 import { TitleService } from './../../services/title/title.service';
 
 import { ChampionModel } from './../../models/champion.model';
 import { ItemModel } from './../../models/item.model';
 import { ItemSlotModel } from './../../models/itemSlot.model';
 import { GuideModel } from './../../models/guide.model';
-import { UserModel } from './../../models/user.model';
+import { UserModel } from './../../../authentication/models/user.model';
 
 @Component({
   selector: 'app-guide-edit',

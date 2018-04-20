@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationModule } from './../authentication/authentication.module';
 
 import { HttpService } from './services/http/http.service';
 import { DataService } from './services/data/data.service';
@@ -15,7 +16,7 @@ import { HttpSummonerService } from './services/httpSummoner/http-summoner.servi
 import { HttpSpectatorService } from './services/httpSpectator/http-spectator.service';
 import { StaticDataService } from './services/staticData/static-data.service';
 import { HttpGuideService } from './services/httpGuide/http-guide.service';
-import { HttpUserService } from './services/httpUser/http-user.service';
+
 import { TitleService } from './services/title/title.service';
 
 import { DropdownDirective } from './directives/dropdown/dropdown.directive';
@@ -29,9 +30,6 @@ import { GuideComponent } from './components/guide/guide.component';
 import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
 import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
 import { AppBuildDisplayComponent } from './components/app-build-display/app-build-display.component';
-import { SubscribeComponent } from './components/subscribe/subscribe.component';
-import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { AccountComponent } from './components/account/account.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { AboutThisWebsiteComponent } from './components/about-this-website/about-this-website.component';
@@ -47,7 +45,7 @@ import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent'
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
-    domain: 'guideslol.com' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+    domain: 'guideslol.com'
   },
   palette: {
     popup: {
@@ -61,7 +59,6 @@ const cookieConfig:NgcCookieConsentConfig = {
   type: 'opt-out'
 };
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,9 +71,6 @@ const cookieConfig:NgcCookieConsentConfig = {
     SearchDirective,
     TooltipDirective,
     AppBuildDisplayComponent,
-    SubscribeComponent,
-    AuthenticationComponent,
-    AccountComponent,
     AdminComponent,
     WhoWeAreComponent,
     AboutThisWebsiteComponent,
@@ -91,7 +85,7 @@ const cookieConfig:NgcCookieConsentConfig = {
 		ReactiveFormsModule,
 		HttpModule,
 		HttpClientModule,
-		AppRoutingModule,
+    AppRoutingModule,
 		NgbModule.forRoot(),
 		NgcCookieConsentModule.forRoot(cookieConfig)
   ],
@@ -102,7 +96,6 @@ const cookieConfig:NgcCookieConsentConfig = {
 		DataService,
 		StaticDataService,
 		HttpGuideService,
-		HttpUserService,
 		TitleService,
 		Title
 	],

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { DataService } from './../../services/data/data.service';
+import { DataService } from './../../../app/services/data/data.service';
 import { HttpUserService } from './../../services/httpUser/http-user.service';
-import { TitleService } from './../../services/title/title.service';
+import { TitleService } from './../../../app/services/title/title.service';
 
 import { UserModel } from './../../models/user.model';
 
@@ -24,8 +24,8 @@ export class AuthenticationComponent {
 		private fb: FormBuilder,
 		private dataService: DataService,
 		private titleService: TitleService) {
-		titleService.setTitle( 'Authentication - Guides LoL' );
-		this.createForm();
+		// titleService.setTitle( 'Authentication - Guides LoL' );
+		// this.createForm();
 	}
 
 	createForm(): void {
@@ -49,7 +49,7 @@ export class AuthenticationComponent {
 					this.dataService.isAdmin = true;
 				}
 
-				this.router.navigate(['/']);
+				// this.router.navigate(['/']);
 			}
 		});
 	}

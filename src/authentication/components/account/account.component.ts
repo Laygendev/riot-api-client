@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { DataService } from './../../services/data/data.service';
-import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
-import { TitleService } from './../../services/title/title.service';
+import { DataService } from './../../../app/services/data/data.service';
+import { HttpGuideService } from './../../../app/services/httpGuide/http-guide.service';
+import { TitleService } from './../../../app/services/title/title.service';
 
-import { GuideModel } from './../../models/guide.model';
+import { GuideModel } from './../../../app/models/guide.model';
 
 @Component({
   selector: 'app-account',

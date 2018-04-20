@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { ChampionModel } from '../../models/champion.model';
 import { ItemModel } from '../../models/item.model';
-import { UserModel } from '../../models/user.model';
+import { UserModel } from '../../../authentication/models/user.model';
 import { GuideModel } from '../../models/guide.model';
 import { SummonerSpellModel } from '../../models/summonerSpell.model';
 

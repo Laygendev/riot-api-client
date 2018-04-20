@@ -8,7 +8,7 @@ import { HttpGuideService } from './../../services/httpGuide/http-guide.service'
 import { ChampionModel } from './../../models/champion.model';
 import { GuideModel } from './../../models/guide.model';
 import { ItemModel } from './../../models/item.model';
-import { UserModel } from './../../models/user.model';
+import { UserModel } from './../../../authentication/models/user.model';
 
 @Component({
   selector: 'app-build',
