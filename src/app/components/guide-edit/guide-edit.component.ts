@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from './../../services/data/data.service';
 import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
@@ -27,6 +28,8 @@ export class GuideEditComponent implements OnInit {
 	public updatedBuild: boolean = false;
 	public createdBuild: boolean = false;
 
+  subscription: Subscription;
+
 	constructor(
 		public route: ActivatedRoute,
 		public router: Router,
@@ -39,29 +42,31 @@ export class GuideEditComponent implements OnInit {
 			this.router.navigate(['/']);
 		}
 
-		titleService.setTitle( 'Create guide - Guides LoL' );
+    this.subscription = this.dataService.getInitied().subscribe(() => {
+  		titleService.setTitle( 'Create guide - Guides LoL' );
 
-		this.dataService.waitComponentLoad = true;
-		this.dataService.loading = true;
+  		this.dataService.waitComponentLoad = true;
+  		this.dataService.loading = true;
 
-		this.guide = new GuideModel();
-		this.guide.author = this.dataService.user._id;
+  		this.guide = new GuideModel();
+  		this.guide.author = this.dataService.user._id;
 
-		this.route.params.subscribe(params => {
-			this.params = params;
+  		this.route.params.subscribe(params => {
+  			this.params = params;
 
-			if ( params.championId && params.gameMode ) {
-				this.guide.championId = params.championId;
-				this.guide.gameMode = params.gameMode;
+  			if ( params.championId && params.gameMode ) {
+  				this.guide.championId = params.championId;
+  				this.guide.gameMode = params.gameMode;
 
-				if (! this.items.length) {
-					this.items = this.dataService.getItemByMode(this.guide.gameMode);
-				}
+  				if (! this.items.length) {
+  					this.items = this.dataService.getItemByMode(this.guide.gameMode);
+  				}
 
-				this.champion = this.dataService.getChampionById(params.championId);
-			}
+  				this.champion = this.dataService.getChampionById(params.championId);
+  			}
 
-			this.getGuide();
+  			this.getGuide();
+      });
 		});
 	}
 
@@ -69,6 +74,10 @@ export class GuideEditComponent implements OnInit {
 		this.dataService.waitComponentLoad = true;
 		this.dataService.loading = true;
 	}
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 	getGuide(): void {
 		this.dataService.loading = true;
