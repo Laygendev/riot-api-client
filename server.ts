@@ -48,6 +48,21 @@ app.get('*', (req, res) => {
   res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
 });
 
+// Add headers
+app.use(function (req, res, next) {
+	var allowedOrigins = ['http://localhost:4200', 'https://guideslol.com', 'http://guideslol.com', 'http://www.guideslol.com', 'http://54.36.43.4:4000', 'http://localhost:4000'];
+
+	var origin = req.headers.origin;
+	if(allowedOrigins.indexOf(origin) > -1){
+		res.setHeader('Access-Control-Allow-Origin', origin);
+	}
+
+	res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, OPTIONS, PATCH, DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	next();
+});
+
 
 const options = {
   key: fs.readFileSync('/etc/letsencrypt/live/guideslol.com/privkey.pem'),
