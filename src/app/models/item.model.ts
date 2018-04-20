@@ -6,6 +6,7 @@ export class ItemModel {
 	public description: string;
 	public safeDescription: any;
 	public modeNameInclusions: any;
+	public isEnchantment: boolean;
 
 	constructor(fields?: any) {
 		for (var f in fields) {

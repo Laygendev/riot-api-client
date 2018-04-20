@@ -135,7 +135,7 @@ export class DataService {
 		let items: Array<ItemModel> = new Array<ItemModel>();
 
 		for (let key in this.items) {
-			if ( this.items[key].modeNameInclusions.indexOf(gameMode) > -1 ) {
+			if ( this.items[key].modeNameInclusions.indexOf(gameMode) > -1 && ! this.items[key].isEnchantment ) {
 				items.push(this.items[key]);
 			}
 		}
