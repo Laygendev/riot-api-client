@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './../authentication/authentication.module';
+import { BuildModule } from './../build/build.module';
 
 import { HttpService } from './services/http/http.service';
 import { DataService } from './services/data/data.service';
@@ -29,7 +30,6 @@ import { SearchComponent } from './components/search/search.component';
 import { GuideComponent } from './components/guide/guide.component';
 import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
 import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
-import { AppBuildDisplayComponent } from './components/app-build-display/app-build-display.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { AboutThisWebsiteComponent } from './components/about-this-website/about-this-website.component';
@@ -70,7 +70,6 @@ const cookieConfig:NgcCookieConsentConfig = {
     DropdownDirective,
     SearchDirective,
     TooltipDirective,
-    AppBuildDisplayComponent,
     AdminComponent,
     WhoWeAreComponent,
     AboutThisWebsiteComponent,
@@ -86,6 +85,7 @@ const cookieConfig:NgcCookieConsentConfig = {
 		HttpModule,
 		HttpClientModule,
     AppRoutingModule,
+    BuildModule,
 		NgbModule.forRoot(),
 		NgcCookieConsentModule.forRoot(cookieConfig)
   ],

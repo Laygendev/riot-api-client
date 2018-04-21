@@ -18,9 +18,9 @@ import { AccountComponent } from './components/account/account.component';
     ReactiveFormsModule
   ],
   declarations: [
-    //SubscribeComponent,
+    SubscribeComponent,
     AuthenticationComponent,
-    //AccountComponent
+    AccountComponent,
   ],
   providers: [
     HttpUserService

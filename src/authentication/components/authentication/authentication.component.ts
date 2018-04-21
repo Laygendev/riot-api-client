@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { DataService } from './../../../app/services/data/data.service';
 import { HttpUserService } from './../../services/httpUser/http-user.service';
-import { TitleService } from './../../../app/services/title/title.service';
 
 import { UserModel } from './../../models/user.model';
 
 @Component({
-  selector: 'app-authentication',
-  templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.css']
+	selector: 'app-authentication',
+	templateUrl: './authentication.component.html',
+	styleUrls: ['./authentication.component.css']
 })
 export class AuthenticationComponent {
 
@@ -22,10 +21,8 @@ export class AuthenticationComponent {
 		public router: Router,
 		public httpUserService: HttpUserService,
 		private fb: FormBuilder,
-		private dataService: DataService,
-		private titleService: TitleService) {
-		// titleService.setTitle( 'Authentication - Guides LoL' );
-		// this.createForm();
+		private dataService: DataService) {
+		this.createForm();
 	}
 
 	createForm(): void {
@@ -49,7 +46,7 @@ export class AuthenticationComponent {
 					this.dataService.isAdmin = true;
 				}
 
-				// this.router.navigate(['/']);
+				this.router.navigate(['/']);
 			}
 		});
 	}

@@ -7,10 +7,10 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
-	{ path: '', component: AuthenticationComponent }
-  //  { path: 'subscribe', component: SubscribeComponent },
-   // { path: 'account', component: AccountComponent },
-	//{ path: 'account/:routerActive', component: AccountComponent }
+	{ path: '', component: AuthenticationComponent },
+    { path: 'subscribe', component: SubscribeComponent },
+	{ path: 'account', component: AccountComponent },
+	{ path: 'account/:routerActive', component: AccountComponent }
 ];
 
 @NgModule({

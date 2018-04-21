@@ -19,9 +19,7 @@ export class SubscribeComponent {
 
   constructor(
 		public httpUserService: HttpUserService,
-		private fb: FormBuilder,
-		private titleService: TitleService) {
-		titleService.setTitle( 'Subscribe - Guides LoL' );
+		private fb: FormBuilder) {
 		this.createForm();
 	}
 
@@ -42,7 +40,9 @@ export class SubscribeComponent {
 
 	checkRepeatPassword(c: AbstractControl): { invalid: boolean } {
 		if (c.get('password').value !== c.get('repeatPassword').value) {
-			return {invalid: true};
+			return {
+				invalid: true
+			};
 		}
 	}
 
@@ -57,8 +57,8 @@ export class SubscribeComponent {
 
 		var userData: UserModel = new UserModel(dataModel);
 
-    return userData;
-  }
+    	return userData;
+	}
 
 	onSubmit(): void {
 		let userModel: UserModel = this.prepareSaveUser();

@@ -16,7 +16,7 @@
 	</div>
 </section>
 
-<section class="page-secondary">
+<section class="page-secondary" *ngIf="dataService.user">
 
 	<div class="wrap-padder">
 		<ul class="left-menu">
@@ -52,7 +52,7 @@
 						</tr>
 					</thead>
 
-					<tbody>
+					<tbody *ngIf="guides">
 						<tr *ngFor="let guide of guides">
 							<td>{{guide.modifiedData | date:'medium'}}</td>
 							<td>{{guide.author.pseudo}}</td>

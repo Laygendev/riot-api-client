@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DataService } from './../../services/data/data.service';
-import { GuideModel } from './../../models/guide.model';
-import { ItemModel } from './../../models/item.model';
+import { DataService } from './../../app/services/data/data.service';
+import { GuideModel } from './../../app/models/guide.model';
+import { ItemModel } from './../../app/models/item.model';
 
 @Component({
-  selector: 'app-build-display',
-  templateUrl: './app-build-display.component.html',
-  styleUrls: ['./app-build-display.component.css']
+	selector: 'app-build-display',
+	templateUrl: './app-build-display.component.html',
+	styleUrls: ['./app-build-display.component.css']
 })
-export class AppBuildDisplayComponent implements OnInit {
+export class BuildDisplayComponent implements OnInit {
 	private _guide: GuideModel;
 	public buildItems: Array<ItemModel> = new Array<ItemModel>(undefined,undefined,undefined,undefined,undefined,undefined);
 
@@ -19,7 +19,6 @@ export class AppBuildDisplayComponent implements OnInit {
 	}
 
 	get guide(): GuideModel { return this._guide; }
-
 
 	constructor(public dataService: DataService) { }
 
