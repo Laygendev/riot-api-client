@@ -1,0 +1,67 @@
+.itemsSlot {
+	display: flex;
+}
+
+.itemsSlot .dropdown {
+	margin-left: 10px;
+	width: 64px;
+	height: 64px;
+	list-style: none;
+	border: dashed #646464 1px;
+	padding: 0;
+}
+
+.itemsSlot button {
+	border: none;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+
+.itemsSlot button:hover {
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.dropdown-menu {
+	width: 900px;
+}
+
+.dropdown-menu .search {
+	padding: 20px;
+}
+
+.dropdown-menu ul {
+	list-style: none;
+	height: 400px;
+	width: 100%;
+	padding: 20px;
+}
+
+.dropdown-menu ul li {
+	float: left;
+	width: 64px;
+	height: 64px;
+}
+
+.dropdown-menu ul li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+.dropdown-menu ul li img {
+	width: 64px;
+	height: 64px;
+}
+
+.dropdown-menu ul li img, .dropdown-menu ul li span {
+	display: inline;
+}
+
+.dropdown-menu ul li span {
+	line-height: 50px;
+	margin-left: 5px;
+	font-weight: bold;
+}

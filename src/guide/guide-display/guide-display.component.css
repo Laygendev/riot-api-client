@@ -1,0 +1,62 @@
+.build-container {
+	position: relative;
+	background-color: rgba(0,0,0,0.8);
+	padding: 20px;
+	margin-bottom: 40px;
+}
+
+.favoriteChampion {
+	display: flex;
+}
+
+.favoriteChampion ul {
+	padding-left: 30px;
+}
+
+.favoriteChampion ul li {
+	list-style: none;
+}
+
+.favoriteChampion ul .title {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.build-container .vote {
+	width: 20px;
+	margin-left: 20px;
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	padding: 10px;
+	font-size: 0.8em;
+}
+
+.cases-container {
+	margin-top: 25px;
+	display: flex;
+}
+
+.favorite-build .cases {
+	margin-right: 2%;
+	display: flex;
+}
+
+.favorite-build .cases li {
+	margin-left: 10px;
+	width: 64px;
+	height: 64px;
+	list-style: none;
+	border: dashed #646464 1px;
+	padding: 0;
+}
+
+.bloc-create-guide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-top: 100px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.8);
+}

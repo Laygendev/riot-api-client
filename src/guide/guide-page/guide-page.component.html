@@ -1,0 +1,24 @@
+<section class="sub-header background" [ngStyle]="{'background-image': getUrl()}">
+
+	<div class="sub-header-content" *ngIf="dataService && dataService.realms && champion">
+		<div class="wrap-padder">
+
+			<h2 class="big-title">Guide {{champion.name}} {{gameMode}} {{dataService.realms.data.v}}</h2>
+
+			<ul class="arianne">
+				<li>
+					<a routerLink="/">Home</a>
+					<i class="fas fa-arrow-right"></i>
+				</li>
+				<li>Guides {{champion.name}} {{gameMode}} {{dataService.realms.data.v}}</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="page-secondary">
+
+	<div class="wrap-padder">
+		<app-guide-display *ngIf="champion && gameMode" [gameMode]="gameMode" [champion]="champion"></app-guide-display>
+	</div>
+</section>
