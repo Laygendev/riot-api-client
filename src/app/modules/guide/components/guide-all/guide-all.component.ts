@@ -5,8 +5,8 @@ import { DataService } from '@app/services/data/data.service';
 
 @Component({
   selector: 'app-all-guides',
-  templateUrl: './all-guides.component.html',
-  styleUrls: ['./all-guides.component.css']
+  templateUrl: './guide-all.component.html',
+  styleUrls: ['./guide-all.component.css']
 })
 export class AllGuidesComponent implements OnInit {
 

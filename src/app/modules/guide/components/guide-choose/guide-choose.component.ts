@@ -12,10 +12,10 @@ import { UserModel } from '@app/modules/authentication/models/user.model';
 
 @Component({
   selector: 'app-build',
-  templateUrl: './guide.component.html',
-  styleUrls: ['./guide.component.css']
+  templateUrl: './guide-choose.component.html',
+  styleUrls: ['./guide-choose.component.css']
 })
-export class GuideComponent {
+export class GuideChooseComponent {
 	public champion: ChampionModel;
 
 	public gamesMode: String[] = ['ARAM', 'CLASSIC'];
