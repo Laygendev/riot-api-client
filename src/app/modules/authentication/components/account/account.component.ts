@@ -13,6 +13,7 @@ import { GuideModel } from '@app/models/guide.model';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
+
 export class AccountComponent implements OnInit {
 	public routerActive = 'account';
 	public guides: Array<GuideModel> = new Array<GuideModel>();

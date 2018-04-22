@@ -9,10 +9,12 @@ import { GuideEditComponent } from './components/guide-edit/guide-edit.component
 import { GuidePageComponent } from './components/guide-page/guide-page.component';
 
 const routes: Routes = [
-	{ path: '', component: AuthenticationComponent },
-    { path: 'subscribe', component: SubscribeComponent },
-	{ path: 'account', component: AccountComponent },
-	{ path: 'account/:routerActive', component: AccountComponent }
+	{ path: '', component: AllGuidesComponent },
+	{ path: 'create', component: GuideChooseComponent },
+    { path: 'create/:gameMode/:championId', component: GuideChooseComponent },
+	{ path: ':gameMode/current/:championName', component: GuidePageComponent },
+	{ path: 'edit/:guideId', component: GuideEditComponent },
+	{ path: 'edit/:gameMode/:championId', component: GuideEditComponent }
 ];
 
 @NgModule({
@@ -20,4 +22,4 @@ const routes: Routes = [
 	exports: [ RouterModule ]
 })
 
-export class AuthenticationRoutingModule {}
+export class GuideRoutingModule {}

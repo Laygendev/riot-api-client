@@ -11,7 +11,7 @@ import { ItemModel } from '@app/models/item.model';
 import { UserModel } from '@app/modules/authentication/models/user.model';
 
 @Component({
-  selector: 'app-build',
+  selector: 'app-guide-choose',
   templateUrl: './guide-choose.component.html',
   styleUrls: ['./guide-choose.component.css']
 })

@@ -14,6 +14,7 @@ import { Page404Component } from './components/page-404/page-404.component';
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', component: SearchComponent },
 	{ path: 'auth', loadChildren: './modules/authentication/authentication.module#AuthenticationModule' },
+	{ path: 'guide', loadChildren: './modules/guide/guide.module#GuideModule' },
 	{ path: 'summoner/:region/:id', component: SummonerDetailsComponent },
 	{ path: 'admin', component: AdminComponent },
 	{ path: 'who-we-are', component: WhoWeAreComponent },

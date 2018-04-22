@@ -13,9 +13,7 @@ export class AllGuidesComponent implements OnInit {
   public gamesMode: String[] = ['ARAM', 'CLASSIC'];
 	public currentGameMode: String = 'CLASSIC';
 
-	constructor(
-    public dataService: DataService) {
-	}
+	constructor(public dataService: DataService) {}
 
 	ngOnInit() {}
 

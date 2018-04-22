@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { GuideRoutingModule } from './guide-routing.module';
+import { BuildModule } from '@app/modules/build/build.module';
+
 import { AllGuidesComponent } from './components/guide-all/guide-all.component';
 import { GuideChooseComponent } from './components/guide-choose/guide-choose.component';
 import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
@@ -12,7 +15,9 @@ import { GuidePageComponent } from './components/guide-page/guide-page.component
 @NgModule({
   imports: [
     CommonModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    GuideRoutingModule,
+    BuildModule
   ],
   declarations: [
     AllGuidesComponent,
@@ -24,8 +29,7 @@ import { GuidePageComponent } from './components/guide-page/guide-page.component
   exports: [
     GuideDisplayComponent
   ],
-  providers: [
-  ]
+  providers: []
 })
 
 export class GuideModule { }
