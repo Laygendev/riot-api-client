@@ -8,8 +8,10 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationModule } from './../authentication/authentication.module';
-import { BuildModule } from './../build/build.module';
+
+import { AuthenticationModule } from '@app/modules/authentication/authentication.module';
+import { BuildModule } from '@app/modules/build/build.module';
+import { GuideModule } from '@app/modules/guide/guide.module';
 
 import { HttpService } from './services/http/http.service';
 import { DataService } from './services/data/data.service';
@@ -27,17 +29,12 @@ import { TooltipDirective } from './directives/tooltip/tooltip.directive';
 import { AppComponent } from './app.component';
 import { SummonerDetailsComponent } from './components/summoner-details/summoner-details.component';
 import { SearchComponent } from './components/search/search.component';
-import { GuideComponent } from './components/guide/guide.component';
-import { GuideEditComponent } from './components/guide-edit/guide-edit.component';
-import { GuideDisplayComponent } from './components/guide-display/guide-display.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { AboutThisWebsiteComponent } from './components/about-this-website/about-this-website.component';
 import { HelpUsComponent } from './components/help-us/help-us.component';
-import { AllGuidesComponent } from './components/all-guides/all-guides.component';
 import { MembersComponent } from './components/members/members.component';
 import { Page404Component } from './components/page-404/page-404.component';
-import { GuidePageComponent } from './components/guide-page/guide-page.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -64,9 +61,6 @@ const cookieConfig:NgcCookieConsentConfig = {
     AppComponent,
     SummonerDetailsComponent,
     SearchComponent,
-    GuideComponent,
-    GuideEditComponent,
-		GuideDisplayComponent,
     DropdownDirective,
     SearchDirective,
     TooltipDirective,
@@ -74,10 +68,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     WhoWeAreComponent,
     AboutThisWebsiteComponent,
     HelpUsComponent,
-    AllGuidesComponent,
     MembersComponent,
     Page404Component,
-    GuidePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'riot-api-client' }),
@@ -86,6 +78,7 @@ const cookieConfig:NgcCookieConsentConfig = {
 		HttpClientModule,
     AppRoutingModule,
     BuildModule,
+    GuideModule,
 		NgbModule.forRoot(),
 		NgcCookieConsentModule.forRoot(cookieConfig)
   ],

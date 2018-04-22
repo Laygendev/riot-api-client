@@ -34,7 +34,7 @@
 				<li class="details" *ngFor="let participant of dataService.spetactorData.participantsTeam100">
 
 					<div class="avatar" *ngIf="participant.championId">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
+						<img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 						<p>
 							<strong>{{participant.summonerName}}</strong>
 							<span *ngIf="participant.summonerData" class="level">Level {{participant.summonerData.summonerLevel}}</span>
@@ -42,8 +42,8 @@
 					</div>
 
 					<div class="summonerSpells" *ngIf="participant.spells">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
+						<img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
+						<img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
 					</div>
 				</li>
 			</ul>
@@ -54,12 +54,12 @@
 				<li *ngFor="let participant of dataService.spetactorData.participantsTeam200">
 
 					<div class="summonerSpells" *ngIf="participant.spells">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
+						<img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.one.image.full}}" />
+						<img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/spell/{{participant.spells.two.image.full}}" />
 					</div>
 
 					<div class="avatar" *ngIf="participant.championId">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
+						<img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{participant.champion.image.full}}" />
 						<p>
 							<strong>{{participant.summonerName}}</strong>
 							<span *ngIf="participant.summonerData" class="level">Level {{participant.summonerData.summonerLevel}}</span>
