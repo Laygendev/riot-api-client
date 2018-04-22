@@ -60,7 +60,7 @@
 							<td>{{guide.favorite}}</td>
 							<td>{{guide.version}}</td>
 							<td><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{guide.champion.image.full}}" /></td>
-							<td><app-build-display [guide]="guide"></app-build-display></td>
+							<td><build-display [guide]="guide"></build-display></td>
 							<td>{{guide.vote}}</td>
 							<td>
 								<button type="button" class="btn btn-primary" *ngIf="guide.state != 'publish'" (click)="toPublish(guide)">To publish</button>

@@ -5,9 +5,9 @@ import { GuideModel } from './../../app/models/guide.model';
 import { ItemModel } from './../../app/models/item.model';
 
 @Component({
-	selector: 'app-build-display',
-	templateUrl: './app-build-display.component.html',
-	styleUrls: ['./app-build-display.component.css']
+	selector: 'build-display',
+	templateUrl: './build-display.component.html',
+	styleUrls: ['./build-display.component.css']
 })
 export class BuildDisplayComponent implements OnInit {
 	private _guide: GuideModel;

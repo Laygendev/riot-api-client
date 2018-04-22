@@ -27,15 +27,12 @@ export class AccountComponent implements OnInit {
 		this.route.params.subscribe(params => {
 			if ( params.routerActive ) {
 				this.routerActive = params.routerActive;
-
-				console.log('hahahaha');
 			}
 		});
 	}
 
   ngOnInit() {
 		this.subscription = this.dataService.getInitied().subscribe(() => {
-			console.log('here');
 			this.httpGuideService.getByAuthorId(this.dataService.user._id).subscribe((data) => {
 				if (data) {
 					for ( let key in data ) {

@@ -98,7 +98,7 @@
 								<span *ngIf="!guide.author">Deleted user</span>
 							</td>
 							<td>{{guide.version}}</td>
-							<td><app-build-display [guide]="guide"></app-build-display></td>
+							<td><build-display [guide]="guide"></build-display></td>
 							<td>{{guide.vote}}</td>
 							<td>
 								<span *ngIf="dataService.user">
