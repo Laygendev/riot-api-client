@@ -53,8 +53,8 @@
 
 			<ul class="menu">
 				<li><a routerLink="/who-we-are">Who we are</a></li>
-				<li *ngIf="!dataService.user"><a routerLink="/auth">Login</a></li>
-				<li *ngIf="dataService.isAdmin"><a routerLink="/admin">Admin</a></li>
+				<li *ngIf="!dataService.user"><a routerLink="/user/login">Login</a></li>
+				<li *ngIf="dataService.isAdmin"><a routerLink="/user/admin">Admin</a></li>
 
 				<li *ngIf="dataService.user">
 					<div ngbDropdown placement="bottom-right" class="dropdown">
@@ -63,7 +63,8 @@
 						</button>
 						<div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownUser">
 							<ul>
-								<li><a routerLink="/auth/account">My Account</a></li>
+								<li><a routerLink="/user/account">My Account</a></li>
+								<li><a routerLink="/user/account/guides">My Guides</a></li>
 								<li><a (click)="logout()">Logout</a></li>
 							</ul>
 						</div>

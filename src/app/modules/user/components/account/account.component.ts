@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '@app/services/data/data.service';
 import { HttpGuideService } from '@app/services/httpGuide/http-guide.service';
 
-import { GuideModel } from '@app/models/guide.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
 
 @Component({
   selector: 'app-account',
@@ -48,7 +48,7 @@ export class AccountComponent implements OnInit {
 			});
 		});
 	}
-	
+
 	ngOnDestroy() {
 		this.subscription.unsubscribe();
 	}

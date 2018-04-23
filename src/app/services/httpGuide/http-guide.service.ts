@@ -4,9 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 
-import { GuideModel } from '../../models/guide.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
 
-import { DataService } from './../data/data.service';
+import { DataService } from '@app/services/data/data.service';
 
 import { HttpClient } from '@angular/common/http';
 

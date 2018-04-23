@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ChampionModel } from '@app/models/champion.model';
+import { ChampionModel } from '@app/modules/guide/models/champion.model';
 
 import { DataService } from '@app/services/data/data.service';
 

@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { DataService } from '@app/services/data/data.service';
-import { ChampionModel } from '@app/models/champion.model';
-import { GuideModel } from '@app/models/guide.model';
-import { ItemModel } from '@app/models/item.model';
+import { ChampionModel } from '@app/modules/guide/models/champion.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
+import { ItemModel } from '@app/modules/build/models/item.model';
 
 import { HttpGuideService } from '@app/services/httpGuide/http-guide.service';
 

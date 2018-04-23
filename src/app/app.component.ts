@@ -1,12 +1,10 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { NgcCookieConsentService } from 'ngx-cookieconsent';
 
 import { DataService } from './services/data/data.service';
 import { StaticDataService } from './services/staticData/static-data.service';
-import { TitleService } from './services/title/title.service';
 
 @Component({
   selector: 'app-root',
@@ -30,9 +28,7 @@ export class AppComponent implements AfterViewInit {
 	constructor(
 		public dataService: DataService,
 		private staticDataService: StaticDataService,
-		private titleService: TitleService,
 		private router: Router,
-		public title: Title,
 		private ccService: NgcCookieConsentService) {
 		this.dataService.loading = false;
 		dataService.init();
@@ -72,10 +68,6 @@ export class AppComponent implements AfterViewInit {
   closeMenu(name): void {
     this.menuIsOpen[name] = false;
   }
-
-	setTitle(newTitle: any): void {
-		this.title.setTitle( newTitle );
-	}
 
 	logout(): void {
 		window.localStorage.removeItem('user');

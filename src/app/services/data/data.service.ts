@@ -3,14 +3,14 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
-import { ChampionModel } from '../../models/champion.model';
-import { ItemModel } from '../../models/item.model';
-import { UserModel } from '@app/modules/authentication/models/user.model';
-import { GuideModel } from '../../models/guide.model';
-import { SummonerSpellModel } from '../../models/summonerSpell.model';
+import { ChampionModel } from '@app/modules/guide/models/champion.model';
+import { ItemModel } from '@app/modules/build/models/item.model';
+import { UserModel } from '@app/modules/user/models/user.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
+import { SummonerSpellModel } from '@app/modules/real-time/models/summonerSpell.model';
 
 import { HttpClient } from '@angular/common/http';
-import { StaticDataService } from './../staticData/static-data.service';
+import { StaticDataService } from '@app/services/staticData/static-data.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';

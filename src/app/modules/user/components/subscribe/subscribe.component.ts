@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ValidationErrors, AbstractControl, FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { UserModel } from '@app/modules/authentication/models/user.model';
+import { UserModel } from '@app/modules/user/models/user.model';
 
-import { HttpUserService } from '@app/modules/authentication/services/httpUser/http-user.service';
+import { HttpUserService } from '@app/modules/user/services/http-user/http-user.service';
 
 @Component({
   selector: 'app-subscribe',

@@ -2,17 +2,16 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
-import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
-import { StaticDataService } from './../../services/staticData/static-data.service';
-import { DataService } from './../../services/data/data.service';
-import { TitleService } from './../../services/title/title.service';
+import { HttpSpectatorService } from '@app/services/httpSpectator/http-spectator.service';
+import { HttpSummonerService } from '@app/services/httpSummoner/http-summoner.service';
+import { StaticDataService } from '@app/services/staticData/static-data.service';
+import { DataService } from '@app/services/data/data.service';
 
-import { ParticipantModel } from './../../models/participant.model';
-import { SpectatorModel } from './../../models/spectator.model';
-import { SummonerModel } from './../../models/summoner.model';
-import { ChampionModel } from './../../models/champion.model';
-import { ItemModel } from './../../models/item.model';
+import { ParticipantModel } from '@app/modules/real-time/models/participant.model';
+import { SpectatorModel } from '@app/modules/real-time/models/spectator.model';
+import { SummonerModel } from '@app/modules/real-time/models/summoner.model';
+import { ChampionModel } from '@app/modules/guide/models/champion.model';
+import { ItemModel } from '@app/modules/build/models/item.model';
 
 @Component({
   selector: 'app-summoner-details',
@@ -33,13 +32,10 @@ export class SummonerDetailsComponent  {
 		public dataService: DataService,
 		private httpSpectatorService: HttpSpectatorService,
 		private httpSummonerService: HttpSummonerService,
-		private staticDataService: StaticDataService,
-		private titleService: TitleService) {
-		this.titleService.setTitle( 'Current Game - Guides LoL' );
+		private staticDataService: StaticDataService) {
 		if ( ! this.dataService.summonerData ) {
 			this.route.params.subscribe(param => {
 				this.summonerName = param.id;
-				this.titleService.setTitle( this.summonerName + ' Current Game - Guides LoL' );
 				this.currentRegion = param.region;
 				this.httpSummonerService.get(param.id, param.region).subscribe((data) => {
 					let summonerData = new SummonerModel(data);

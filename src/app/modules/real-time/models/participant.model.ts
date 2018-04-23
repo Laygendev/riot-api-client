@@ -1,4 +1,4 @@
-import { ChampionModel } from './champion.model';
+import { ChampionModel } from '@app/modules/guide/models/champion.model';
 
 export class ParticipantModel {
 	public profileIconId: number;

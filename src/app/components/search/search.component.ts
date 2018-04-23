@@ -4,12 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
-import { HttpSpectatorService } from './../../services/httpSpectator/http-spectator.service';
-import { HttpSummonerService } from './../../services/httpSummoner/http-summoner.service';
-import { DataService } from './../../services/data/data.service';
-import { TitleService } from './../../services/title/title.service';
+import { HttpSpectatorService } from '@app/services/httpSpectator/http-spectator.service';
+import { HttpSummonerService } from '@app/services/httpSummoner/http-summoner.service';
+import { DataService } from '@app/services/data/data.service';
 
-import { SummonerModel } from './../../models/summoner.model';
+import { SummonerModel } from '@app/modules/real-time/models/summoner.model';
 
 @Component({
 	selector: 'app-search',

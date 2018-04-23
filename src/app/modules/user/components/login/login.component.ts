@@ -3,16 +3,16 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { DataService } from '@app/services/data/data.service';
-import { HttpUserService } from '@app/modules/authentication/services/httpUser/http-user.service';
+import { HttpUserService } from '@app/modules/user/services/http-user/http-user.service';
 
-import { UserModel } from '@app/modules/authentication/models/user.model';
+import { UserModel } from '@app/modules/user/models/user.model';
 
 @Component({
-	selector: 'app-authentication',
-	templateUrl: './authentication.component.html',
-	styleUrls: ['./authentication.component.css']
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.css']
 })
-export class AuthenticationComponent {
+export class LoginComponent {
 
 	public userForm: FormGroup;
 	public errorMessage: string;

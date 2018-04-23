@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from './../../services/data/data.service';
-import { HttpGuideService } from './../../services/httpGuide/http-guide.service';
-import { TitleService } from './../../services/title/title.service';
+import { DataService } from '@app/services/data/data.service';
+import { HttpGuideService } from '@app/services/httpGuide/http-guide.service';
 
-import { GuideModel } from './../../models/guide.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
 
 @Component({
   selector: 'app-admin',
@@ -17,11 +16,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
 		public dataService: DataService,
-		public httpGuideService: HttpGuideService,
-		private titleService: TitleService
-	) {
-		titleService.setTitle( 'Admin - Lol Hype' );
-	}
+		public httpGuideService: HttpGuideService
+	) {}
 
   ngOnInit() {
 		this.httpGuideService.get().subscribe((data) => {

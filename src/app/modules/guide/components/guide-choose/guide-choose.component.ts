@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from '@app/services/data/data.service';
-import { TitleService } from '@app/services/title/title.service';
 import { HttpGuideService } from '@app/services/httpGuide/http-guide.service';
 
-import { ChampionModel } from '@app/models/champion.model';
-import { GuideModel } from '@app/models/guide.model';
-import { ItemModel } from '@app/models/item.model';
-import { UserModel } from '@app/modules/authentication/models/user.model';
+import { ChampionModel } from '@app/modules/guide/models/champion.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
+import { ItemModel } from '@app/modules/build/models/item.model';
+import { UserModel } from '@app/modules/user/models/user.model';
 
 @Component({
   selector: 'app-guide-choose',
@@ -28,11 +27,8 @@ export class GuideChooseComponent {
 	constructor(
 		public route: ActivatedRoute,
 		public dataService: DataService,
-		public httpGuideService: HttpGuideService,
-		private titleService: TitleService,
+		public httpGuideService: HttpGuideService
 	) {
-		this.titleService.setTitle( 'Create guide - Guides LoL' );
-
 		this.route.params.subscribe(params => {
 			if ( params.championId && params.gameMode ) {
 				this.gameMode = params.gameMode;

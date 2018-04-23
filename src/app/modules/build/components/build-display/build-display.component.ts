@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { DataService } from '@app/services/data/data.service';
-import { GuideModel } from '@app/models/guide.model';
-import { ItemModel } from '@app/models/item.model';
+import { GuideModel } from '@app/modules/guide/models/guide.model';
+import { ItemModel } from '@app/modules/build/models/item.model';
 
 @Component({
 	selector: 'build-display',

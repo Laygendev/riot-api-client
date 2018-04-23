@@ -1,5 +1,5 @@
-import { ItemSlotModel } from './itemSlot.model';
-import { ItemModel } from './item.model';
+import { ItemSlotModel } from '@app/modules/build/models/itemSlot.model';
+import { ItemModel } from '@app/modules/build/models/item.model';
 
 export class GuideModel {
 	public _id: string;
