@@ -59,12 +59,12 @@
 							<td>{{guide.state}}</td>
 							<td>{{guide.favorite}}</td>
 							<td>{{guide.version}}</td>
-							<td><img src="http://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{guide.champion.image.full}}" /></td>
+							<td><img src="https://ddragon.leagueoflegends.com/cdn/{{dataService.realms.data.v}}/img/champion/{{guide.champion.image.full}}" /></td>
 							<td><build-display [guide]="guide"></build-display></td>
 							<td>{{guide.vote}}</td>
 							<td>
 								<button type="button" class="btn btn-primary" *ngIf="guide.state != 'publish'" (click)="toPublish(guide)">To publish</button>
-								<button type="button" class="btn btn-primary" routerLink="/guide-edit/{{guide._id}}">Edit</button>
+								<button type="button" class="btn btn-primary" routerLink="/guide/edit/{{guide._id}}">Edit</button>
 							</td>
 						</tr>
 					</tbody>

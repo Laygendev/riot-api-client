@@ -124,7 +124,7 @@ export class DataService {
 
 		for(let key in this.items) {
 			if (this.items[key].id == id) {
-				return this.items[key]
+				return this.items[key];
 			}
 		}
 
@@ -154,7 +154,9 @@ export class DataService {
 	}
 
 	setInitied() {
-		this.initied.next();
+		if ( this.inited ) {
+			this.initied.next();
+		}
 	}
 
 	getInitied(): Observable<any> {

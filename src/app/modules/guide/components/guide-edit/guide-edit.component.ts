@@ -40,7 +40,7 @@ export class GuideEditComponent implements OnInit {
 			this.router.navigate(['/']);
 		}
 
-		this.subscription = this.dataService.getInitied().subscribe(() => {
+    this.subscription = this.dataService.getInitied().subscribe(() => {
 			this.dataService.waitComponentLoad = true;
 			this.dataService.loading = true;
 
@@ -67,8 +67,7 @@ export class GuideEditComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.dataService.waitComponentLoad = true;
-		this.dataService.loading = true;
+
 	}
 
 	ngOnDestroy() {
