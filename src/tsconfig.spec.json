@@ -3,6 +3,9 @@
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
     "baseUrl": ".",
+    "paths": {
+      "@app/*": ["app/*"]
+    },
     "module": "commonjs",
     "target": "es5",
     "types": [

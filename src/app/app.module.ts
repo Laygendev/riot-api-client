@@ -86,6 +86,7 @@ const cookieConfig:NgcCookieConsentConfig = {
 	],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -24,7 +24,7 @@ export class AppComponent {
 		public dataService: DataService,
 		private router: Router) {
 		this.dataService.loading = true;
-    
+
 		dataService.init();
 
     this.router.events.subscribe(event => {

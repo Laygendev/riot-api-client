@@ -36,7 +36,6 @@ export class GuideChooseComponent {
 				this.champion = this.dataService.getChampionById(params.championId)
 
 				this.getGuides();
-
 			}
 		});
 	}
