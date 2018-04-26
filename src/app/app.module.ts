@@ -1,6 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { isPlatformBrowser } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { NgModule, LOCALE_ID, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +15,6 @@ import { BuildModule } from '@app/modules/build/build.module';
 import { GuideModule } from '@app/modules/guide/guide.module';
 import { RealTimeModule } from '@app/modules/real-time/real-time.module';
 
-import { HttpService } from './services/http/http.service';
 import { DataService } from './services/data/data.service';
 import { HttpSummonerService } from './services/httpSummoner/http-summoner.service';
 import { HttpSpectatorService } from './services/httpSpectator/http-spectator.service';
@@ -64,6 +64,7 @@ const cookieConfig:NgcCookieConsentConfig = {
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'riot-api-client' }),
+		RouterModule,
 		ReactiveFormsModule,
 		HttpModule,
 		HttpClientModule,
@@ -76,7 +77,6 @@ const cookieConfig:NgcCookieConsentConfig = {
 		NgcCookieConsentModule.forRoot(cookieConfig)
   ],
   providers: [
-		HttpService,
 		HttpSummonerService,
 		HttpSpectatorService,
 		DataService,

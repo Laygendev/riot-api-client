@@ -1,6 +1,12 @@
-import { TestBed, async, RouterTestingModule } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { TestBed, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { DataService } from './services/data/data.service';
+import { StaticDataService } from './services/staticData/static-data.service';
+
+import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,9 +15,14 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        RouterTestingModule,
-        NgbModule
-      ]
+        NgbModule,
+				RouterTestingModule,
+				HttpClientModule
+      ],
+			providers: [
+				DataService,
+				StaticDataService
+			]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
