@@ -25,7 +25,7 @@ describe('BuildDisplayComponent', () => {
 			imports: [
 				RouterTestingModule,
 				HttpClientModule,
-				NgbModule
+				NgbModule.forRoot()
 			]
     })
     .compileComponents();

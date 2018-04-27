@@ -27,8 +27,10 @@ export class BuildDisplayComponent implements OnInit {
 	}
 
 	getItemsInGuide(build: GuideModel, category: string): void {
-		for (let key in build[category + 'SlotId']) {
-			this[category][key] = this.dataService.getItemById(build[category + 'SlotId'][key]);
+		if (this[category + 'SlotId']) {
+			for (let key in build[category + 'SlotId']) {
+				this[category][key] = this.dataService.getItemById(build[category + 'SlotId'][key]);
+			}
 		}
 	}
 
